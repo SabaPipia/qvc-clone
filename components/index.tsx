@@ -4,5 +4,6 @@ import Hero from "./Hero";
 import TopSelling from "./TopSelling";
 import Category from "./Category";
 import Trending from "./Trending";
+import Footer from "./Footer";
 
-export { Header, CustomInput, Hero, TopSelling, Category, Trending };
+export { Header, CustomInput, Hero, TopSelling, Category, Trending, Footer };
