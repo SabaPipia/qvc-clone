@@ -9,6 +9,7 @@ import CategoryCard from "../CategoryCard";
 
 function Category() {
   const emptyArray = new Array(10).fill(null);
+
   return (
     <div className="container">
       <div className="category-wrapper">
@@ -27,9 +28,9 @@ function Category() {
             }}
             className="mySwiper"
           >
-            {emptyArray.map(() => {
+            {emptyArray.map((item, index) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <CategoryCard />
                 </SwiperSlide>
               );

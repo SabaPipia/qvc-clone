@@ -1,3 +1,5 @@
+"use client";
+
 import "./page.scss";
 import { Hero, TopSelling, Category, Trending } from "@/components";
 

@@ -35,7 +35,7 @@ function TopSelling() {
               const isWholeNumber = Number.isInteger(index / 2);
 
               return (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <Card isSale={isWholeNumber ? true : false} />
                 </SwiperSlide>
               );

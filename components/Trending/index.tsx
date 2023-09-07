@@ -30,9 +30,9 @@ function Trending() {
             }}
             className="mySwiper"
           >
-            {emptyArray.map(() => {
+            {emptyArray.map((item, index) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <CategoryCard />
                 </SwiperSlide>
               );

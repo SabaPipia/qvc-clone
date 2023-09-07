@@ -22,6 +22,7 @@ header {
     cursor: pointer;
   }
   .left-side__shop {
+    position: relative;
     cursor: pointer;
     font-size: 1.5rem;
     color: #333;
@@ -94,4 +95,27 @@ header {
   height: 18px;
   padding: 0.3rem;
   text-align: center;
+}
+.left-side__shop:hover .dropdown-menu {
+  display: block;
+}
+.header__left-side .dropdown-menu {
+  position: absolute;
+  display: none;
+  gap: 10px;
+  z-index: 99;
+  bottom: -545px;
+  width: 230px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.309);
+  background-color: #fff;
+  ul li {
+    padding: 0.6rem 2.2rem;
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+    &:hover {
+      background-color: rgb(212, 212, 212);
+    }
+  }
 }
