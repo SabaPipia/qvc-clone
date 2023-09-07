@@ -3,10 +3,9 @@ import "./style.scss";
 import { CardProps } from "@/types";
 
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
-function Card({ data }: CardProps) {
+function LowInStockCard({ data }: CardProps) {
   const lastImageSrc = data.images[data.images.length - 1].toString();
   return (
     <div className="card">
@@ -14,12 +13,12 @@ function Card({ data }: CardProps) {
         <Image src={lastImageSrc} width={100} height={100} alt="dummy image" />
       </div>
       <div className="card__item-info">
-        <Link
-          href={`/${data.category}/${data.id}`}
-          className="card__item-title"
-        >
+        <h3 className="card__item-title">
           {data.title},{data.brand}
-        </Link>
+        </h3>
+        <div className="item__quantity">
+          <span>left: {data.stock}</span>
+        </div>
         <div className="card__item-price-wrapper">
           {data.discountPercentage > 13 ? (
             <>
@@ -41,4 +40,4 @@ function Card({ data }: CardProps) {
   );
 }
 
-export default Card;
+export default LowInStockCard;

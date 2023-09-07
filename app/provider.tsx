@@ -6,11 +6,13 @@ import { ProductItem } from "@/types";
 export const DataContext = createContext<any>(null);
 
 function Provider({ children }: { children: ReactNode }) {
+  const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [topSellingItems, setTopSellingItems] = useState<ProductItem[]>();
   const [categoryItem, setCategoryItem] = useState<
     { category: string; thumbnail: string }[]
   >([]);
+  const [lowInStockItem, setLowInStockItem] = useState<ProductItem[]>();
 
   useEffect(() => {
     async function fetchCategories() {
@@ -24,16 +26,20 @@ function Provider({ children }: { children: ReactNode }) {
         console.error("Error fetching data:", error);
       }
     }
-    async function fetchTopSellingItems() {
+    async function fetchAllData() {
       try {
         const response = await fetch(
           "https://dummyjson.com/products?limit=100"
         );
         const data = await response.json();
-        const filteredItems = data.products.filter(
+        const filteredItemsByStock = data.products.filter(
+          (item: any) => item.stock <= 10
+        );
+        const filteredItemsByRating = data.products.filter(
           (item: any) => item.rating >= 4.9
         );
-        setTopSellingItems(filteredItems);
+        setLowInStockItem(filteredItemsByStock);
+        setTopSellingItems(filteredItemsByRating);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -59,14 +65,23 @@ function Provider({ children }: { children: ReactNode }) {
         console.error("Error fetching data:", error);
       }
     }
-    fetchCategories();
-    fetchTopSellingItems();
-    getCategoryImages();
+
+    Promise.all([fetchCategories(), fetchAllData(), getCategoryImages()])
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("One or more fetch operations failed:", error);
+        setIsLoading(false);
+      });
   }, []);
 
+  // Make Loading animation
   return (
-    <DataContext.Provider value={{ categories, topSellingItems, categoryItem }}>
-      {children}
+    <DataContext.Provider
+      value={{ categories, topSellingItems, categoryItem, lowInStockItem }}
+    >
+      {!isLoading ? children : <div>Loading...</div>}
     </DataContext.Provider>
   );
 }

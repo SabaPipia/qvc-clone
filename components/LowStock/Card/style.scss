@@ -21,7 +21,6 @@
     line-height: 2.3rem;
     font-size: 1.7rem;
     text-transform: capitalize;
-    text-decoration: none;
   }
 }
 .item-price {
@@ -38,4 +37,15 @@
   margin-left: 2rem;
   text-decoration: line-through;
   color: #344343;
+}
+.item__quantity {
+  text-align: end;
+  span {
+    font-size: 1.4rem;
+    border: 1px solid rgb(253, 111, 111);
+    padding: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+  }
 }
