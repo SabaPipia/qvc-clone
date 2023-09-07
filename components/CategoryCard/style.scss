@@ -7,3 +7,9 @@
   color: #1a1b45;
   text-decoration: none;
 }
+.category-image {
+  height: 250px;
+  img {
+    object-fit: fill;
+  }
+}

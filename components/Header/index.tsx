@@ -11,11 +11,11 @@ import Image from "next/image";
 import React, { useContext } from "react";
 
 import { CustomInput } from "..";
-import { CategoriesContext } from "@/app/provider";
+import { DataContext } from "@/app/provider";
 import Link from "next/link";
 
 function Header() {
-  const categories = useContext(CategoriesContext);
+  const context = useContext(DataContext);
   return (
     <header>
       <div className="header flex-container ">
@@ -26,8 +26,8 @@ function Header() {
             <Image src={drowDownIcon} width={12} height={12} alt="drow down" />
             <div className="dropdown-menu">
               <ul>
-                {categories &&
-                  categories.map((item: string) => (
+                {context.categories &&
+                  context.categories.map((item: string) => (
                     <li key={item}>
                       <Link href={`/${item}`}>{item}</Link>
                     </li>

@@ -1,7 +1,7 @@
 "use client";
 
 import "./page.scss";
-import { Hero, TopSelling, Category, Trending } from "@/components";
+import { Hero, TopSelling, Category } from "@/components";
 
 export default function Home() {
   return (
@@ -9,7 +9,6 @@ export default function Home() {
       <Hero />
       <TopSelling />
       <Category />
-      <Trending />
     </main>
   );
 }

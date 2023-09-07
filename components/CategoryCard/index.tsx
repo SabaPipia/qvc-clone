@@ -1,3 +1,4 @@
+import { CategoryCardProps } from "@/types";
 import "./style.scss";
 
 import categoryImage from "@/public/assets/categoryImgDummy.jpg";
@@ -6,15 +7,20 @@ import Link from "next/link";
 
 import React from "react";
 
-function CategoryCard() {
+function CategoryCard({ item }: CategoryCardProps) {
   return (
     <div className="category-card">
       <div className="category-image">
-        <Image src={categoryImage} alt="category dummy image" />
+        <Image
+          width={100}
+          height={100}
+          src={item && item.thumbnail.toString()}
+          alt="category dummy image"
+        />
       </div>
       <div className="category-title__wrapper">
         <Link href="#" className="category-title">
-          Category title
+          {item.category}
         </Link>
       </div>
     </div>

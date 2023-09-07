@@ -6,12 +6,14 @@ import "swiper/css/pagination";
 import "./style.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../Card";
 import Link from "next/link";
+import { DataContext } from "@/app/provider";
+import { ProductItem } from "@/types";
 
 function TopSelling() {
-  const emptyArray = new Array(10).fill(null);
+  const { topSellingItems } = useContext(DataContext);
   return (
     <div className="container top">
       <div className="top-selling">
@@ -31,15 +33,14 @@ function TopSelling() {
             }}
             className="mySwiper"
           >
-            {emptyArray.map((item: string, index: number) => {
-              const isWholeNumber = Number.isInteger(index / 2);
-
-              return (
-                <SwiperSlide key={index}>
-                  <Card isSale={isWholeNumber ? true : false} />
-                </SwiperSlide>
-              );
-            })}
+            {topSellingItems &&
+              topSellingItems.map((item: ProductItem, index: number) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <Card data={item} />
+                  </SwiperSlide>
+                );
+              })}
           </Swiper>
         </div>
       </div>

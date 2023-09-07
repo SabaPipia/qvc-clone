@@ -4,11 +4,13 @@ import "swiper/css";
 import "./style.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import React from "react";
+import React, { useContext } from "react";
 import CategoryCard from "../CategoryCard";
+import { DataContext } from "@/app/provider";
+import { CategoryCardInterface } from "@/types";
 
 function Category() {
-  const emptyArray = new Array(10).fill(null);
+  const { categoryItem } = useContext(DataContext);
 
   return (
     <div className="container">
@@ -28,10 +30,10 @@ function Category() {
             }}
             className="mySwiper"
           >
-            {emptyArray.map((item, index) => {
+            {categoryItem.map((item: CategoryCardInterface, index: number) => {
               return (
-                <SwiperSlide key={index}>
-                  <CategoryCard />
+                <SwiperSlide key={item.category}>
+                  <CategoryCard item={item} />
                 </SwiperSlide>
               );
             })}
