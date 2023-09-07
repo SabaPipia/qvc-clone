@@ -1,0 +1,21 @@
+.category-heading {
+  border-top: 0.111rem solid #2222;
+  padding-top: 1.1rem;
+  span {
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+.product-wrapper {
+  width: 116rem;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1.1rem;
+  gap: 20px;
+  align-items: center;
+  .card-wrapper {
+    width: 250px;
+  }
+}

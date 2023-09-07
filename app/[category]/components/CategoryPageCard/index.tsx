@@ -6,23 +6,20 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function LowInStockCard({ data }: CardProps) {
+function CategoryPCard({ data }: CardProps) {
   const lastImageSrc = data.images[data.images.length - 1].toString();
   return (
     <div className="card">
-      <div className="card-image">
+      <div className="card-image category-card-image">
         <Image src={lastImageSrc} width={100} height={100} alt="dummy image" />
       </div>
       <div className="card__item-info">
         <Link
-          href={`/${data.category}/${data.title}`}
+          href={`/${data.category}/${data.id}`}
           className="card__item-title"
         >
           {data.title},{data.brand}
         </Link>
-        <div className="item__quantity">
-          <span>left: {data.stock}</span>
-        </div>
         <div className="card__item-price-wrapper">
           {data.discountPercentage > 13 ? (
             <>
@@ -44,4 +41,4 @@ function LowInStockCard({ data }: CardProps) {
   );
 }
 
-export default LowInStockCard;
+export default CategoryPCard;

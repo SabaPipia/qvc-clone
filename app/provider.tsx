@@ -1,5 +1,6 @@
 "use client";
-import { TopSelling } from "@/components";
+import { usePathname } from "next/navigation";
+
 import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { ProductItem } from "@/types";
 
@@ -13,7 +14,8 @@ function Provider({ children }: { children: ReactNode }) {
     { category: string; thumbnail: string }[]
   >([]);
   const [lowInStockItem, setLowInStockItem] = useState<ProductItem[]>();
-
+  const [categoryItems, setCategoryItems] = useState<ProductItem[]>();
+  const pathname = usePathname();
   useEffect(() => {
     async function fetchCategories() {
       try {
@@ -66,7 +68,25 @@ function Provider({ children }: { children: ReactNode }) {
       }
     }
 
-    Promise.all([fetchCategories(), fetchAllData(), getCategoryImages()])
+    async function getCategory() {
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/products/category${pathname}
+          `
+        );
+        const responseJson = await response.json();
+        const data = responseJson.products;
+        setCategoryItems(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    Promise.all([
+      fetchCategories(),
+      fetchAllData(),
+      getCategoryImages(),
+      getCategory(),
+    ])
       .then(() => {
         setIsLoading(false);
       })
@@ -74,12 +94,18 @@ function Provider({ children }: { children: ReactNode }) {
         console.error("One or more fetch operations failed:", error);
         setIsLoading(false);
       });
-  }, []);
+  }, [pathname]);
 
   // Make Loading animation
   return (
     <DataContext.Provider
-      value={{ categories, topSellingItems, categoryItem, lowInStockItem }}
+      value={{
+        categories,
+        topSellingItems,
+        categoryItem,
+        lowInStockItem,
+        categoryItems,
+      }}
     >
       {!isLoading ? children : <div>Loading...</div>}
     </DataContext.Provider>

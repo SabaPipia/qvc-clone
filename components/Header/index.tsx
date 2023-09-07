@@ -28,9 +28,9 @@ function Header() {
               <ul>
                 {context.categories &&
                   context.categories.map((item: string) => (
-                    <li key={item}>
-                      <Link href={`/${item}`}>{item}</Link>
-                    </li>
+                    <Link href={`/${item}`} key={item}>
+                      <li>{item}</li>
+                    </Link>
                   ))}
               </ul>
             </div>

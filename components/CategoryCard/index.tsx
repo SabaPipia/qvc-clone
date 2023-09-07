@@ -19,7 +19,7 @@ function CategoryCard({ item }: CategoryCardProps) {
         />
       </div>
       <div className="category-title__wrapper">
-        <Link href="#" className="category-title">
+        <Link href={item.category} className="category-title">
           {item.category}
         </Link>
       </div>
