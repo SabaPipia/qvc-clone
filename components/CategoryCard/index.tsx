@@ -12,8 +12,8 @@ function CategoryCard({ item }: CategoryCardProps) {
     <div className="category-card">
       <div className="category-image">
         <Image
-          width={100}
-          height={100}
+          width={1000}
+          height={1000}
           src={item && item.thumbnail.toString()}
           alt="category dummy image"
         />

@@ -8,19 +8,24 @@ import React from "react";
 
 function LowInStockCard({ data }: CardProps) {
   const lastImageSrc = data.images[data.images.length - 1].toString();
-  const SaveItemToLocalStorage=(title:string,id:string)=>{
-    localStorage.setItem(`history ${id}`,title)
-  }
+  const SaveItemToLocalStorage = (title: string, id: string) => {
+    localStorage.setItem(`history ${id}`, title);
+  };
   return (
     <div className="card">
       <div className="card-image">
-        <Image src={lastImageSrc} width={100} height={100} alt="dummy image" />
+        <Image
+          src={lastImageSrc}
+          width={1000}
+          height={1000}
+          alt="dummy image"
+        />
       </div>
       <div className="card__item-info">
         <Link
           href={`/${data.category}/${data.title}`}
           className="card__item-title"
-          onClick={()=>SaveItemToLocalStorage(data.title,data.id.toString())}
+          onClick={() => SaveItemToLocalStorage(data.title, data.id.toString())}
         >
           {data.title},{data.brand}
         </Link>

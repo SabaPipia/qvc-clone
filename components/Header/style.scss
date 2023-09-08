@@ -65,7 +65,12 @@ header {
   margin-right: 0.4rem;
 }
 .right-side__sign-up {
+  position: relative;
   cursor: pointer;
+  padding: 1.2rem 0.8rem;
+  &:hover .dropdown-menu-sign-up {
+    display: block;
+  }
 }
 
 .sign-up__avatar-background {
@@ -121,6 +126,51 @@ header {
 
     &:hover {
       background-color: rgb(212, 212, 212);
+    }
+  }
+}
+
+.dropdown-menu-sign-up {
+  display: none;
+
+  position: absolute;
+  bottom: -390px;
+  left: -80px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.315);
+  .sign-up__button-wrapper {
+    margin: 0.8rem;
+    button {
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #253045;
+      padding: 1.2rem;
+      color: #fff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      border: none;
+      transition: all 0.1s;
+      &:hover {
+        outline: 1px solid black;
+        outline-offset: 1px;
+      }
+    }
+  }
+  ul {
+    a:link,
+    a:visited {
+      text-decoration: none;
+    }
+    li {
+      padding: 1.2rem 0.8rem;
+      color: #333;
+      font-weight: 600;
+      font-size: 1.3rem;
+      border-top: 1px solid rgba(105, 105, 105, 0.2);
+      &:hover {
+        background-color: rgb(219, 219, 219);
+      }
     }
   }
 }

@@ -13,7 +13,7 @@ function Category() {
   const pathname = usePathname();
   return (
     <div className="container">
-      <div>
+      <div className="category-wrapper">
         <div className="category-heading">
           <span>{pathname.replace("/", "")}</span>
         </div>

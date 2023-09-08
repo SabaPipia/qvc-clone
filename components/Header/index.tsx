@@ -55,6 +55,40 @@ function Header() {
             </div>
             <span className="right-side-text">Sign in</span>
             <Image src={drowDownIcon} width={12} height={12} alt="drow down" />
+            <div className="dropdown-menu-sign-up">
+              <div className="sign-up__button-wrapper">
+                <button>Sign In</button>
+              </div>
+              <ul>
+                <Link href="#">
+                  <li>Create Account</li>
+                </Link>
+                <Link href="#">
+                  <li>My Account</li>
+                </Link>
+                <Link href="#">
+                  <li>Order Status</li>
+                </Link>
+                <Link href="#">
+                  <li>Manage Easy Pay Orders</li>
+                </Link>
+                <Link href="#">
+                  <li>Manage Auto Delivery</li>
+                </Link>
+                <Link href="#">
+                  <li>Pay My QCard Bill</li>
+                </Link>
+                <Link href="#">
+                  <li>Wish List</li>
+                </Link>
+                <Link href="#">
+                  <li>Browsing History</li>
+                </Link>
+                <Link href="#">
+                  <li>Customer Service</li>
+                </Link>
+              </ul>
+            </div>
           </div>
           <div className="right-side__cart flex-container ">
             <span>Cart</span>

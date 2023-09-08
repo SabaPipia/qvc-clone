@@ -11,7 +11,12 @@ function CategoryPCard({ data }: CardProps) {
   return (
     <div className="card">
       <div className="card-image category-card-image">
-        <Image src={lastImageSrc} width={100} height={100} alt="dummy image" />
+        <Image
+          src={lastImageSrc}
+          width={1000}
+          height={1000}
+          alt="dummy image"
+        />
       </div>
       <div className="card__item-info">
         <Link
