@@ -4,19 +4,26 @@ import { CardProps } from "@/types";
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 function Card({ data }: CardProps) {
   const lastImageSrc = data.images[data.images.length - 1].toString();
+
+
+  const SaveItemToLocalStorage=(title:string,id:string)=>{
+    localStorage.setItem(`history ${id}`,title)
+  }
+
   return (
     <div className="card">
       <div className="card-image">
-        <Image src={lastImageSrc} width={100} height={100} alt="dummy image" />
+        <Image src={lastImageSrc} width={100} height={100} alt="item image" />
       </div>
-      <div className="card__item-info">
+      <div className="card__item-info" >
         <Link
           href={`/${data.category}/${data.id}`}
           className="card__item-title"
+          onClick={()=>SaveItemToLocalStorage(data.title,data.id.toString())}
         >
           {data.title},{data.brand}
         </Link>

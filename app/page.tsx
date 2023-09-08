@@ -1,7 +1,7 @@
 "use client";
 
 import "./page.scss";
-import { Hero, TopSelling, Category, LowInStock } from "@/components";
+import { Hero, TopSelling, Category, LowInStock,ItemHistory } from "@/components";
 
 export default function Home() {
   return (
@@ -10,6 +10,7 @@ export default function Home() {
       <TopSelling />
       <Category />
       <LowInStock />
+      <ItemHistory />
     </main>
   );
 }

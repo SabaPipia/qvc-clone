@@ -15,6 +15,8 @@ function Provider({ children }: { children: ReactNode }) {
   >([]);
   const [lowInStockItem, setLowInStockItem] = useState<ProductItem[]>();
   const [categoryItems, setCategoryItems] = useState<ProductItem[]>();
+  const [itemHistory, setItemHistory] = useState({});
+
   const pathname = usePathname();
   useEffect(() => {
     async function fetchCategories() {
@@ -59,7 +61,7 @@ function Provider({ children }: { children: ReactNode }) {
         data.map((item: any) => {
           if (!categoryArr.includes(item.category)) {
             categoryArr.push(item.category);
-            items.push(item);
+            items.push(item);console.log
           }
         });
         setCategoryItem(items);
@@ -81,11 +83,31 @@ function Provider({ children }: { children: ReactNode }) {
         console.error("Error fetching data:", error);
       }
     }
+    async function getViewedItem() {
+      try {
+        const localStorageKeys = Object.keys(localStorage);
+        const itemKeysHistory = localStorageKeys.filter(k=> k.startsWith('history'))
+        const itemPromises = itemKeysHistory.map( async item=>{
+          const itemId = item.split(' ')[1]
+          const response =  await fetch(
+            `https://dummyjson.com/products/${itemId}`
+          );
+          const responseJson = await response.json();
+          return responseJson
+          
+        })
+        const items = await Promise.all(itemPromises); // Wait for all fetches to complete
+        setItemHistory(items);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
     Promise.all([
       fetchCategories(),
       fetchAllData(),
       getCategoryImages(),
       getCategory(),
+      getViewedItem()
     ])
       .then(() => {
         setIsLoading(false);
@@ -105,6 +127,7 @@ function Provider({ children }: { children: ReactNode }) {
         categoryItem,
         lowInStockItem,
         categoryItems,
+        itemHistory
       }}
     >
       {!isLoading ? children : <div>Loading...</div>}

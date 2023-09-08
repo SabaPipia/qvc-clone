@@ -5,5 +5,6 @@ import TopSelling from "./TopSelling";
 import Category from "./Category";
 import Footer from "./Footer";
 import LowInStock from "./LowStock";
+import ItemHistory from "./ItemHistory";
 
-export { Header, CustomInput, Hero, TopSelling, Category, Footer, LowInStock };
+export { Header, CustomInput, Hero, TopSelling, Category, Footer, LowInStock,ItemHistory};
