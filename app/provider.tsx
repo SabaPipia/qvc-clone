@@ -8,6 +8,7 @@ export const DataContext = createContext<any>(null);
 
 function Provider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [wholeProducts, setWholeProducts] = useState<ProductItem[]>([]);
   const [categories, setCategories] = useState([]);
   const [topSellingItems, setTopSellingItems] = useState<ProductItem[]>();
   const [categoryItem, setCategoryItem] = useState<
@@ -42,6 +43,7 @@ function Provider({ children }: { children: ReactNode }) {
         const filteredItemsByRating = data.products.filter(
           (item: any) => item.rating >= 4.9
         );
+        setWholeProducts(data);
         setLowInStockItem(filteredItemsByStock);
         setTopSellingItems(filteredItemsByRating);
       } catch (error) {
@@ -61,7 +63,8 @@ function Provider({ children }: { children: ReactNode }) {
         data.map((item: any) => {
           if (!categoryArr.includes(item.category)) {
             categoryArr.push(item.category);
-            items.push(item);console.log
+            items.push(item);
+            console.log;
           }
         });
         setCategoryItem(items);
@@ -86,16 +89,17 @@ function Provider({ children }: { children: ReactNode }) {
     async function getViewedItem() {
       try {
         const localStorageKeys = Object.keys(localStorage);
-        const itemKeysHistory = localStorageKeys.filter(k=> k.startsWith('history'))
-        const itemPromises = itemKeysHistory.map( async item=>{
-          const itemId = item.split(' ')[1]
-          const response =  await fetch(
+        const itemKeysHistory = localStorageKeys.filter((k) =>
+          k.startsWith("history")
+        );
+        const itemPromises = itemKeysHistory.map(async (item) => {
+          const itemId = item.split(" ")[1];
+          const response = await fetch(
             `https://dummyjson.com/products/${itemId}`
           );
           const responseJson = await response.json();
-          return responseJson
-          
-        })
+          return responseJson;
+        });
         const items = await Promise.all(itemPromises); // Wait for all fetches to complete
         setItemHistory(items);
       } catch (error) {
@@ -107,7 +111,7 @@ function Provider({ children }: { children: ReactNode }) {
       fetchAllData(),
       getCategoryImages(),
       getCategory(),
-      getViewedItem()
+      getViewedItem(),
     ])
       .then(() => {
         setIsLoading(false);
@@ -127,7 +131,8 @@ function Provider({ children }: { children: ReactNode }) {
         categoryItem,
         lowInStockItem,
         categoryItems,
-        itemHistory
+        itemHistory,
+        wholeProducts,
       }}
     >
       {!isLoading ? children : <div>Loading...</div>}

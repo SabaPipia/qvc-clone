@@ -20,7 +20,9 @@ function Header() {
     <header>
       <div className="header flex-container ">
         <div className="header__left-side flex-container">
-          <Image src={logo} width={60} height={60} alt="header logo" />
+          <Link href="/">
+            <Image src={logo} width={60} height={60} alt="header logo" />
+          </Link>
           <div className="left-side__shop">
             <span>SHOP</span>
             <Image src={drowDownIcon} width={12} height={12} alt="drow down" />
