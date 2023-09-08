@@ -1,1 +1,1 @@
-# QVC-Clone
+# QVC Clone
