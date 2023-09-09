@@ -8,6 +8,7 @@ import ReactLoading from "react-loading";
 export const DataContext = createContext<any>(null);
 
 function Provider({ children }: { children: ReactNode }) {
+  // initialize state variables.
   const [isLoading, setIsLoading] = useState(true);
   const [wholeProducts, setWholeProducts] = useState<ProductItem[]>([]);
   const [categories, setCategories] = useState([]);
@@ -18,6 +19,7 @@ function Provider({ children }: { children: ReactNode }) {
   const [lowInStockItem, setLowInStockItem] = useState<ProductItem[]>();
   const [categoryItems, setCategoryItems] = useState<ProductItem[]>();
   const [itemHistory, setItemHistory] = useState({});
+  const [searchedData, setSearchedData] = useState<ProductItem[]>();
 
   const pathname = usePathname();
   useEffect(() => {
@@ -77,20 +79,6 @@ function Provider({ children }: { children: ReactNode }) {
       }
     }
 
-    // fetching category items
-    async function getCategory() {
-      try {
-        const response = await fetch(
-          `https://dummyjson.com/products/category${pathname}`
-        );
-        const responseJson = await response.json();
-        const data = responseJson.products;
-        setCategoryItems(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-
     // fetching browsing history
     async function getViewedItem() {
       try {
@@ -106,7 +94,7 @@ function Provider({ children }: { children: ReactNode }) {
           const responseJson = await response.json();
           return responseJson;
         });
-        const items = await Promise.all(itemPromises); // Wait for all fetches to complete
+        const items = await Promise.all(itemPromises);
         setItemHistory(items);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -117,27 +105,42 @@ function Provider({ children }: { children: ReactNode }) {
       fetchCategories(),
       fetchAllData(),
       getCategoryImages(),
-      getCategory(),
       getViewedItem(),
     ]).then(() => {
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
+      }, 500);
     });
   }, [pathname]);
 
-  const [searchedData, setSearchedData] = useState<ProductItem[]>();
+  // search functionality, fetches product data based on a search query.
   async function searchItem(searchValue: string) {
     try {
       const response = await fetch(
         `https://dummyjson.com/products/search?q=${searchValue}`
       );
-      const data = await response.json(); // Wait for all fetches to complete
+      const data = await response.json();
       setSearchedData(data.products);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
+
+  // fetching category items
+  async function getCategory() {
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/products/category${pathname}`
+      );
+      const responseJson = await response.json();
+      const data = responseJson.products;
+      console.log(data);
+      setCategoryItems(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -150,6 +153,7 @@ function Provider({ children }: { children: ReactNode }) {
         wholeProducts,
         searchItems: searchItem,
         searchedData,
+        getCategory: getCategory,
       }}
     >
       {isLoading ? (

@@ -3,15 +3,18 @@ import Card from "@/components/Card";
 import "./style.scss";
 
 import { usePathname } from "next/navigation";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "../provider";
 import { ProductItem } from "@/types";
 import { CategoryPCard } from "./components";
 
 function Category() {
-  const { categoryItems } = useContext(DataContext);
-
+  const { categoryItems, getCategory } = useContext(DataContext);
   const pathname = usePathname();
+  useEffect(() => {
+    getCategory();
+  }, [pathname]);
+
   return (
     <div className="container">
       <div className="category-wrapper">
