@@ -15,7 +15,7 @@ import { DataContext } from "@/app/provider";
 import Link from "next/link";
 
 function Header() {
-  const context = useContext(DataContext);
+  const { categories } = useContext(DataContext);
   return (
     <header>
       <div className="header flex-container ">
@@ -28,8 +28,8 @@ function Header() {
             <Image src={drowDownIcon} width={12} height={12} alt="drow down" />
             <div className="dropdown-menu">
               <ul>
-                {context.categories &&
-                  context.categories.map((item: string) => (
+                {categories &&
+                  categories.map((item: string) => (
                     <Link href={`/${item}`} key={item}>
                       <li>{item}</li>
                     </Link>

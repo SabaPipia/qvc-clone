@@ -12,43 +12,45 @@ function LowInStockCard({ data }: CardProps) {
     localStorage.setItem(`history ${id}`, title);
   };
   return (
-    <div className="card">
-      <div className="card-image">
-        <Image
-          src={lastImageSrc}
-          width={1000}
-          height={1000}
-          alt="dummy image"
-        />
-      </div>
-      <div className="card__item-info">
-        <Link
-          href={`/${data.category}/${data.title}`}
-          className="card__item-title"
-          onClick={() => SaveItemToLocalStorage(data.title, data.id.toString())}
-        >
-          {data.title},{data.brand}
-        </Link>
-        <div className="item__quantity">
-          <span>left: {data.stock}</span>
+    <div className="card-lowStock">
+      <Link
+        href={`/${data.category}/${data.id}`}
+        className="card-lowStock__item-link"
+        onClick={() => SaveItemToLocalStorage(data.title, data.id.toString())}
+      >
+        <div className="card-image">
+          <Image
+            src={lastImageSrc}
+            width={1000}
+            height={1000}
+            alt="dummy image"
+          />
         </div>
-        <div className="card__item-price-wrapper">
-          {data.discountPercentage > 13 ? (
-            <>
-              <span className="item-sale-price">
-                $
-                {(
-                  data.price -
-                  data.price * (data.discountPercentage / 100)
-                ).toFixed(0)}
-              </span>
-              <span className="item-price item-sale">${data.price}</span>
-            </>
-          ) : (
-            <span className="item-price">${data.price}</span>
-          )}
+        <div className="card__item-info">
+          <span className="item-title">
+            {data.title},{data.brand}
+          </span>
+          <div className="item__quantity">
+            <span>left: {data.stock}</span>
+          </div>
+          <div className="card__item-price-wrapper">
+            {data.discountPercentage > 13 ? (
+              <>
+                <span className="item-sale-price">
+                  $
+                  {(
+                    data.price -
+                    data.price * (data.discountPercentage / 100)
+                  ).toFixed(0)}
+                </span>
+                <span className="item-price item-sale">${data.price}</span>
+              </>
+            ) : (
+              <span className="item-price">${data.price}</span>
+            )}
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

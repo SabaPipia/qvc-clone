@@ -4,12 +4,12 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import "./styles.scss";
+import "./page.scss";
 
 import CartIcon from "@/public/assets/icons8-cart-64.png";
 import BankCard from "@/public/assets/credit-card-svgrepo-com.svg";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { DataContext } from "@/app/provider";
@@ -19,6 +19,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Product() {
+  const [quantity, setQuantity] = useState(1);
+
   const { wholeProducts } = useContext(DataContext);
   const products = wholeProducts.products;
   const pathname = usePathname();
@@ -27,7 +29,22 @@ function Product() {
   const item: ProductItem = products.filter(
     (item: any) => item.id === itemId
   )[0];
-
+  const decreaceHandler = () => {
+    if (quantity != 1) {
+      setQuantity(quantity - 1);
+    } else {
+      // TODO:error message
+      console.log("u cant decreace item count anymore");
+    }
+  };
+  const increaseHandler = () => {
+    if (quantity != 5) {
+      setQuantity(quantity + 1);
+    } else {
+      // TODO:error message
+      console.log("u cant increase item count anymore");
+    }
+  };
   return (
     <div className="container">
       <div>
@@ -72,9 +89,9 @@ function Product() {
             </div>
             <span className="product__price-details">Price Details</span>
             <div className="quantity-wrapper">
-              <button>-</button>
-              <input type="text" id="quantity" value={1} readOnly />
-              <button>+</button>
+              <button onClick={decreaceHandler}>-</button>
+              <input type="text" id="quantity" value={quantity} readOnly />
+              <button onClick={increaseHandler}>+</button>
               <hr />
             </div>
             <div className="product__buy-buttons-wrapper">
