@@ -106,6 +106,7 @@ function Provider({ children }: { children: ReactNode }) {
         console.error("Error fetching data:", error);
       }
     }
+
     Promise.all([
       fetchCategories(),
       fetchAllData(),
@@ -122,6 +123,18 @@ function Provider({ children }: { children: ReactNode }) {
       });
   }, [pathname]);
 
+  const [searchedData, setSearchedData] = useState<ProductItem[]>();
+  async function searchItem(searchValue: string) {
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/products/search?q=${searchValue}`
+      );
+      const data = await response.json(); // Wait for all fetches to complete
+      setSearchedData(data.products);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
   // Make Loading animation
   return (
     <DataContext.Provider
@@ -133,6 +146,8 @@ function Provider({ children }: { children: ReactNode }) {
         categoryItems,
         itemHistory,
         wholeProducts,
+        searchItems: searchItem,
+        searchedData,
       }}
     >
       {!isLoading ? children : <div>Loading...</div>}
