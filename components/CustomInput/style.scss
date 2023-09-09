@@ -57,10 +57,20 @@
       font-size: 1.6rem;
     }
   }
-  .searched-item-card {
+  .searched-item-card:link,
+  .searched-item-card:visited {
+    cursor: pointer;
     display: flex;
     gap: 2rem;
     padding: 1.6rem;
+    text-decoration: none;
+    color: #333;
+    &:hover {
+      overflow: hidden;
+      background-color: #ececec;
+      border-bottom-left-radius: 1.1rem;
+      border-bottom-right-radius: 1.1rem;
+    }
     .searched-item__info {
       display: flex;
       justify-content: space-between;
@@ -87,4 +97,24 @@
       }
     }
   }
+}
+
+.show-all-result {
+  display: flex;
+  background-color: #eeeeee;
+  padding: 1.2rem;
+  justify-content: center;
+  a:link,
+  a:visited {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.6rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.clear-wrapper-none {
+  display: none;
 }
