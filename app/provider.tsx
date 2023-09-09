@@ -134,7 +134,6 @@ function Provider({ children }: { children: ReactNode }) {
       );
       const responseJson = await response.json();
       const data = responseJson.products;
-      console.log(data);
       setCategoryItems(data);
     } catch (error) {
       console.error("Error fetching data:", error);
