@@ -9,8 +9,8 @@ import React from "react";
 function CategoryPCard({ data }: CardProps) {
   const lastImageSrc = data.images[data.images.length - 1].toString();
   return (
-    <div className="card">
-      <div className="card-image category-card-image">
+    <div className="category-page-card">
+      <div className="category-page-card__image">
         <Image
           src={lastImageSrc}
           width={1000}
@@ -18,27 +18,31 @@ function CategoryPCard({ data }: CardProps) {
           alt="dummy image"
         />
       </div>
-      <div className="card__item-info">
+      <div className="category-page-card__item-info">
         <Link
           href={`/${data.category}/${data.id}`}
-          className="card__item-title"
+          className="category-page-card__item-link"
         >
           {data.title},{data.brand}
         </Link>
-        <div className="card__item-price-wrapper">
+        <div className="category-page-card__item-price-wrapper">
           {data.discountPercentage > 13 ? (
             <>
-              <span className="item-sale-price">
+              <span className="category-page-item__sale-price">
                 $
                 {(
                   data.price -
                   data.price * (data.discountPercentage / 100)
                 ).toFixed(0)}
               </span>
-              <span className="item-price item-sale">${data.price}</span>
+              <span className="category-page-item__price item-sale">
+                ${data.price}
+              </span>
             </>
           ) : (
-            <span className="item-price">${data.price}</span>
+            <span className="category-page-item__real-price">
+              ${data.price}
+            </span>
           )}
         </div>
       </div>

@@ -16,8 +16,8 @@ function LowInStock({}) {
   return (
     <div className="container top">
       <div className="low-in-stock">
-        <div className="category__heading-wrapper">
-          <h2 className="category__heading">Low in Stock</h2>
+        <div className="low-in-stock__heading-wrapper">
+          <h2 className="low-in-stock__heading">Low in Stock</h2>
         </div>
         <div>
           <Swiper

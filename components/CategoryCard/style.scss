@@ -1,15 +1,17 @@
-.category-title__wrapper {
-  margin-top: 1.2remTrending;
-}
-.category-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #1a1b45;
-  text-decoration: none;
-}
-.category-image {
-  height: 250px;
-  img {
-    object-fit: fill;
+.category-card {
+  .category-title__wrapper {
+    margin-top: 1.2remTrending;
+  }
+  .category-link {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1b45;
+    text-decoration: none;
+    .category-image {
+      height: 250px;
+      img {
+        object-fit: fill;
+      }
+    }
   }
 }

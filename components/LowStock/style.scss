@@ -1,4 +1,28 @@
 .low-in-stock {
   width: 100%;
   max-width: 116rem;
+  .low-in-stock__heading-wrapper {
+    display: flex;
+    .low-in-stock__heading {
+      position: relative;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #1a1b45;
+      margin-bottom: 1.2rem;
+      margin-left: 0.5rem;
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: -5px;
+        width: 110%;
+        height: 60%;
+        z-index: -9;
+        background-color: #fae2d6;
+      }
+    }
+    .swiper-slide img {
+      border-radius: 0;
+    }
+  }
 }

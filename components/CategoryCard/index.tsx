@@ -10,19 +10,17 @@ import React from "react";
 function CategoryCard({ item }: CategoryCardProps) {
   return (
     <div className="category-card">
-      <div className="category-image">
-        <Image
-          width={1000}
-          height={1000}
-          src={item && item.thumbnail.toString()}
-          alt="category dummy image"
-        />
-      </div>
-      <div className="category-title__wrapper">
-        <Link href={item.category} className="category-title">
-          {item.category}
-        </Link>
-      </div>
+      <Link href={item.category} className="category-link">
+        <div className="category-image">
+          <Image
+            width={1000}
+            height={1000}
+            src={item && item.thumbnail.toString()}
+            alt="category dummy image"
+          />
+        </div>
+        <div className="category-title__wrapper">{item.category}</div>
+      </Link>
     </div>
   );
 }
