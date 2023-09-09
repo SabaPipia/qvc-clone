@@ -10,6 +10,7 @@ import { CategoryPCard } from "./components";
 
 function Category() {
   const { categoryItems } = useContext(DataContext);
+
   const pathname = usePathname();
   return (
     <div className="container">

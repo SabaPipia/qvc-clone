@@ -20,7 +20,6 @@ import Link from "next/link";
 
 function Product() {
   const [quantity, setQuantity] = useState(1);
-
   const { wholeProducts } = useContext(DataContext);
   const products = wholeProducts.products;
   const pathname = usePathname();
@@ -45,6 +44,7 @@ function Product() {
       console.log("u cant increase item count anymore");
     }
   };
+  localStorage.setItem(`history ${item.id}`, item.title);
   return (
     <div className="container">
       <div>

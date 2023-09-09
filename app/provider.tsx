@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 
 import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { ProductItem } from "@/types";
+import ReactLoading from "react-loading";
 
 export const DataContext = createContext<any>(null);
 
@@ -20,6 +21,7 @@ function Provider({ children }: { children: ReactNode }) {
 
   const pathname = usePathname();
   useEffect(() => {
+    // fetching all categories.
     async function fetchCategories() {
       try {
         const response = await fetch(
@@ -28,9 +30,11 @@ function Provider({ children }: { children: ReactNode }) {
         const data = await response.json();
         setCategories(data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error(error);
       }
     }
+
+    // fetching whole data, filtering whole data.
     async function fetchAllData() {
       try {
         const response = await fetch(
@@ -51,6 +55,7 @@ function Provider({ children }: { children: ReactNode }) {
       }
     }
 
+    // fetching categories and images
     async function getCategoryImages() {
       try {
         const response = await fetch(
@@ -64,7 +69,6 @@ function Provider({ children }: { children: ReactNode }) {
           if (!categoryArr.includes(item.category)) {
             categoryArr.push(item.category);
             items.push(item);
-            console.log;
           }
         });
         setCategoryItem(items);
@@ -73,11 +77,11 @@ function Provider({ children }: { children: ReactNode }) {
       }
     }
 
+    // fetching category items
     async function getCategory() {
       try {
         const response = await fetch(
-          `https://dummyjson.com/products/category${pathname}
-          `
+          `https://dummyjson.com/products/category${pathname}`
         );
         const responseJson = await response.json();
         const data = responseJson.products;
@@ -86,6 +90,8 @@ function Provider({ children }: { children: ReactNode }) {
         console.error("Error fetching data:", error);
       }
     }
+
+    // fetching browsing history
     async function getViewedItem() {
       try {
         const localStorageKeys = Object.keys(localStorage);
@@ -113,14 +119,11 @@ function Provider({ children }: { children: ReactNode }) {
       getCategoryImages(),
       getCategory(),
       getViewedItem(),
-    ])
-      .then(() => {
+    ]).then(() => {
+      setTimeout(() => {
         setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("One or more fetch operations failed:", error);
-        setIsLoading(false);
-      });
+      }, 1000);
+    });
   }, [pathname]);
 
   const [searchedData, setSearchedData] = useState<ProductItem[]>();
@@ -135,7 +138,6 @@ function Provider({ children }: { children: ReactNode }) {
       console.error("Error fetching data:", error);
     }
   }
-  // Make Loading animation
   return (
     <DataContext.Provider
       value={{
@@ -150,7 +152,18 @@ function Provider({ children }: { children: ReactNode }) {
         searchedData,
       }}
     >
-      {!isLoading ? children : <div>Loading...</div>}
+      {isLoading ? (
+        <div className="loading-container">
+          <ReactLoading
+            type={"spin"}
+            color={"#EF7A64"}
+            height={150}
+            width={150}
+          />
+        </div>
+      ) : (
+        children
+      )}
     </DataContext.Provider>
   );
 }
