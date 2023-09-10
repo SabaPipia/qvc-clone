@@ -9,31 +9,33 @@ import { CategoryPCard } from "./components";
 
 function Category() {
   const { getCategory } = useContext(DataContext);
-  const [selectedValue, setSelectedValue] = useState();
+  const [selectedValue, setSelectedValue] = useState("BEST");
+
   const pathname = usePathname();
   useEffect(() => {
     getCategory();
   }, [pathname]);
-  // console.log(selectedValue);
+  console.log(selectedValue);
   return (
     <div className="container">
       <div className="category-page-wrapper">
         <div className="category-page-heading">
           <span>{pathname.replace("/", "")}</span>
           <div className="category-page__sort-dropdown">
+            <span>Sort by:</span>
             <select
               name="sort"
               id="category-page__sort"
               onChange={(e: any) => setSelectedValue(e.target.value)}
             >
               <option value="BEST">Best Match</option>
-              <option value="RATING">highest Rating</option>
+              <option value="RATING">Highest Rating</option>
               <option value="HIGH">Price - High to Low</option>
               <option value="LOW">Price - Low to High</option>
             </select>
           </div>
         </div>
-        <CategoryPCard />
+        <CategoryPCard selectedValue={selectedValue} />
       </div>
     </div>
   );

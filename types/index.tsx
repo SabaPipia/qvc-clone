@@ -36,3 +36,7 @@ export interface CategoryCardInterface {
 export interface CategoryCardProps {
   item: CategoryCardInterface;
 }
+
+export interface CategoryPageCard {
+  selectedValue: string;
+}

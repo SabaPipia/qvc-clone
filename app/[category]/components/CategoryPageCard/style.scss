@@ -28,6 +28,15 @@
         text-decoration: none;
       }
       .category-page-card__item-price-wrapper {
+        display: flex;
+        justify-content: space-between;
+        .price-wrapper__product-rating {
+          display: flex;
+          align-items: end;
+          span {
+            font-size: 1.2rem;
+          }
+        }
         .category-page-item__sale-price {
           font-size: 2.2rem;
           color: #131932;
