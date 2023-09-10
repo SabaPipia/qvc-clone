@@ -1,5 +1,4 @@
 "use client";
-import Card from "@/components/Card";
 import "./style.scss";
 
 import { usePathname } from "next/navigation";
@@ -15,7 +14,6 @@ function Category() {
   useEffect(() => {
     getCategory();
   }, [pathname]);
-  console.log(selectedValue);
   return (
     <div className="container">
       <div className="category-page-wrapper">

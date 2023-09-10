@@ -10,7 +10,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 function CategoryPCard({ selectedValue }: CategoryPageCard) {
   const { categoryItems } = useContext(DataContext);
-  const arr: any = [];
+
   const [sortedItems, setSortedItems] = useState<ProductItem[]>([]);
 
   useEffect(() => {
