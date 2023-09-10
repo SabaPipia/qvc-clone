@@ -9,7 +9,7 @@ import "./page.scss";
 import CartIcon from "@/public/assets/icons8-cart-64.png";
 import BankCard from "@/public/assets/credit-card-svgrepo-com.svg";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { DataContext } from "@/app/provider";
@@ -17,11 +17,13 @@ import { usePathname } from "next/navigation";
 import { ProductItem } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import { Accordion } from "./components";
+import { Accordion, YouMayLike } from "./components";
 
 function Product() {
   const [quantity, setQuantity] = useState(1);
-  const { wholeProducts } = useContext(DataContext);
+  const { wholeProducts, getMayLikeItems, mayLikeItems } =
+    useContext(DataContext);
+
   const products = wholeProducts.products;
   const pathname = usePathname();
   const pathnameSplit = pathname.split("/");
@@ -33,7 +35,6 @@ function Product() {
     if (quantity != 1) {
       setQuantity(quantity - 1);
     } else {
-      // TODO:error message
       console.log("u cant decreace item count anymore");
     }
   };
@@ -41,10 +42,15 @@ function Product() {
     if (quantity != 5) {
       setQuantity(quantity + 1);
     } else {
-      // TODO:error message
       console.log("u cant increase item count anymore");
     }
   };
+  const mayLikeItemsPathname = pathname;
+  const mayLikeValidPathname = mayLikeItemsPathname.split("/")[1];
+  useEffect(() => {
+    getMayLikeItems(`/${mayLikeValidPathname}`);
+  }, []);
+
   localStorage.setItem(`history ${item.id}`, item.title);
   return (
     <div>
@@ -126,6 +132,23 @@ function Product() {
       <div className="container">
         <div className="accordion-container">
           <Accordion />
+        </div>
+      </div>
+      <div className="may-like">
+        <div className="may-like__heading">
+          <h3>You May Also Like</h3>
+        </div>
+        <div className="container">
+          <div className="you-may-like-wrapper">
+            {mayLikeItems &&
+              mayLikeItems.map((i: ProductItem) => {
+                if (
+                  i.title.toLocaleLowerCase() != item.title.toLocaleLowerCase()
+                ) {
+                  return <YouMayLike data={i} />;
+                }
+              })}
+          </div>
         </div>
       </div>
     </div>

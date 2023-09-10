@@ -1,0 +1,48 @@
+.main-may-like-card {
+  cursor: pointer;
+  .main-may-like-card__item-link {
+    text-decoration: none !important;
+    margin-top: 1.2rem;
+    &:hover .main-card__title {
+      text-decoration: underline;
+    }
+    .main-may-like-card__image {
+      height: 250px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .main-may-like-card__item-info {
+      .main-may-like-card__title {
+        color: #555;
+        line-height: 2.3rem;
+        font-size: 1.7rem;
+        text-transform: capitalize;
+      }
+      .main-may-like-card__title__item-price-wrapper {
+        .main-card__item-price {
+          font-size: 2.2rem;
+          color: #131932;
+          font-weight: 500;
+        }
+        .main-card__item-sale-price {
+          font-size: 2.2rem;
+          color: rgb(197, 58, 58);
+        }
+        .item-sale {
+          font-size: 1.8rem;
+          margin-left: 2rem;
+          text-decoration: line-through;
+          color: #344343;
+        }
+        .main-card__item-real-price {
+          font-size: 2.2rem;
+          color: #131932;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

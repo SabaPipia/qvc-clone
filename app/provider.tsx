@@ -20,6 +20,7 @@ function Provider({ children }: { children: ReactNode }) {
   const [categoryItems, setCategoryItems] = useState<ProductItem[]>();
   const [itemHistory, setItemHistory] = useState({});
   const [searchedData, setSearchedData] = useState<ProductItem[]>();
+  const [mayLikeItems, setMayLikeItems] = useState<ProductItem>();
 
   const pathname = usePathname();
   useEffect(() => {
@@ -140,6 +141,18 @@ function Provider({ children }: { children: ReactNode }) {
     }
   }
 
+  async function getMayLikeItems(categoryName: string) {
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/products/category${categoryName}`
+      );
+      const responseJson = await response.json();
+      const data = responseJson.products;
+      setMayLikeItems(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
   return (
     <DataContext.Provider
       value={{
@@ -153,6 +166,8 @@ function Provider({ children }: { children: ReactNode }) {
         searchItems: searchItem,
         searchedData,
         getCategory: getCategory,
+        getMayLikeItems: getMayLikeItems,
+        mayLikeItems,
       }}
     >
       {isLoading ? (

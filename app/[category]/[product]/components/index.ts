@@ -1,3 +1,4 @@
 import Accordion from "./accordion";
+import YouMayLike from "./YouMayLike";
 
-export { Accordion };
+export { Accordion, YouMayLike };
