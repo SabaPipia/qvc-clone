@@ -1,51 +1,69 @@
+import { DataContext } from "@/app/provider";
 import "./style.scss";
 
-import { CardProps } from "@/types";
+import { ProductItem } from "@/types";
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-function CategoryPCard({ data }: CardProps) {
-  const lastImageSrc = data.images[data.images.length - 1].toString();
+function CategoryPCard() {
+  const { categoryItems } = useContext(DataContext);
+  const arr: any = [];
+  const [sortedItems, setSortedItems] = useState<ProductItem[]>([]);
+
+  useEffect(() => {
+    const sorted = categoryItems
+      ?.slice()
+      ?.sort((a: ProductItem, b: ProductItem) => a.price - b.price);
+    setSortedItems(sorted);
+  }, [categoryItems]);
   return (
-    <div className="category-page-card">
-      <div className="category-page-card__image">
-        <Image
-          src={lastImageSrc}
-          width={1000}
-          height={1000}
-          alt="dummy image"
-        />
-      </div>
-      <div className="category-page-card__item-info">
-        <Link
-          href={`/${data.category}/${data.id}`}
-          className="category-page-card__item-link"
-        >
-          {data.title},{data.brand}
-        </Link>
-        <div className="category-page-card__item-price-wrapper">
-          {data.discountPercentage > 13 ? (
-            <>
-              <span className="category-page-item__sale-price">
-                $
-                {(
-                  data.price -
-                  data.price * (data.discountPercentage / 100)
-                ).toFixed(0)}
-              </span>
-              <span className="category-page-item__price item-sale">
-                ${data.price}
-              </span>
-            </>
-          ) : (
-            <span className="category-page-item__real-price">
-              ${data.price}
-            </span>
-          )}
-        </div>
-      </div>
+    <div className="product-wrapper">
+      {sortedItems &&
+        sortedItems.map((item: ProductItem, index: number) => {
+          return (
+            <div className="category-page-card" key={item.id}>
+              <div className="category-page-card__image">
+                <Image
+                  src={item.thumbnail.toString()}
+                  width={1000}
+                  height={1000}
+                  alt={item.title}
+                  priority
+                />
+              </div>
+              <div className="category-page-card__item-info">
+                <Link
+                  href={`/${item.category}/${item.id}`}
+                  className="category-page-card__item-link"
+                >
+                  {item.title},{item.brand}
+                </Link>
+                <div className="category-page-card__item-price-wrapper">
+                  {item.discountPercentage > 13 ? (
+                    <>
+                      <span className="category-page-item__sale-price">
+                        $
+                        {(
+                          item.price -
+                          item.price * (item.discountPercentage / 100)
+                        ).toFixed(0)}
+                      </span>
+                      <span className="category-page-item__price item-sale">
+                        ${item.price}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="category-page-item__real-price">
+                      ${item.price}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 }
