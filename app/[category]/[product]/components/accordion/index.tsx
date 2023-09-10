@@ -1,13 +1,39 @@
 import "./style.scss";
 
 import React, { useState } from "react";
+import SizeUp from "@/public/assets/font-size-up.png";
+import SizeDown from "@/public/assets/font-size-down.png";
+import Image from "next/image";
 
 function Accordion() {
-  const [descriptionVisible, setDescriptionVisible] = useState(false);
-  const [brandVisible, setBrandVisible] = useState(false);
+  const [descriptionVisible, setDescriptionVisible] = useState(true);
+  const [brandVisible, setBrandVisible] = useState(true);
+  const [accordionSize, setAccorddionSize] = useState(14);
 
   return (
     <div className="accordion-wrapper">
+      <div className="accordion__adjust-size">
+        <div className="adjuszt-size__wrapper">
+          <span>Adjust Text Size:</span>
+          <Image
+            src={SizeUp}
+            width={17}
+            alt="increace Size"
+            onClick={() => {
+              console.log(accordionSize);
+              setAccorddionSize(accordionSize >= 20 ? 20 : accordionSize + 2);
+            }}
+          />
+          <Image
+            src={SizeDown}
+            width={19}
+            alt="dec Size"
+            onClick={() =>
+              setAccorddionSize(accordionSize <= 12 ? 12 : accordionSize - 2)
+            }
+          />
+        </div>
+      </div>
       <div className="accordion__description">
         <div className="accordion-description__heading">
           <button onClick={() => setDescriptionVisible(!descriptionVisible)}>
@@ -20,6 +46,7 @@ function Accordion() {
             style={{
               display: descriptionVisible ? "none" : "block",
               height: descriptionVisible ? "0px" : "100%",
+              fontSize: accordionSize + "px",
             }}
           >
             <p>

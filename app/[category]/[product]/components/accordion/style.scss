@@ -1,4 +1,16 @@
 .accordion-wrapper {
+  .accordion__adjust-size {
+    display: flex;
+    justify-content: end;
+    .adjuszt-size__wrapper {
+      display: flex;
+      align-items: end;
+      gap: 0.6rem;
+      img {
+        cursor: pointer;
+      }
+    }
+  }
   .accordion__description {
     border-bottom: 1px solid #444;
     padding: 2.2rem;
@@ -7,7 +19,6 @@
         cursor: pointer;
         border-radius: 50%;
         border: none;
-        // padding: 0rem 0.7rem;
         font-size: 2.2rem;
         border: 1px solid orangered;
         padding: 0;
@@ -23,7 +34,6 @@
     .accordion-description__content {
       p {
         padding: 1.2rem;
-        font-size: 1.4rem;
         line-height: 1.9rem;
         font-weight: 500;
         color: #444;
@@ -32,7 +42,6 @@
         line-height: 2.2rem;
         li {
           margin-left: 4.2rem;
-          font-size: 1.4rem;
           list-style: disc;
         }
       }
