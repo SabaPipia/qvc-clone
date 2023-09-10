@@ -26,7 +26,7 @@ function TopSelling() {
             grid={{
               rows: 1,
             }}
-            spaceBetween={40}
+            spaceBetween={10}
             pagination={{
               clickable: true,
             }}

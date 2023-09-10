@@ -1,4 +1,10 @@
 .main-card {
+  transition: all 0.2s;
+  padding: 3.2rem 0.3rem;
+  border-radius: 0.3rem;
+  &:hover {
+    background-color: rgba(51, 51, 51, 0.089);
+  }
   cursor: pointer;
   .main-card__item-link {
     text-decoration: none !important;
