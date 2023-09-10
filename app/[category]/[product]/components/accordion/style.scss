@@ -1,0 +1,76 @@
+.accordion-wrapper {
+  .accordion__description {
+    border-bottom: 1px solid #444;
+    padding: 2.2rem;
+    .accordion-description__heading {
+      button {
+        cursor: pointer;
+        border-radius: 50%;
+        border: none;
+        // padding: 0rem 0.7rem;
+        font-size: 2.2rem;
+        border: 1px solid orangered;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+      }
+      span {
+        font-size: 1.6rem;
+        color: #333;
+        margin-left: 0.8rem;
+      }
+    }
+    .accordion-description__content {
+      p {
+        padding: 1.2rem;
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        font-weight: 500;
+        color: #444;
+      }
+      ul {
+        line-height: 2.2rem;
+        li {
+          margin-left: 4.2rem;
+          font-size: 1.4rem;
+          list-style: disc;
+        }
+      }
+      .content_gift {
+        font-weight: 900;
+        color: #444;
+      }
+    }
+  }
+  .accordion__about-brand {
+    margin-top: 1.2rem;
+    border-bottom: 1px solid #444;
+    padding: 2.2rem;
+    .accordion-about-brand__heading {
+      button {
+        cursor: pointer;
+        border-radius: 50%;
+        border: none;
+        padding: 0rem 0.7rem;
+        font-size: 2.2rem;
+        border: 1px solid orangered;
+        width: 30px;
+        height: 30px;
+      }
+      span {
+        font-size: 1.6rem;
+        color: #333;
+        margin-left: 0.8rem;
+      }
+    }
+    .accordion-about-brand__content {
+      p {
+        padding: 1.2rem;
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        font-weight: 500;
+        color: #444;
+      }
+    }
+  }
+}

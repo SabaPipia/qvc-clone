@@ -5,6 +5,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 90px;
 }
+.accordion-container {
+  max-width: 116rem;
+  width: 100%;
+}
 .product-carousel {
   width: 640px;
   height: 400px;
@@ -26,6 +30,18 @@
 .right-side-product {
   display: flex;
   flex-direction: column;
+  .item-sale-price {
+    font-size: 2.2rem;
+    color: orangered;
+    margin-right: 0.8rem;
+  }
+  .product-item-price {
+    font-size: 2.2rem;
+  }
+  .item-sale {
+    font-size: 1.8rem;
+    text-decoration: line-through;
+  }
 }
 
 .product__price-details {
