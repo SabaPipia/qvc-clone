@@ -39,6 +39,7 @@ export interface CategoryCardProps {
 
 export interface CategoryPageCard {
   selectedValue: string;
+  renderPattern: string;
 }
 export interface SingleProduct {
   item: ProductItem;
