@@ -32,7 +32,7 @@ function Hero() {
               className="mySwiper"
             >
               <SwiperSlide>
-                <Image src={carouselImg1} alt="carousel first image" />
+                <Image src={carouselImg1} alt="carousel first image" priority />
               </SwiperSlide>
               <SwiperSlide>
                 <Image src={carouselImg2} alt="carousel second image" />

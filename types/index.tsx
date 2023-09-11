@@ -40,3 +40,6 @@ export interface CategoryCardProps {
 export interface CategoryPageCard {
   selectedValue: string;
 }
+export interface SingleProduct {
+  item: ProductItem;
+}
