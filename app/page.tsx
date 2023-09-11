@@ -1,7 +1,13 @@
 "use client";
 
 import "./page.scss";
-import { Hero, TopSelling, Category, LowInStock,ItemHistory } from "@/components";
+import {
+  Hero,
+  TopSelling,
+  Category,
+  LowInStock,
+  ItemHistory,
+} from "@/components";
 
 export default function Home() {
   return (

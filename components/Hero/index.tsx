@@ -1,19 +1,17 @@
 "use client";
 
-import "./style.scss";
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "./style.scss";
 
 import carouselImg1 from "@/public/assets/hero-1.jpg";
 import carouselImg2 from "@/public/assets/hero-2.jpg";
 import carouselImg3 from "@/public/assets/hero-3.jpg";
 import carouselImg4 from "@/public/assets/hero-4.jpg";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
 import React from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 function Hero() {
   return (

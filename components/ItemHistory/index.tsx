@@ -2,8 +2,6 @@
 
 import "swiper/css";
 import "swiper/css/grid";
-import "swiper/css/pagination";
-import "./style.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import React, { useContext } from "react";
