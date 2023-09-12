@@ -84,6 +84,7 @@ function Accordion() {
             style={{
               display: brandVisible ? "none" : "block",
               height: brandVisible ? "0px" : "100%",
+              fontSize: accordionSize + "px",
             }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, qui
