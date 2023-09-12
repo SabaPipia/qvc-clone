@@ -41,6 +41,9 @@ export interface CategoryPageCard {
   selectedValue: string;
   renderPattern: string;
 }
+export interface BrowsingPageCard {
+  renderPattern: string;
+}
 export interface SingleProduct {
   item: ProductItem;
 }

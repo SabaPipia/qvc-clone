@@ -20,7 +20,7 @@ function ItemHistory() {
           <div className="top-selling">
             <div className="top-selling__header-wrapper">
               <h2 className="top-selling__heading">Items You've Viewed</h2>
-              <Link href="#">See My Browsing History</Link>
+              <Link href="/Browsing-History">See My Browsing History</Link>
             </div>
             <div className="top-selling__card-wrapper">
               <Swiper

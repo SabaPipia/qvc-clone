@@ -1,0 +1,97 @@
+.category-page-main-wrapper {
+  .category-page-card {
+    cursor: pointer;
+    .category-page-card__item-link {
+      text-decoration: none;
+      &:hover .category-page-card__item-info {
+        .item-info__item-name {
+          span {
+            text-decoration: underline;
+          }
+        }
+      }
+      .category-page-card__image {
+        height: 250px;
+        img {
+          object-fit: fill;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .category-page-card__item-info {
+        .item-info__item-name {
+          color: #555;
+          line-height: 2.3rem;
+          font-size: 1.7rem;
+          text-transform: capitalize;
+        }
+        .category-page-card__item-price-wrapper {
+          display: flex;
+          justify-content: space-between;
+          .price-wrapper__product-rating {
+            display: flex;
+            align-items: flex-end;
+            span {
+              font-size: 1.2rem;
+              color: #333;
+            }
+          }
+          .category-page-item__sale-price {
+            font-size: 2.2rem;
+            color: #131932;
+            font-weight: 500;
+            color: rgb(197, 58, 58);
+          }
+          .category-page-item__real-price {
+            font-size: 2.2rem;
+            color: #131932;
+            font-weight: 500;
+          }
+          .item-sale {
+            font-size: 1.8rem;
+            margin-left: 2rem;
+            text-decoration: line-through;
+            color: #344343;
+          }
+        }
+      }
+    }
+  }
+}
+.category-grid-wrapper-list,
+.category-list-wrapper-list {
+  display: grid;
+  padding: 1.1rem;
+  gap: 2rem;
+}
+.category-grid-wrapper-list {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.category-list-wrapper-list {
+  grid-template-columns: 1fr;
+}
+
+.category-page-list-card {
+  .category-page-card__item-link {
+    display: flex;
+    .category-page-card__image {
+      max-width: 260px;
+      width: 100%;
+      img {
+        object-fit: cover !important;
+      }
+    }
+    .category-page-card__item-info {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      padding: 1.8rem;
+      .list-description {
+        font-size: 1.4rem;
+        margin-top: 1.1rem;
+      }
+    }
+  }
+}

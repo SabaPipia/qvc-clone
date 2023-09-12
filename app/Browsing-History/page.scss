@@ -1,0 +1,29 @@
+.category-page-wrapper {
+  width: 116rem;
+  max-width: 100%;
+  .category-page-heading {
+    display: flex;
+    justify-content: space-between;
+    border-top: 0.111rem solid #2222;
+    padding-top: 1.1rem;
+    span {
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .category-page__sort-dropdown {
+      span {
+        font-size: 1.6rem;
+        text-transform: none;
+        font-weight: 400;
+        margin-right: 2.2rem;
+      }
+    }
+  }
+}
+
+.toggle-wrapper {
+  display: flex;
+  gap: 2.2rem;
+  align-items: center;
+}
