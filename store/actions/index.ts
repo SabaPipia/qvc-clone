@@ -1,3 +1,5 @@
+import { usePathname } from "next/navigation";
+
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,
@@ -13,10 +15,12 @@ import {
   SEARCHED_ITEM_ERROR,
   LowStockInterface,
   GET_LOW_STOCK,
-  LOW_STOCK_ERROR,
   GET_HISTORY,
   HISTORY_ERROR,
   HistoryInterface,
+  CategoryItemInterface,
+  GET_ITEM_CATEGORY,
+  ITEM_CATEGORY_ERROR,
 } from "../types";
 import { Dispatch } from "redux";
 
@@ -138,6 +142,26 @@ export const getHistory =
     } catch (error) {
       dispatch({
         type: HISTORY_ERROR,
+        payload: "error",
+      });
+    }
+  };
+
+export const getItemByCategory =
+  (pathname: string) => async (dispatch: Dispatch<CategoryItemInterface>) => {
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/products/category${pathname}`
+      );
+      const responseJson = await response.json();
+      const data = await responseJson.products;
+      dispatch({
+        type: GET_ITEM_CATEGORY,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ITEM_CATEGORY_ERROR,
         payload: "error",
       });
     }

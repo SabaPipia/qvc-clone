@@ -20,7 +20,7 @@ function Accordion() {
             width={17}
             alt="increace Size"
             onClick={() => {
-              console.log(accordionSize);
+              // console.log(accordionSize);
               setAccorddionSize(accordionSize >= 20 ? 20 : accordionSize + 2);
             }}
           />

@@ -1,3 +1,4 @@
+import { usePathname } from "next/navigation";
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,
@@ -10,10 +11,12 @@ import {
   LOW_STOCK_ERROR,
   GET_HISTORY,
   HISTORY_ERROR,
+  GET_ITEM_CATEGORY,
+  ITEM_CATEGORY_ERROR,
 } from "../types";
 
 const initialState = {
-  data: [],
+  // data: [],
   loading: true,
 };
 
@@ -81,6 +84,17 @@ const reducer = (state = initialState, action: any) => {
         loading: false,
       };
     case HISTORY_ERROR:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case GET_ITEM_CATEGORY:
+      return {
+        ...state,
+        itemCategory: action.payload,
+        loading: false,
+      };
+    case ITEM_CATEGORY_ERROR:
       return {
         loading: false,
         error: action.payload,
