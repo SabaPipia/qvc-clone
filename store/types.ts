@@ -55,3 +55,11 @@ export interface CategoryItemInterface {
   type: typeof GET_ITEM_CATEGORY | typeof ITEM_CATEGORY_ERROR;
   payload: ProductItem | string;
 }
+
+// get single item
+export const GET_SINGLE_ITEM = "GET_SINGLE_ITEM";
+export const SINGLE_ITEM_ERROR = "SINGLE_ITEM_ERROR";
+export interface SingleItemInterface {
+  type: typeof GET_SINGLE_ITEM | typeof SINGLE_ITEM_ERROR;
+  payload: ProductItem | string;
+}

@@ -5,19 +5,14 @@ import GridIcon from "@/public/assets/grid-icon.png";
 import ListIcon from "@/public/assets/list-icon.png";
 
 import { usePathname } from "next/navigation";
-import React, { useContext, useEffect, useState } from "react";
-import { DataContext } from "../provider";
+import React, { useEffect, useState } from "react";
 import { CategoryPageCard } from "./components";
 import Image from "next/image";
 
 function Category() {
-  const { getCategory } = useContext(DataContext);
   const [renderPattern, setRenderPattern] = useState("grid");
 
   const pathname = usePathname();
-  useEffect(() => {
-    getCategory();
-  }, [pathname]);
 
   return (
     <div className="container">

@@ -1,5 +1,3 @@
-import { usePathname } from "next/navigation";
-
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,
@@ -21,6 +19,9 @@ import {
   CategoryItemInterface,
   GET_ITEM_CATEGORY,
   ITEM_CATEGORY_ERROR,
+  GET_SINGLE_ITEM,
+  SINGLE_ITEM_ERROR,
+  SingleItemInterface,
 } from "../types";
 import { Dispatch } from "redux";
 
@@ -162,6 +163,25 @@ export const getItemByCategory =
     } catch (error) {
       dispatch({
         type: ITEM_CATEGORY_ERROR,
+        payload: "error",
+      });
+    }
+  };
+
+export const getSingleItem =
+  (pathname: string) => async (dispatch: Dispatch<SingleItemInterface>) => {
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/products/${pathname}`
+      );
+      const data = await response.json();
+      dispatch({
+        type: GET_SINGLE_ITEM,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: SINGLE_ITEM_ERROR,
         payload: "error",
       });
     }

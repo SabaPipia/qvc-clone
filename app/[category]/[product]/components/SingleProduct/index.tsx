@@ -44,17 +44,18 @@ function SingleProduct({ item }: SingleProduct) {
             modules={[FreeMode, Navigation, Thumbs]}
             className="mySwiper2"
           >
-            {item.images.map((img, index) => (
-              <SwiperSlide key={index}>
-                <Image
-                  src={`${img}`}
-                  width={5000}
-                  height={500}
-                  alt={`${index}`}
-                  priority
-                />
-              </SwiperSlide>
-            ))}
+            {item.images &&
+              item.images.map((img, index) => (
+                <SwiperSlide key={index}>
+                  <Image
+                    src={`${img}`}
+                    width={5000}
+                    height={500}
+                    alt={`${index}`}
+                    priority
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
         <div className="right-side-product">

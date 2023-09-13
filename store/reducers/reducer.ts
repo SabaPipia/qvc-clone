@@ -13,11 +13,20 @@ import {
   HISTORY_ERROR,
   GET_ITEM_CATEGORY,
   ITEM_CATEGORY_ERROR,
+  GET_SINGLE_ITEM,
+  SINGLE_ITEM_ERROR,
 } from "../types";
 
 const initialState = {
-  // data: [],
   loading: true,
+  categories: [],
+  topSelling: [],
+  categoryItem: [],
+  searchedItem: [],
+  lowStock: [],
+  history: [],
+  itemCategory: [],
+  singleProduct: [],
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -95,6 +104,17 @@ const reducer = (state = initialState, action: any) => {
         loading: false,
       };
     case ITEM_CATEGORY_ERROR:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case GET_SINGLE_ITEM:
+      return {
+        ...state,
+        singleProduct: action.payload,
+        loading: false,
+      };
+    case SINGLE_ITEM_ERROR:
       return {
         loading: false,
         error: action.payload,

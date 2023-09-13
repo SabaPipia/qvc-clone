@@ -3,10 +3,8 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Footer, Header } from "@/components";
-import { Provider } from "react-redux";
-import { store } from "@/store/store";
 
-import Prov from "./prov";
+import ProviderWrapper from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,11 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Prov>
+        <ProviderWrapper>
           <Header />
           {children}
           <Footer />
-        </Prov>
+        </ProviderWrapper>
       </body>
     </html>
   );
