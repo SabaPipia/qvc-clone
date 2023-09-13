@@ -16,6 +16,7 @@ function CategoryPageCard({ renderPattern }: BrowsingPageCard) {
         topSellingItems.map((item: ProductItem, index: number) => {
           return (
             <div
+        type: TOPSELLING_ERROR,
               className={`category-page-${renderPattern}-card category-page-card`}
               key={item.id}
             >
