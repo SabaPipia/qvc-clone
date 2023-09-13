@@ -4,18 +4,33 @@ import "swiper/css";
 import "swiper/css/grid";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import Card from "../Card";
 import Link from "next/link";
-import { DataContext } from "@/app/provider";
 import { ProductItem } from "@/types";
+import { useDispatch, useSelector } from "react-redux";
+import { getHistory } from "@/store/actions";
+import ReactLoading from "react-loading";
 
 function ItemHistory() {
-  const { itemHistory } = useContext(DataContext);
-
+  const dispatch: any = useDispatch();
+  const historyItems = useSelector((state: any) => state.data);
+  const { history, loading } = historyItems;
+  useEffect(() => {
+    dispatch(getHistory());
+  }, [dispatch]);
   return (
     <>
-      {itemHistory.length >= 1 ? (
+      {loading ? (
+        <div className="loading-wrapper">
+          <ReactLoading
+            type={"spokes"}
+            color={"#64b0ef"}
+            height={100}
+            width={100}
+          />
+        </div>
+      ) : history && history.length >= 1 ? (
         <div className="container top">
           <div className="top-selling">
             <div className="top-selling__header-wrapper">
@@ -34,8 +49,8 @@ function ItemHistory() {
                 }}
                 className="mySwiper"
               >
-                {itemHistory &&
-                  itemHistory.map((item: ProductItem, index: number) => {
+                {history &&
+                  history.map((item: ProductItem, index: number) => {
                     return (
                       <SwiperSlide key={index}>
                         <Card data={item} />

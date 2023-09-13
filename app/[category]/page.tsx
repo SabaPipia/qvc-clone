@@ -11,14 +11,14 @@ import { CategoryPCard } from "./components";
 import Image from "next/image";
 
 function Category() {
-  const { getCategory } = useContext(DataContext);
+  // const { getCategory } = useContext(DataContext);
   const [selectedValue, setSelectedValue] = useState("BEST");
   const [renderPattern, setRenderPattern] = useState("grid");
 
   const pathname = usePathname();
-  useEffect(() => {
-    getCategory();
-  }, [pathname]);
+  // useEffect(() => {
+  // getCategory();
+  // }, [pathname]);
   return (
     <div className="container">
       <div className="category-page-wrapper">

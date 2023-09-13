@@ -6,13 +6,23 @@ import "./style.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import LowInStockCard from "./Card";
 import { DataContext } from "@/app/provider";
 import { ProductItem } from "@/types";
+import { useDispatch, useSelector } from "react-redux";
+import { getTopSelling } from "@/store/actions";
+import ReactLoading from "react-loading";
 
 function LowInStock({}) {
-  const { lowInStockItem } = useContext(DataContext);
+  const dispatch: any = useDispatch();
+  const lowStockItems = useSelector((state: any) => state.data);
+  const { lowStock, loading } = lowStockItems;
+
+  useEffect(() => {
+    dispatch(getTopSelling());
+  }, [dispatch]);
+
   return (
     <div className="container top">
       <div className="low-in-stock">
@@ -31,14 +41,25 @@ function LowInStock({}) {
             }}
             className="mySwiper"
           >
-            {lowInStockItem &&
-              lowInStockItem.map((item: ProductItem) => {
+            {loading ? (
+              <div className="loading-wrapper">
+                <ReactLoading
+                  type={"spokes"}
+                  color={"#64b0ef"}
+                  height={100}
+                  width={100}
+                />
+              </div>
+            ) : (
+              lowStock &&
+              lowStock.map((item: ProductItem) => {
                 return (
                   <SwiperSlide key={item.id}>
                     <LowInStockCard data={item} />
                   </SwiperSlide>
                 );
-              })}
+              })
+            )}
           </Swiper>
         </div>
       </div>

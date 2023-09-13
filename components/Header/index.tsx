@@ -8,23 +8,23 @@ import cartIcon from "@/public/assets/icons8-cart-64.png";
 import avatar from "@/public/assets/icons8-person-64.png";
 
 import Image from "next/image";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { CustomInput } from "..";
-// import { DataContext } from "@/app/provider";
+
 import Link from "next/link";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/store/actions";
 
 function Header() {
-  // const { categories } = useContext(DataContext);
   const dispatch: any = useDispatch();
-  const categoriesData = useSelector((state: any) => state.categoriesData);
-  const { categories, loading } = categoriesData;
+  const categoriesData = useSelector((state: any) => state.data);
+  const { categories } = categoriesData;
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+
   return (
     <header>
       <div className="header flex-container ">
@@ -48,7 +48,9 @@ function Header() {
           </div>
           <p>TRENDING</p>
         </div>
-        <div className="header__middle">{/* <CustomInput /> */}</div>
+        <div className="header__middle">
+          <CustomInput />
+        </div>
         <div className="header__right-side flex-container">
           <div className="right-side__sign-up flex-container ">
             <div className="sign-up__avatar-background">

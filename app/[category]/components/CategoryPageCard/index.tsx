@@ -2,44 +2,41 @@ import "./style.scss";
 
 import RatingStar from "@/public/assets/rating-star.png";
 
-import { DataContext } from "@/app/provider";
 import { ProductItem, CategoryPageCard } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 
 function CategoryPCard({ selectedValue, renderPattern }: CategoryPageCard) {
-  const { categoryItems } = useContext(DataContext);
-
   const [sortedItems, setSortedItems] = useState<ProductItem[]>([]);
 
-  useEffect(() => {
-    switch (selectedValue) {
-      case "BEST":
-        setSortedItems(categoryItems);
-        break;
-      case "LOW":
-        const sortedLow = categoryItems
-          ?.slice()
-          ?.sort((a: ProductItem, b: ProductItem) => a.price - b.price);
-        setSortedItems(sortedLow);
-        break;
-      case "HIGH":
-        const sortedHigh = categoryItems
-          ?.slice()
-          ?.sort((a: ProductItem, b: ProductItem) => b.price - a.price);
-        setSortedItems(sortedHigh);
-        break;
-      case "RATING":
-        const sortedRating = categoryItems
-          ?.slice()
-          ?.sort((a: ProductItem, b: ProductItem) => b.rating - a.rating);
-        setSortedItems(sortedRating);
-        break;
-      default:
-        break;
-    }
-  }, [categoryItems, selectedValue]);
+  // useEffect(() => {
+  //   switch (selectedValue) {
+  //     case "BEST":
+  //       setSortedItems(categoryItems);
+  //       break;
+  //     case "LOW":
+  //       const sortedLow = categoryItems
+  //         ?.slice()
+  //         ?.sort((a: ProductItem, b: ProductItem) => a.price - b.price);
+  //       setSortedItems(sortedLow);
+  //       break;
+  //     case "HIGH":
+  //       const sortedHigh = categoryItems
+  //         ?.slice()
+  //         ?.sort((a: ProductItem, b: ProductItem) => b.price - a.price);
+  //       setSortedItems(sortedHigh);
+  //       break;
+  //     case "RATING":
+  //       const sortedRating = categoryItems
+  //         ?.slice()
+  //         ?.sort((a: ProductItem, b: ProductItem) => b.rating - a.rating);
+  //       setSortedItems(sortedRating);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }, [categoryItems, selectedValue]);
 
   return (
     <div

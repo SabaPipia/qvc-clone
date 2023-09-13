@@ -2,19 +2,17 @@ import "./style.scss";
 
 import RatingStar from "@/public/assets/rating-star.png";
 
-import { DataContext } from "@/app/provider";
 import { ProductItem, BrowsingPageCard } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useContext } from "react";
 
 function CategoryPageCard({ renderPattern }: BrowsingPageCard) {
-  const { topSellingItems } = useContext(DataContext);
   return (
     <div
       className={`category-${renderPattern}-wrapper-list category-page-main-wrapper`}
     >
-      {topSellingItems &&
+      {/* {topSellingItems &&
         topSellingItems.map((item: ProductItem, index: number) => {
           return (
             <div
@@ -73,7 +71,7 @@ function CategoryPageCard({ renderPattern }: BrowsingPageCard) {
               </Link>
             </div>
           );
-        })}
+        })} */}
     </div>
   );
 }

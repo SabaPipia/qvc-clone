@@ -3,7 +3,6 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Footer, Header } from "@/components";
-// import Provider from "./provider";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 
@@ -15,7 +14,6 @@ export const metadata: Metadata = {
   title: "QVC-clone",
   description: "qvc clone",
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -26,8 +24,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <Prov>
           <Header />
-          {/* {children} */}
-          {/* <Footer /> */}
+          {children}
+          <Footer />
         </Prov>
       </body>
     </html>

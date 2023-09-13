@@ -9,13 +9,13 @@ import Link from "next/link";
 import React, { useContext } from "react";
 
 function BrowsingCard({ renderPattern }: BrowsingPageCard) {
-  const { itemHistory } = useContext(DataContext);
+  // const { itemHistory } = useContext(DataContext);
 
   return (
     <div
       className={`category-${renderPattern}-wrapper-list category-page-main-wrapper`}
     >
-      {itemHistory &&
+      {/* {itemHistory &&
         itemHistory.map((item: ProductItem, index: number) => {
           return (
             <div
@@ -74,7 +74,7 @@ function BrowsingCard({ renderPattern }: BrowsingPageCard) {
               </Link>
             </div>
           );
-        })}
+        })} */}
     </div>
   );
 }

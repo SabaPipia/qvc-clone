@@ -5,14 +5,23 @@ import "swiper/css/grid";
 import "./style.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import Card from "../Card";
 import Link from "next/link";
-import { DataContext } from "@/app/provider";
 import { ProductItem } from "@/types";
+import { useDispatch, useSelector } from "react-redux";
+import { getTopSelling } from "@/store/actions";
+import ReactLoading from "react-loading";
 
 function TopSelling() {
-  const { topSellingItems } = useContext(DataContext);
+  const dispatch: any = useDispatch();
+  const topSellingData = useSelector((state: any) => state.data);
+  const { topSelling, loading } = topSellingData;
+
+  useEffect(() => {
+    dispatch(getTopSelling());
+  }, [dispatch]);
+
   return (
     <div className="container top">
       <div className="top-selling">
@@ -32,14 +41,25 @@ function TopSelling() {
             }}
             className="mySwiper"
           >
-            {topSellingItems &&
-              topSellingItems.map((item: ProductItem, index: number) => {
+            {loading ? (
+              <div className="loading-wrapper">
+                <ReactLoading
+                  type={"spokes"}
+                  color={"#64b0ef"}
+                  height={100}
+                  width={100}
+                />
+              </div>
+            ) : (
+              topSelling &&
+              topSelling.map((item: ProductItem, index: number) => {
                 return (
                   <SwiperSlide key={index}>
                     <Card data={item} />
                   </SwiperSlide>
                 );
-              })}
+              })
+            )}
           </Swiper>
         </div>
       </div>

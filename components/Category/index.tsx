@@ -4,13 +4,21 @@ import "swiper/css";
 import "./style.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import CategoryCard from "../CategoryCard";
-import { DataContext } from "@/app/provider";
 import { CategoryCardInterface } from "@/types";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategoryImages } from "@/store/actions";
+import ReactLoading from "react-loading";
 
 function Category() {
-  const { categoryItem } = useContext(DataContext);
+  const dispatch: any = useDispatch();
+  const categoryItems = useSelector((state: any) => state.data);
+  const { categoryItem, loading } = categoryItems;
+
+  useEffect(() => {
+    dispatch(getCategoryImages());
+  }, [dispatch]);
 
   return (
     <div className="container">
@@ -30,13 +38,25 @@ function Category() {
             }}
             className="mySwiper"
           >
-            {categoryItem.map((item: CategoryCardInterface, index: number) => {
-              return (
-                <SwiperSlide key={item.category}>
-                  <CategoryCard item={item} />
-                </SwiperSlide>
-              );
-            })}
+            {loading ? (
+              <div className="loading-wrapper">
+                <ReactLoading
+                  type={"spokes"}
+                  color={"#64b0ef"}
+                  height={100}
+                  width={100}
+                />
+              </div>
+            ) : (
+              categoryItem &&
+              categoryItem.map((item: CategoryCardInterface, index: number) => {
+                return (
+                  <SwiperSlide key={item.category}>
+                    <CategoryCard item={item} />
+                  </SwiperSlide>
+                );
+              })
+            )}
           </Swiper>
         </div>
       </div>
