@@ -1,0 +1,141 @@
+.create-account-wrapper {
+  width: 70rem;
+  max-width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    .input-wrapper {
+      position: relative;
+      label {
+        position: absolute;
+        top: 50%;
+        font-size: 1.4rem;
+        left: 0.8rem;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+      input {
+        font-size: 1.6rem;
+        padding: 0.7rem;
+        width: 40%;
+        &:focus {
+          outline: none;
+        }
+      }
+      button {
+        transform: translateX(-110%);
+        color: #091035;
+        font-size: 1.6rem;
+        background-color: #ffff;
+        border: 1px solid #0910357a;
+        border-radius: 5px;
+        padding: 0.4rem;
+      }
+      input:focus + label {
+        top: 0;
+        font-size: 1.2rem;
+        background-color: #fff;
+        padding: 0.2rem 0.6rem;
+      }
+    }
+    .billing-address-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      .user-information {
+        display: grid;
+        grid-template-columns: 20fr 40fr 40fr;
+        gap: 4rem;
+        input {
+          width: 100%;
+        }
+      }
+      .billing__street-address {
+        input {
+          width: 100%;
+        }
+        .floor-address__input {
+          margin-top: 1.2rem;
+        }
+        .floor__address {
+          .plus-btn {
+            border-radius: 50%;
+            border: none;
+            border: 1px solid orangered;
+            color: orangered;
+            font-weight: 900;
+            background-color: #fff;
+            font-size: 2rem;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            margin-right: 1.2rem;
+            cursor: pointer;
+          }
+          span {
+            font-size: 1.4rem;
+            text-decoration: underline;
+          }
+        }
+      }
+      .billing__zip {
+        input {
+          width: 30%;
+        }
+        span {
+          margin-left: 1.2rem;
+          font-size: 1.4rem;
+        }
+      }
+      .billing__phone {
+        input {
+          width: 45%;
+        }
+      }
+    }
+    .terms-of-use {
+      .checkbox-wrapper {
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        input {
+          width: 2rem;
+          height: 2rem;
+          margin-right: 1.4rem;
+        }
+      }
+      .terms-of-use__main {
+        margin-top: 2.2rem;
+        span {
+          color: #1b2141;
+          font-size: 1.3rem;
+          font-weight: 500;
+          a:link,
+          a:visited {
+            color: #1b2141;
+          }
+        }
+      }
+    }
+    .submit-button {
+      background-color: #28334a;
+      color: #fff;
+      border: none;
+      padding: 1.2rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.has-value {
+  position: absolute;
+  top: 0px !important;
+  font-size: 1.2rem !important;
+  background-color: #fff;
+  padding: 0.2rem 0.6rem;
+}

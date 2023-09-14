@@ -22,6 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ProviderWrapper>
           <Header />
+          <div className="header-space"></div>
           {children}
           <Footer />
         </ProviderWrapper>

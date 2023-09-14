@@ -69,7 +69,7 @@ function Header() {
                 <button>Sign In</button>
               </div>
               <ul>
-                <Link href="#">
+                <Link href="/myaccount/create-account">
                   <li>Create Account</li>
                 </Link>
                 <Link href="#">
