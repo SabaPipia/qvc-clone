@@ -22,6 +22,8 @@
         font-size: 1.6rem;
         padding: 0.7rem;
         width: 40%;
+        border: none;
+        border: 1px solid #091035;
         &:focus {
           outline: none;
         }
@@ -34,6 +36,13 @@
         border: 1px solid #0910357a;
         border-radius: 5px;
         padding: 0.4rem;
+      }
+      p {
+        position: absolute;
+        bottom: -1.5rem;
+        left: 0.8rem;
+        font-size: 1.3rem;
+        color: red;
       }
       input:focus + label {
         top: 0;
@@ -138,4 +147,7 @@
   font-size: 1.2rem !important;
   background-color: #fff;
   padding: 0.2rem 0.6rem;
+}
+.is-error {
+  border-color: red !important;
 }
