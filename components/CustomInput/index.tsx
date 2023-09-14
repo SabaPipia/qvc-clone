@@ -24,7 +24,7 @@ function CustomInput() {
 
   const handleSearchInput = (value: any) => {
     value.length === 0 ? setIsInputClear(true) : setIsInputClear(false);
-    if (value.length >= 1) {
+    if (value.length >= 3) {
       dispatch(getSearchedItem(value));
       setSearchVisible(searchedData ? true : false);
     } else {
@@ -66,10 +66,12 @@ function CustomInput() {
       {searchVisible ? (
         <div className="search-drop-down">
           <div className="search-drop-down__heading">
-            <span>Found {searchedData.length} Results for '...'</span>
+            <span>
+              Found {searchedData.length} Results for '{searchValue}'
+            </span>
           </div>
-          {searchedItem
-            ? searchedItem?.products.map((item: ProductItem, index: number) => {
+          {searchedItem.products != undefined
+            ? searchedItem.products.map((item: ProductItem, index: number) => {
                 if (index <= 2) {
                   return (
                     <div key={item.id}>
@@ -120,7 +122,6 @@ function CustomInput() {
                         </div>
                       </Link>
                       {index >= 2 ? (
-                        // fix link
                         <div className="show-all-result">
                           <Link href="#">Show All Results</Link>
                         </div>
