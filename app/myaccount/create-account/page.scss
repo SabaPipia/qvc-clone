@@ -9,14 +9,8 @@
     flex-direction: column;
     gap: 3rem;
     .input-wrapper {
-      position: relative;
-      label {
-        position: absolute;
-        top: 50%;
-        font-size: 1.4rem;
-        left: 0.8rem;
-        transform: translateY(-50%);
-        pointer-events: none;
+      div {
+        position: relative;
       }
       input {
         font-size: 1.6rem;
@@ -27,6 +21,15 @@
         &:focus {
           outline: none;
         }
+      }
+      label {
+        position: absolute;
+        top: 50%;
+        font-size: 1.4rem;
+        left: 0.8rem;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #333;
       }
       button {
         transform: translateX(-110%);
@@ -150,4 +153,24 @@
 }
 .is-error {
   border-color: red !important;
+  & ~ label {
+    color: red;
+  }
+}
+
+.password__validation {
+  display: flex;
+  bottom: -1.3rem;
+  gap: 2.6rem;
+  .password__dot {
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: #333;
+    border-radius: 50%;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
 }

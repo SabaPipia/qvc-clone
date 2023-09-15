@@ -46,13 +46,15 @@ export default function CreateAccount() {
     const addressRegex = /^.*$/;
     const zipRegex = /^\d{5}(?:-\d{4})?$/;
     const phoneRegex = /^\d{9}$/;
-    console.log(name);
+
     switch (name) {
       case "email":
-        if (!emailRegex.test(value)) {
-          setInputErrors({ ...inputErrors, email: "Invalid email address" });
-        } else {
-          setInputErrors({ ...inputErrors, email: "" });
+        if (value.length >= 1) {
+          if (!emailRegex.test(value)) {
+            setInputErrors({ ...inputErrors, email: "Invalid email address" });
+          } else {
+            setInputErrors({ ...inputErrors, email: "" });
+          }
         }
         break;
       case "password":
@@ -125,6 +127,7 @@ export default function CreateAccount() {
         break;
     }
   };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -133,47 +136,69 @@ export default function CreateAccount() {
       [name]: value,
     });
   };
-  console.log(inputErrors);
   return (
     <div className="create-account-wrapper container">
       <form>
         <div className="email-input-wrapper input-wrapper">
-          <input
-            type="email"
-            className={`email__input ${inputErrors.email ? "is-error" : ""}`}
-            name="email"
-            value={inputValues.email}
-            onChange={handleInputChange}
-            onBlur={handleInputBlur}
-          />
-          <label
-            className={`email__label ${inputValues.email ? "has-value" : ""}`}
-          >
-            Email Address
-          </label>
+          <div>
+            <input
+              type="email"
+              className={`email__input ${inputErrors.email ? "is-error" : ""}`}
+              name="email"
+              value={inputValues.email}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+            />
+            <label
+              className={`email__label ${inputValues.email ? "has-value" : ""}`}
+            >
+              Email Address
+            </label>
+          </div>
           <p>{inputErrors.email}</p>
         </div>
         <div className="password-input-wrapper input-wrapper">
-          <input
-            type="password"
-            className={`password__input ${inputErrors.email ? "is-error" : ""}`}
-            name="password"
-            value={inputValues.password}
-            onChange={handleInputChange}
-          />
-          <label className={`${inputValues.password ? "has-value" : ""}`}>
-            Create Password
-          </label>
-          <button>Show</button>
-          <p>{inputErrors.password}</p>
+          <div>
+            <input
+              type="password"
+              className={`password__input ${
+                inputErrors.password ? "is-error" : ""
+              }`}
+              name="password"
+              value={inputValues.password}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+            />
+            <label className={`${inputValues.password ? "has-value" : ""}`}>
+              Create Password
+            </label>
+            <button>Show</button>
+          </div>
+          <div className="password__validation">
+            <div>
+              <div className="password__dot"></div>
+              <span>One letter</span>
+            </div>
+            <div>
+              <div className="password__dot"></div>
+              <span>One number</span>
+            </div>
+            <div>
+              <div className="password__dot"></div>
+              <span>8 to 24 characters</span>
+            </div>
+          </div>
         </div>
         <div className="repassword-input-wrapper input-wrapper">
           <input
             type="password"
-            className="repassword__input"
+            className={`repassword__input ${
+              inputErrors.password ? "is-error" : ""
+            }`}
             name="repassword"
             value={inputValues.repassword}
             onChange={handleInputChange}
+            onBlur={handleInputBlur}
           />
           <label className={`${inputValues.repassword ? "has-value" : ""}`}>
             Confirm Password
@@ -189,6 +214,10 @@ export default function CreateAccount() {
                 name="title"
                 value={inputValues.title}
                 onChange={handleInputChange}
+                onBlur={handleInputBlur}
+                className={`title__input ${
+                  inputErrors.title ? "is-error" : ""
+                }`}
               />
               <label className={`${inputValues.title ? "has-value" : ""}`}>
                 Title
@@ -200,6 +229,10 @@ export default function CreateAccount() {
                 name="firstName"
                 value={inputValues.firstName}
                 onChange={handleInputChange}
+                onBlur={handleInputBlur}
+                className={`first-name__input ${
+                  inputErrors.firstName ? "is-error" : ""
+                }`}
               />
               <label className={`${inputValues.firstName ? "has-value" : ""}`}>
                 First Name
@@ -212,6 +245,10 @@ export default function CreateAccount() {
                 name="lastName"
                 value={inputValues.lastName}
                 onChange={handleInputChange}
+                onBlur={handleInputBlur}
+                className={`last-name__input ${
+                  inputErrors.lastName ? "is-error" : ""
+                }`}
               />
               <label className={`${inputValues.lastName ? "has-value" : ""}`}>
                 Last Name
@@ -225,6 +262,10 @@ export default function CreateAccount() {
               name="address"
               value={inputValues.address}
               onChange={handleInputChange}
+              onBlur={handleInputBlur}
+              className={`billing__input ${
+                inputErrors.lastName ? "is-error" : ""
+              }`}
             />
             <label className={`${inputValues.address ? "has-value" : ""}`}>
               Street Adress
@@ -244,6 +285,7 @@ export default function CreateAccount() {
                   name="floorAddress"
                   value={inputValues.floorAddress}
                   onChange={handleInputChange}
+                  onBlur={handleInputBlur}
                 />
                 <label
                   className={`${inputValues.floorAddress ? "has-value" : ""}`}
@@ -259,6 +301,7 @@ export default function CreateAccount() {
               name="zip"
               value={inputValues.zip}
               onChange={handleInputChange}
+              onBlur={handleInputBlur}
             />
             <label className={`${inputValues.zip ? "has-value" : ""}`}>
               Zip/Postal Code
@@ -271,6 +314,7 @@ export default function CreateAccount() {
               name="phone"
               value={inputValues.phone}
               onChange={handleInputChange}
+              onBlur={handleInputBlur}
             />
             <label className={`${inputValues.phone ? "has-value" : ""}`}>
               Phone (optional)
