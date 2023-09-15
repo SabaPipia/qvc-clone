@@ -16,6 +16,8 @@ import Link from "next/link";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/store/actions";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function Header() {
   const dispatch: any = useDispatch();
@@ -24,7 +26,7 @@ function Header() {
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
-
+  const { push } = useRouter();
   return (
     <header>
       <div className="header flex-container ">
@@ -66,7 +68,9 @@ function Header() {
             <Image src={drowDownIcon} width={12} height={12} alt="drow down" />
             <div className="dropdown-menu-sign-up">
               <div className="sign-up__button-wrapper">
-                <button>Sign In</button>
+                <button onClick={() => push("/myaccount/login")}>
+                  Sign In
+                </button>
               </div>
               <ul>
                 <Link href="/myaccount/create-account">

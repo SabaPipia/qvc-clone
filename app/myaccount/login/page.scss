@@ -1,0 +1,114 @@
+.login-page-wrapper {
+  width: 116rem;
+  max-width: 100%;
+  .login-page__heading {
+    font-size: 1.6rem;
+    color: #091035;
+    width: 35%;
+  }
+  .login-input-wrapper {
+    position: relative;
+    margin-top: 1.4rem;
+    input {
+      font-size: 1.6rem;
+      padding: 0.7rem;
+      width: 30%;
+      border: none;
+      border: 1px solid #091035;
+      &:focus {
+        outline: none;
+      }
+    }
+    label {
+      position: absolute;
+      top: 50%;
+      font-size: 1.4rem;
+      left: 0.8rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #333;
+    }
+    button {
+      transform: translateX(-110%);
+      color: #091035;
+      font-size: 1.6rem;
+      background-color: #ffff;
+      border: 1px solid #0910357a;
+      border-radius: 5px;
+      padding: 0.4rem;
+    }
+    input:focus + label {
+      top: 0;
+      font-size: 1.2rem;
+      background-color: #fff;
+      padding: 0.2rem 0.6rem;
+    }
+  }
+  .login__button-wrapper {
+    margin-top: 1.2rem;
+    button {
+      background-color: #28334a;
+      color: #fff;
+      border: none;
+      padding: 1.2rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      width: 20%;
+    }
+  }
+}
+
+.password-input-wrapper {
+  margin-top: 1.2rem;
+}
+
+.password-reset-wrapper {
+  margin: 3.2rem 0rem;
+  a:link,
+  a:visited {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.6rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.new-to-qvc {
+  font-weight: 700;
+  margin-top: 5.2rem;
+  font-size: 1.4rem;
+  color: #333;
+  a:visited,
+  a:link {
+    color: #333;
+    font-weight: 400;
+  }
+}
+
+.shop-confidence {
+  margin-top: 2.4rem;
+  width: 40%;
+  display: flex;
+  align-items: flex-end;
+  span {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: #333;
+    a {
+      color: #333;
+    }
+  }
+}
+
+.has-value {
+  position: absolute;
+  top: 0px !important;
+  font-size: 1.2rem !important;
+  background-color: #fff;
+  padding: 0.2rem 0.6rem;
+}
+.error {
+  border: 2px solid red !important;
+}
