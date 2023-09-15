@@ -7,16 +7,12 @@ import drowDownIcon from "@/public/assets/dropdown-50.png";
 import cartIcon from "@/public/assets/icons8-cart-64.png";
 import avatar from "@/public/assets/icons8-person-64.png";
 
-import Image from "next/image";
 import React, { useEffect } from "react";
-
-import { CustomInput } from "..";
-
+import Image from "next/image";
 import Link from "next/link";
-
+import { CustomInput } from "..";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/store/actions";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 function Header() {
@@ -94,7 +90,7 @@ function Header() {
                 <Link href="#">
                   <li>Wish List</li>
                 </Link>
-                <Link href="#">
+                <Link href="/Browsing-History">
                   <li>Browsing History</li>
                 </Link>
                 <Link href="#">
