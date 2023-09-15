@@ -23,6 +23,7 @@ function Header() {
     dispatch(getCategories());
   }, [dispatch]);
   const { push } = useRouter();
+
   return (
     <header>
       <div className="header flex-container ">
@@ -75,7 +76,7 @@ function Header() {
                 <Link href="#">
                   <li>My Account</li>
                 </Link>
-                <Link href="#">
+                <Link href="/order-status">
                   <li>Order Status</li>
                 </Link>
                 <Link href="#">
@@ -90,7 +91,7 @@ function Header() {
                 <Link href="#">
                   <li>Wish List</li>
                 </Link>
-                <Link href="/Browsing-History">
+                <Link href="/browsing-history">
                   <li>Browsing History</li>
                 </Link>
                 <Link href="#">

@@ -10,7 +10,7 @@ function Card({ data }: CardProps) {
   const SaveItemToLocalStorage = (title: string, id: string) => {
     localStorage.setItem(`history ${id}`, title);
   };
-  console.log(data);
+
   return (
     <>
       {data ? (
