@@ -5,7 +5,7 @@ import GridIcon from "@/public/assets/grid-icon.png";
 import ListIcon from "@/public/assets/list-icon.png";
 
 import { usePathname } from "next/navigation";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { BrowsingCard } from "./components";
 import Image from "next/image";

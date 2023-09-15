@@ -10,6 +10,7 @@ function Card({ data }: CardProps) {
   const SaveItemToLocalStorage = (title: string, id: string) => {
     localStorage.setItem(`history ${id}`, title);
   };
+  console.log(data);
   return (
     <>
       {data ? (
@@ -23,7 +24,10 @@ function Card({ data }: CardProps) {
           >
             <div className="main-card-image">
               <Image
-                src={data.thumbnail.toString()}
+                src={
+                  data.thumbnail.toString() ||
+                  data.images[data.images.length - 1].toString()
+                }
                 width={1000}
                 height={1000}
                 alt="item image"
