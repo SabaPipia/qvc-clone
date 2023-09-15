@@ -19,7 +19,7 @@ function Category() {
     <div className="container">
       <div className="category-page-wrapper">
         <div className="category-page-heading">
-          <span>{pathname.replace("/", "").replace("-", " ")}</span>
+          <span>Browsing history</span>
           <div className="toggle-wrapper">
             <div className="toggle__pattern">
               {renderPattern === "list" ? (

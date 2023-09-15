@@ -27,7 +27,7 @@ function TopSelling() {
       <div className="top-selling">
         <div className="top-selling__header-wrapper">
           <h2 className="top-selling__heading">Top Selling</h2>
-          <Link href="/Top-Selling">Shop now</Link>
+          <Link href="/top-selling">Shop now</Link>
         </div>
         <div className="top-selling__card-wrapper">
           <Swiper
