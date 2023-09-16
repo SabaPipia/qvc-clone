@@ -5,6 +5,8 @@ import LockIcon from "@/public/assets/lock.png";
 import React, { useState } from "react";
 import "./page.scss";
 import Image from "next/image";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/app/firebase";
 
 export default function Login() {
   const [inputValues, setInputValues] = useState({
@@ -47,7 +49,12 @@ export default function Login() {
       [name]: value,
     });
   };
-
+  const signIn = (e: any) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, inputValues.email, inputValues.password)
+      .then((userCredentials) => console.log(userCredentials))
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="container">
       <div className="login-page-wrapper">
@@ -56,7 +63,7 @@ export default function Login() {
           email address:
         </h3>
         <div className="login-page__form">
-          <form>
+          <form onSubmit={signIn}>
             <div className="login-page__email-wrapper login-input-wrapper">
               <input
                 type="email"
@@ -105,7 +112,7 @@ export default function Login() {
               </a>
             </div>
             <div className="login__button-wrapper">
-              <button>Continue</button>
+              <button type="submit">Continue</button>
             </div>
           </form>
           <div className="new-to-qvc">

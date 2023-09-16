@@ -5,6 +5,9 @@ import "./page.scss";
 import React, { useState } from "react";
 import Link from "next/link";
 
+import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+
 export default function CreateAccount() {
   const [isFloorAddressVisible, setIsFloorAddressVisible] = useState(false);
   const [inputValues, setInputValues] = useState({
@@ -136,9 +139,24 @@ export default function CreateAccount() {
       [name]: value,
     });
   };
+
+  const singUp = (e: any) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(
+      auth,
+      inputValues.email,
+      inputValues.password
+    )
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        const displayName = inputValues.firstName;
+        return updateProfile(user, { displayName });
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="create-account-wrapper container">
-      <form>
+      <form onSubmit={singUp}>
         <div className="email-input-wrapper input-wrapper">
           <div>
             <input
@@ -335,7 +353,9 @@ export default function CreateAccount() {
             </span>
           </div>
         </div>
-        <button className="submit-button">Continue</button>
+        <button type="submit" className="submit-button">
+          Continue
+        </button>
       </form>
     </div>
   );

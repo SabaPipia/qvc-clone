@@ -7,7 +7,7 @@ import drowDownIcon from "@/public/assets/dropdown-50.png";
 import cartIcon from "@/public/assets/icons8-cart-64.png";
 import avatar from "@/public/assets/icons8-person-64.png";
 
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CustomInput } from "..";
@@ -15,14 +15,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/store/actions";
 import { useRouter } from "next/navigation";
 
+import { auth } from "@/app/firebase";
+import { signOut } from "firebase/auth";
+import { userAuth } from "@/app/provider";
+
 function Header() {
+  const context = useContext(userAuth);
+
   const dispatch: any = useDispatch();
   const categoriesData = useSelector((state: any) => state.data);
   const { categories } = categoriesData;
+
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
   const { push } = useRouter();
+
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("sign out succc");
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <header>
@@ -61,7 +76,10 @@ function Header() {
                 className="avatar-icon"
               />
             </div>
-            <span className="right-side-text">Sign in</span>
+            <span className="right-side-text">
+              {" "}
+              {context ? `Hi,${context.displayName}` : "Sign In"}
+            </span>
             <Image src={drowDownIcon} width={12} height={12} alt="drow down" />
             <div className="dropdown-menu-sign-up">
               <div className="sign-up__button-wrapper">
@@ -96,6 +114,9 @@ function Header() {
                 </Link>
                 <Link href="#">
                   <li>Customer Service</li>
+                </Link>
+                <Link href="/myaccount/login" onClick={signOutUser}>
+                  <li>Sign Out</li>
                 </Link>
               </ul>
             </div>
