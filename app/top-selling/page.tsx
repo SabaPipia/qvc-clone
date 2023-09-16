@@ -4,15 +4,12 @@ import "./page.scss";
 import GridIcon from "@/public/assets/grid-icon.png";
 import ListIcon from "@/public/assets/list-icon.png";
 
-import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { CategoryPageCard } from "./components";
 import Image from "next/image";
 
 function Category() {
   const [renderPattern, setRenderPattern] = useState("grid");
-
-  const pathname = usePathname();
 
   return (
     <div className="container">

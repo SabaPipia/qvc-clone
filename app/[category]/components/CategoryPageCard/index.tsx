@@ -6,7 +6,7 @@ import RatingStar from "@/public/assets/rating-star.png";
 import { ProductItem, CategoryPageCard } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import ReactLoading from "react-loading";
