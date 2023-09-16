@@ -7,16 +7,20 @@ import "./page.scss";
 import Image from "next/image";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/app/firebase";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const { push } = useRouter();
   const [inputValues, setInputValues] = useState({
     email: "",
     password: "",
   });
+
   const [inputErrors, setInputErrors] = useState({
     email: "",
     password: "",
   });
+
   const handleInputBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,7 +56,11 @@ export default function Login() {
   const signIn = (e: any) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, inputValues.email, inputValues.password)
-      .then((userCredentials) => console.log(userCredentials))
+      .then((userCredentials) => {
+        if (userCredentials) {
+          push("/");
+        }
+      })
       .catch((error) => console.log(error));
   };
   return (

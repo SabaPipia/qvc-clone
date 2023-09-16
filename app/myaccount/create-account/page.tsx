@@ -5,11 +5,15 @@ import "./page.scss";
 import React, { useState } from "react";
 import Link from "next/link";
 
+import { useRouter } from "next/navigation";
+
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export default function CreateAccount() {
   const [isFloorAddressVisible, setIsFloorAddressVisible] = useState(false);
+  const { push } = useRouter();
+
   const [inputValues, setInputValues] = useState({
     email: "",
     password: "",
@@ -44,11 +48,6 @@ export default function CreateAccount() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,24}$/;
-    const firstNameRegex = /^.*$/;
-    const lastNameRegex = /^.*$/;
-    const addressRegex = /^.*$/;
-    const zipRegex = /^\d{5}(?:-\d{4})?$/;
-    const phoneRegex = /^\d{9}$/;
 
     switch (name) {
       case "email":
@@ -69,61 +68,12 @@ export default function CreateAccount() {
         break;
       case "repassword":
         if (inputValues.repassword != inputValues.password) {
-          setInputErrors({ ...inputErrors, repassword: "Invalid password" });
-        } else {
-          setInputErrors({ ...inputErrors, repassword: "" });
-        }
-        break;
-      case "title":
-        if (!inputValues.title) {
-          setInputErrors({ ...inputErrors, title: "Invalid title" });
-        } else {
-          setInputErrors({ ...inputErrors, title: "" });
-        }
-        break;
-      case "firstName":
-        if (!firstNameRegex.test(value)) {
-          setInputErrors({ ...inputErrors, firstName: "Invalid firstName" });
-        } else {
-          setInputErrors({ ...inputErrors, firstName: "" });
-        }
-        break;
-      case "lastName":
-        if (!lastNameRegex.test(value)) {
-          setInputErrors({ ...inputErrors, lastName: "Invalid lastName" });
-        } else {
-          setInputErrors({ ...inputErrors, lastName: "" });
-        }
-        break;
-      case "address":
-        if (!addressRegex.test(value)) {
-          setInputErrors({ ...inputErrors, address: "Invalid address" });
-        } else {
-          setInputErrors({ ...inputErrors, address: "" });
-        }
-        break;
-      case "floorAddress":
-        if (!addressRegex.test(value)) {
           setInputErrors({
             ...inputErrors,
-            floorAddress: "Invalid floorAddress",
+            repassword: "Passwords do not match",
           });
         } else {
-          setInputErrors({ ...inputErrors, floorAddress: "" });
-        }
-        break;
-      case "zip":
-        if (!zipRegex.test(value)) {
-          setInputErrors({ ...inputErrors, zip: "Invalid zip" });
-        } else {
-          setInputErrors({ ...inputErrors, zip: "" });
-        }
-        break;
-      case "phone":
-        if (!phoneRegex.test(value)) {
-          setInputErrors({ ...inputErrors, phone: "Invalid phone" });
-        } else {
-          setInputErrors({ ...inputErrors, phone: "" });
+          setInputErrors({ ...inputErrors, repassword: "" });
         }
         break;
       default:
@@ -142,17 +92,38 @@ export default function CreateAccount() {
 
   const singUp = (e: any) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(
-      auth,
-      inputValues.email,
-      inputValues.password
-    )
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        const displayName = inputValues.firstName;
-        return updateProfile(user, { displayName });
-      })
-      .catch((error) => console.log(error));
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,24}$/;
+
+    if (
+      emailRegex.test(inputValues.email) &&
+      passwordRegex.test(inputValues.password) &&
+      inputValues.password === inputValues.repassword &&
+      inputValues.firstName
+    ) {
+      createUserWithEmailAndPassword(
+        auth,
+        inputValues.email,
+        inputValues.password
+      )
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          const displayName = inputValues.firstName;
+          return updateProfile(user, { displayName }).then(() => push("/"));
+        })
+        .catch((error) => {
+          if (error.message.includes("invalid-email")) {
+            setInputErrors({ ...inputErrors, email: "Invalid email address" });
+          }
+        });
+    }
+    if (!inputValues.email) {
+      setInputErrors({ ...inputErrors, email: "Email is required" });
+    }
+    if (!inputValues.firstName) {
+      setInputErrors({ ...inputErrors, firstName: "First Name is required" });
+    }
   };
   return (
     <div className="create-account-wrapper container">

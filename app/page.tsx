@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -24,6 +25,7 @@ export default function Home() {
     };
     window.addEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <main>
       <Hero />

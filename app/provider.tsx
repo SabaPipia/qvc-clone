@@ -29,7 +29,7 @@ function ProviderWrapper({ children }: { children: React.ReactNode }) {
       listen();
     };
   }, []);
-  console.log(authUser);
+
   return (
     <Provider store={store}>
       <userAuth.Provider value={authUser}>{children}</userAuth.Provider>

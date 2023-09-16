@@ -34,7 +34,7 @@ function Header() {
   const signOutUser = () => {
     signOut(auth)
       .then(() => {
-        console.log("sign out succc");
+        push("/myaccount/login");
       })
       .catch((error) => console.log(error));
   };
@@ -77,20 +77,25 @@ function Header() {
               />
             </div>
             <span className="right-side-text">
-              {" "}
-              {context ? `Hi,${context.displayName}` : "Sign In"}
+              {context?.displayName != null
+                ? `Hi,${context.displayName}`
+                : "Sign In"}
             </span>
             <Image src={drowDownIcon} width={12} height={12} alt="drow down" />
             <div className="dropdown-menu-sign-up">
-              <div className="sign-up__button-wrapper">
-                <button onClick={() => push("/myaccount/login")}>
-                  Sign In
-                </button>
-              </div>
+              {!context ? (
+                <div className="sign-up__button-wrapper">
+                  <button onClick={() => push("/myaccount/login")}>
+                    Sign In
+                  </button>
+                </div>
+              ) : null}
               <ul>
-                <Link href="/myaccount/create-account">
-                  <li>Create Account</li>
-                </Link>
+                {!context ? (
+                  <Link href="/myaccount/create-account">
+                    <li>Create Account</li>
+                  </Link>
+                ) : null}
                 <Link href="#">
                   <li>My Account</li>
                 </Link>
@@ -109,15 +114,19 @@ function Header() {
                 <Link href="#">
                   <li>Wish List</li>
                 </Link>
-                <Link href="/browsing-history">
-                  <li>Browsing History</li>
-                </Link>
+                {!context ? (
+                  <Link href="/browsing-history">
+                    <li>Browsing History</li>
+                  </Link>
+                ) : null}
                 <Link href="#">
                   <li>Customer Service</li>
                 </Link>
-                <Link href="/myaccount/login" onClick={signOutUser}>
-                  <li>Sign Out</li>
-                </Link>
+                {context ? (
+                  <Link href="/myaccount/login" onClick={signOutUser}>
+                    <li>Sign Out</li>
+                  </Link>
+                ) : null}
               </ul>
             </div>
           </div>
