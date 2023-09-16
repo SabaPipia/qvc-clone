@@ -102,16 +102,16 @@ function Header() {
                 <Link href="/order-status">
                   <li>Order Status</li>
                 </Link>
-                <Link href="#">
+                <Link href={!context ? "/myaccount/login" : "#"}>
                   <li>Manage Easy Pay Orders</li>
                 </Link>
-                <Link href="#">
+                <Link href={!context ? "/myaccount/login" : "#"}>
                   <li>Manage Auto Delivery</li>
                 </Link>
-                <Link href="#">
+                <Link href={!context ? "/myaccount/login" : "#"}>
                   <li>Pay My QCard Bill</li>
                 </Link>
-                <Link href="#">
+                <Link href={!context ? "/myaccount/login" : "#"}>
                   <li>Wish List</li>
                 </Link>
                 {!context ? (
@@ -119,7 +119,7 @@ function Header() {
                     <li>Browsing History</li>
                   </Link>
                 ) : null}
-                <Link href="#">
+                <Link href={!context ? "/myaccount/login" : "#"}>
                   <li>Customer Service</li>
                 </Link>
                 {context ? (
