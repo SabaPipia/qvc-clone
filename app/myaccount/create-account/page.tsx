@@ -12,6 +12,10 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export default function CreateAccount() {
   const [isFloorAddressVisible, setIsFloorAddressVisible] = useState(false);
+  const [isPasswordVisible, setPasswordVissible] = useState({
+    password: false,
+    repassword: false,
+  });
   const { push } = useRouter();
 
   const [inputValues, setInputValues] = useState({
@@ -149,7 +153,7 @@ export default function CreateAccount() {
         <div className="password-input-wrapper input-wrapper">
           <div>
             <input
-              type="password"
+              type={isPasswordVisible.password ? "text" : "password"}
               className={`password__input ${
                 inputErrors.password ? "is-error" : ""
               }`}
@@ -161,7 +165,17 @@ export default function CreateAccount() {
             <label className={`${inputValues.password ? "has-value" : ""}`}>
               Create Password
             </label>
-            <button>Show</button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setPasswordVissible((prevState) => ({
+                  ...prevState,
+                  password: !isPasswordVisible.password,
+                }));
+              }}
+            >
+              Show
+            </button>
           </div>
           <div className="password__validation">
             <div>
@@ -180,7 +194,7 @@ export default function CreateAccount() {
         </div>
         <div className="repassword-input-wrapper input-wrapper">
           <input
-            type="password"
+            type={isPasswordVisible.repassword ? "text" : "password"}
             className={`repassword__input ${
               inputErrors.password ? "is-error" : ""
             }`}
@@ -192,7 +206,17 @@ export default function CreateAccount() {
           <label className={`${inputValues.repassword ? "has-value" : ""}`}>
             Confirm Password
           </label>
-          <button>Show</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setPasswordVissible((prevState) => ({
+                ...prevState,
+                repassword: !isPasswordVisible.repassword,
+              }));
+            }}
+          >
+            Show
+          </button>
           <p>{inputErrors.repassword}</p>
         </div>
         <div className="billing-address-wrapper">

@@ -32,6 +32,7 @@
         color: #333;
       }
       button {
+        cursor: pointer;
         transform: translateX(-110%);
         color: #091035;
         font-size: 1.6rem;
@@ -39,6 +40,9 @@
         border: 1px solid #0910357a;
         border-radius: 5px;
         padding: 0.4rem;
+        &:hover {
+          outline: auto;
+        }
       }
       p {
         position: absolute;
@@ -134,12 +138,16 @@
       }
     }
     .submit-button {
+      cursor: pointer;
       background-color: #28334a;
       color: #fff;
       border: none;
       padding: 1.2rem;
       font-size: 1.6rem;
       font-weight: 600;
+      &:hover {
+        background-color: #1b253a;
+      }
     }
   }
 }

@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const { push } = useRouter();
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [inputValues, setInputValues] = useState({
     email: "",
     password: "",
@@ -96,7 +97,7 @@ export default function Login() {
               </h3>
               <div className="login-page__password-wrapper login-input-wrapper">
                 <input
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   className={`login-password__input ${
                     inputErrors.password ? "error" : ""
                   }`}
@@ -111,7 +112,14 @@ export default function Login() {
                 >
                   QVC Password
                 </label>
-                <button>Show</button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPasswordVisible(!passwordVisible);
+                  }}
+                >
+                  Show
+                </button>
               </div>
             </div>
             <div className="password-reset-wrapper">
@@ -124,7 +132,8 @@ export default function Login() {
             </div>
           </form>
           <div className="new-to-qvc">
-            New to QVC? <a href="#">Continue as a new customer</a>.
+            New to QVC?{" "}
+            <a href="/myaccount/create-account">Continue as a new customer</a>.
           </div>
           <div className="shop-confidence">
             <Image src={LockIcon} alt="lock-icon" />
