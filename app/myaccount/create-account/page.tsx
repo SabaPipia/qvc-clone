@@ -4,19 +4,19 @@ import "./page.scss";
 
 import React, { useState } from "react";
 import Link from "next/link";
-
 import { useRouter } from "next/navigation";
-
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export default function CreateAccount() {
+  const { push } = useRouter();
+
   const [isFloorAddressVisible, setIsFloorAddressVisible] = useState(false);
+  const [isError, setError] = useState(false);
   const [isPasswordVisible, setPasswordVissible] = useState({
     password: false,
     repassword: false,
   });
-  const { push } = useRouter();
 
   const [inputValues, setInputValues] = useState({
     email: "",
@@ -117,21 +117,19 @@ export default function CreateAccount() {
           return updateProfile(user, { displayName }).then(() => push("/"));
         })
         .catch((error) => {
-          if (error.message.includes("invalid-email")) {
-            setInputErrors({ ...inputErrors, email: "Invalid email address" });
-          }
+          setError(true);
         });
-    }
-    if (!inputValues.email) {
-      setInputErrors({ ...inputErrors, email: "Email is required" });
-    }
-    if (!inputValues.firstName) {
-      setInputErrors({ ...inputErrors, firstName: "First Name is required" });
     }
   };
   return (
     <div className="create-account-wrapper container">
       <form onSubmit={singUp}>
+        <div
+          className="create-account-error-container"
+          style={{ height: `${isError ? "5.2rem" : "0rem"}` }}
+        >
+          Please review the error(s) below.
+        </div>
         <div className="email-input-wrapper input-wrapper">
           <div>
             <input
