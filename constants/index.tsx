@@ -77,12 +77,7 @@ export const myAccount = [
   },
   {
     heading: "Settings",
-    links: [
-      "Account Settings",
-      "Shipping Addresses",
-      "Email Preferences",
-      "Show Tune-In Reminders",
-    ],
+    links: ["Account Settings", "Shipping Addresses", "Email Preferences"],
   },
   {
     heading: "Payment Methods",

@@ -1,0 +1,33 @@
+.wishlist-page-wrapper {
+  width: 116rem;
+  max-width: 100%;
+  .wishlist-page__heading {
+    display: flex;
+    border-bottom: 1px solid rgb(61, 61, 68);
+    h2 {
+      font-size: 3.2rem;
+      border-right: 1px solid rgb(61, 61, 68);
+      padding: 0.4rem 2.2rem;
+      color: #28334a;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+  }
+  .wishlist-page__products-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .products__empty-heading {
+      color: #28334a;
+      font-size: 3.8rem;
+      font-style: italic;
+      padding: 4.2rem;
+    }
+    .products__empty-span {
+      border-top: 2px solid #28334a;
+      padding-top: 2.2rem;
+      font-size: 1.6rem;
+      color: #4a4a4a;
+    }
+  }
+}

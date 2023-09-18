@@ -27,9 +27,10 @@ export default function MyAccount() {
                 <h3>{item.heading}</h3>
                 <ul>
                   {item.links.map((i) => {
+                    const link = i.split(" ").join("").toLocaleLowerCase();
                     return (
                       <li>
-                        <Link href="#">{i}</Link>
+                        <Link href={`/myaccount/resources/${link}`}>{i}</Link>
                       </li>
                     );
                   })}
