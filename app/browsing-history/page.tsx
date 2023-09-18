@@ -13,8 +13,6 @@ import Image from "next/image";
 function Category() {
   const [renderPattern, setRenderPattern] = useState("grid");
 
-  const pathname = usePathname();
-
   return (
     <div className="container">
       <div className="category-page-wrapper">
