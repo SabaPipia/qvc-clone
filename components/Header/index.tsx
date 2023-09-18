@@ -96,7 +96,7 @@ function Header() {
                     <li>Create Account</li>
                   </Link>
                 ) : null}
-                <Link href="#">
+                <Link href="/myaccount">
                   <li>My Account</li>
                 </Link>
                 <Link href="/order-status">

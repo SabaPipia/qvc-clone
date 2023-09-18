@@ -1,0 +1,64 @@
+.my-account-wrapper {
+  width: 116rem;
+  max-width: 100%;
+  .my-account__profile {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    .profile__avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: 70px;
+      background-color: rgb(226, 226, 226);
+      border-radius: 50%;
+      box-sizing: border-box;
+      img {
+        border-radius: 50%;
+        border: 3px solid rgb(226, 226, 226);
+        box-sizing: border-box;
+      }
+    }
+    .profile__info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      h3 {
+        font-size: 2rem;
+        color: #28334a;
+        font-weight: 500;
+      }
+      span {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: #333;
+      }
+    }
+  }
+  .my-account__options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 2.4rem;
+    .option__item {
+      h3 {
+        font-size: 2.4rem;
+        color: #28334a;
+      }
+      ul {
+        margin-top: 2.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.2rem;
+      }
+      ul li {
+        font-size: 1.6rem;
+        a:link,
+        a:visited {
+          color: #4a4a4a;
+        }
+      }
+    }
+  }
+}

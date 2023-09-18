@@ -64,3 +64,42 @@ export const footerLink = [
     ],
   },
 ];
+
+export const myAccount = [
+  {
+    heading: "Order Management",
+    links: [
+      "Order Statues",
+      "Manage Easy Pay Orders",
+      "Manage Auto-Delivery Orders",
+      "Write a Review",
+    ],
+  },
+  {
+    heading: "Settings",
+    links: [
+      "Account Settings",
+      "Shipping Addresses",
+      "Email Preferences",
+      "Show Tune-In Reminders",
+    ],
+  },
+  {
+    heading: "Payment Methods",
+    links: [
+      "Manage Payment Methods",
+      "Manage & Pay QCard",
+      "Learn More & Apply for a QCard",
+    ],
+  },
+  {
+    heading: "Resources",
+    links: [
+      "Wish List",
+      "Returns & Exchanges",
+      "My Recommendations",
+      "Browsing History",
+      "Contact Us",
+    ],
+  },
+];

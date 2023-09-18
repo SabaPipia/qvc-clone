@@ -146,7 +146,7 @@ export default function Login() {
               </div>
             </form>
             <div className="new-to-qvc">
-              New to QVC?{" "}
+              New to QVC?
               <a href="/myaccount/create-account">Continue as a new customer</a>
               .
             </div>
