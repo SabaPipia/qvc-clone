@@ -20,7 +20,7 @@ export default function MyAccount() {
           </div>
           <div className="profile__info">
             <h3>
-              Hello{" "}
+              Hello,{" "}
               {context?.displayName != null
                 ? `${context.displayName}`
                 : "Guest"}
