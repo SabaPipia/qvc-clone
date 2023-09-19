@@ -78,7 +78,7 @@ function Header() {
             </div>
             <span className="right-side-text">
               {context?.displayName != null
-                ? `Hi,${context.displayName}`
+                ? `Hi, ${context.displayName}`
                 : "Sign In"}
             </span>
             <Image src={drowDownIcon} width={12} height={12} alt="drow down" />
@@ -99,7 +99,7 @@ function Header() {
                 <Link href="/myaccount">
                   <li>My Account</li>
                 </Link>
-                <Link href="/order-status">
+                <Link href="/myaccount/ordermanagement/orderstatus">
                   <li>Order Status</li>
                 </Link>
                 <Link href={!context ? "/myaccount/login" : "#"}>
@@ -111,11 +111,17 @@ function Header() {
                 <Link href={!context ? "/myaccount/login" : "#"}>
                   <li>Pay My QCard Bill</li>
                 </Link>
-                <Link href={!context ? "/myaccount/login" : "#"}>
+                <Link
+                  href={
+                    !context
+                      ? "/myaccount/login"
+                      : "/myaccount/resources/wishlist"
+                  }
+                >
                   <li>Wish List</li>
                 </Link>
                 {!context ? (
-                  <Link href="/browsing-history">
+                  <Link href="/myaccount/resources/browsinghistory">
                     <li>Browsing History</li>
                   </Link>
                 ) : null}

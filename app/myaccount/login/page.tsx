@@ -64,7 +64,7 @@ export default function Login() {
       signInWithEmailAndPassword(auth, inputValues.email, inputValues.password)
         .then((userCredentials) => {
           if (userCredentials) {
-            push("/");
+            push("/myaccount");
           }
         })
         .catch((error) => setError(true));

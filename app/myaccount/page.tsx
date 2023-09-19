@@ -1,13 +1,16 @@
+"use client";
 import "./page.scss";
 
 import { myAccount } from "@/constants";
 
-import React from "react";
+import React, { useContext } from "react";
 import UserAvatar from "@/public/assets/icons8-person-64.png";
 import Image from "next/image";
 import Link from "next/link";
+import { userAuth } from "@/app/provider";
 
 export default function MyAccount() {
+  const context = useContext(userAuth);
   return (
     <div className="container">
       <div className="my-account-wrapper">
@@ -16,7 +19,12 @@ export default function MyAccount() {
             <Image src={UserAvatar} alt="user image" />
           </div>
           <div className="profile__info">
-            <h3>Hello, John!</h3>
+            <h3>
+              Hello{" "}
+              {context?.displayName != null
+                ? `${context.displayName}`
+                : "Guest"}
+            </h3>
             <span>We're happy you're here</span>
           </div>
         </div>
@@ -30,7 +38,14 @@ export default function MyAccount() {
                     const link = i.split(" ").join("").toLocaleLowerCase();
                     return (
                       <li>
-                        <Link href={`/myaccount/resources/${link}`}>{i}</Link>
+                        <Link
+                          href={`/myaccount/${item.heading
+                            .split(" ")
+                            .join("")
+                            .toLocaleLowerCase()}/${link}`}
+                        >
+                          {i}
+                        </Link>
                       </li>
                     );
                   })}

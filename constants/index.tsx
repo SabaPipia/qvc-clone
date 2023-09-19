@@ -69,7 +69,7 @@ export const myAccount = [
   {
     heading: "Order Management",
     links: [
-      "Order Statues",
+      "Order Status",
       "Manage Easy Pay Orders",
       "Manage Auto-Delivery Orders",
       "Write a Review",
@@ -91,7 +91,6 @@ export const myAccount = [
     heading: "Resources",
     links: [
       "Wish List",
-      "Returns & Exchanges",
       "My Recommendations",
       "Browsing History",
       "Contact Us",
