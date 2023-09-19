@@ -68,24 +68,15 @@ export const footerLink = [
 export const myAccount = [
   {
     heading: "Order Management",
-    links: [
-      "Order Status",
-      "Manage Easy Pay Orders",
-      "Manage Auto-Delivery Orders",
-      "Write a Review",
-    ],
+    links: ["Order Status", "Write a Review"],
   },
   {
     heading: "Settings",
-    links: ["Account Settings", "Shipping Addresses", "Email Preferences"],
+    links: ["Account Settings", "Shipping Addresses"],
   },
   {
     heading: "Payment Methods",
-    links: [
-      "Manage Payment Methods",
-      "Manage & Pay QCard",
-      "Learn More & Apply for a QCard",
-    ],
+    links: ["Manage Payment Methods", "Learn More & Apply for a QCard"],
   },
   {
     heading: "Resources",
