@@ -11,6 +11,7 @@ interface User {
   displayName: string;
   email: string;
   password: string;
+  phoneNumber: number;
 }
 
 export const userAuth = createContext<User | null>(null);

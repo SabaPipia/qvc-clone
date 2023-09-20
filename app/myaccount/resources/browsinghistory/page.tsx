@@ -17,7 +17,6 @@ export default function BrowsingHistory() {
   useEffect(() => {
     dispatch(getHistory());
   }, [dispatch]);
-  console.log(loading ? "loading" : history);
   return (
     <div className="container">
       <div className="browsing-history-page-wrapper">
