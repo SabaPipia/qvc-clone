@@ -1,0 +1,180 @@
+hr {
+  border: none;
+  height: 1px;
+  background-color: #33333365;
+  margin: 2.2rem 0rem;
+  width: 70%;
+}
+.contact-us-wrapper {
+  width: 116rem;
+  max-width: 100%;
+  .contact-us-container {
+    padding: 1.8rem 0rem;
+    border: 1px solid #dddddd;
+    width: 70%;
+    .main-heading {
+      padding: 2.2rem 2.4rem;
+      box-sizing: border;
+      border-left: 10px solid #eb5d5e;
+      padding-bottom: 0.2rem;
+      h2 {
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: #eb5d5e;
+      }
+    }
+    .contact-us__customer-service {
+      h3 {
+        font-size: 3.2rem;
+        font-weight: 600;
+        color: #333333d2;
+        margin-bottom: 2.2rem;
+      }
+      span {
+        color: #333333d2;
+        font-size: 2.2rem;
+      }
+      p {
+        color: #333333d2;
+        font-size: 1.4rem;
+        width: 100%;
+        margin-top: 1.2rem;
+        line-height: 1.8rem;
+      }
+    }
+    .contact-us__where-talk {
+      .where-talk__chat {
+        .chat__heading {
+          display: flex;
+          align-items: center;
+          gap: 1.2rem;
+          span {
+            font-size: 2.2rem;
+            color: #333333d2;
+            font-weight: 600;
+          }
+        }
+        .chat__content {
+          margin: 1.2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1.8rem;
+          font-size: 1.6rem;
+          color: #333333d2;
+        }
+      }
+      .where-talk__call {
+        .call__heading {
+          display: flex;
+          align-items: center;
+          gap: 1.2rem;
+          span {
+            font-size: 2.2rem;
+            color: #333333d2;
+            font-weight: 600;
+          }
+          margin-bottom: 2.2rem;
+        }
+        .call__person-to-person {
+          font-size: 1.4rem;
+        }
+        .call__content {
+          margin: 1.2rem;
+          ul {
+            color: #333333d2;
+            list-style: disc;
+            .call__main-li {
+              font-size: 1.6rem;
+              margin-bottom: 2.4rem;
+            }
+            li {
+              margin-left: 2.2rem;
+            }
+            ul {
+              display: flex;
+              flex-direction: column;
+              gap: 0.8rem;
+            }
+            ul li {
+              margin-left: 5.2rem;
+              font-size: 1.4rem;
+            }
+          }
+        }
+        span {
+          display: flex;
+          margin-top: 2.2rem;
+          margin-bottom: 2.2rem;
+          font-size: 1.4rem;
+          color: #333333d2;
+        }
+      }
+    }
+    .q-card-information {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      align-items: center;
+      margin: 2.2rem;
+      div {
+        display: flex;
+        flex-direction: column;
+        color: #333333d2;
+        font-weight: 500;
+        font-size: 1.4rem;
+        .q-card-info__heading {
+          display: flex;
+          font-size: 1.8rem;
+          margin-bottom: 2.2rem;
+          color: #333333d2;
+          font-weight: 600;
+        }
+        h4 {
+          color: #333;
+        }
+        .info_last {
+          display: flex;
+          margin-top: 2.2rem;
+          font-style: italic;
+        }
+      }
+    }
+    .useful-info {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      .info__useful {
+        span {
+          color: #333333d2;
+          font-size: 1.4rem;
+        }
+        button {
+          background-color: #fff;
+          border: 2px solid #eb5d5e;
+          padding: 0.8rem 1.2rem;
+          margin-left: 1.8rem;
+          border-radius: 4px;
+          color: #eb5d5e;
+          cursor: pointer;
+          &:hover {
+            background-color: #eb5d5e;
+            color: #fff;
+          }
+        }
+      }
+      .info__share {
+        font-size: 1.3rem;
+        color: #333333d2;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+          color: #eb5d5e;
+        }
+      }
+    }
+  }
+}
+.m-container {
+  margin: 5.2rem 3.4rem;
+}
