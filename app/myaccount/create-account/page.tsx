@@ -94,7 +94,7 @@ export default function CreateAccount() {
     });
   };
 
-  const singUp = (e: any) => {
+  const signUp = async (e: any) => {
     e.preventDefault();
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -123,7 +123,7 @@ export default function CreateAccount() {
   };
   return (
     <div className="create-account-wrapper container">
-      <form onSubmit={singUp}>
+      <form onSubmit={signUp}>
         <div
           className="create-account-error-container"
           style={{ height: `${isError ? "5.2rem" : "0rem"}` }}

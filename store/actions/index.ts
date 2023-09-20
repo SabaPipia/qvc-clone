@@ -1,3 +1,4 @@
+import { ProductItem } from "@/types";
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,
@@ -22,6 +23,9 @@ import {
   GET_SINGLE_ITEM,
   SINGLE_ITEM_ERROR,
   SingleItemInterface,
+  AllProductsInterface,
+  GET_ALL_PRODUCTS,
+  ALL_PRODUCTS_ERROR,
 } from "../types";
 import { Dispatch } from "redux";
 
@@ -182,6 +186,25 @@ export const getSingleItem =
     } catch (error) {
       dispatch({
         type: SINGLE_ITEM_ERROR,
+        payload: "error",
+      });
+    }
+  };
+
+export const getAllProducts =
+  () => async (dispatch: Dispatch<AllProductsInterface>) => {
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/products?limit=100&skip=0`
+      );
+      const data = await response.json();
+      dispatch({
+        type: GET_ALL_PRODUCTS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ALL_PRODUCTS_ERROR,
         payload: "error",
       });
     }

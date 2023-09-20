@@ -15,6 +15,8 @@ import {
   ITEM_CATEGORY_ERROR,
   GET_SINGLE_ITEM,
   SINGLE_ITEM_ERROR,
+  GET_ALL_PRODUCTS,
+  ALL_PRODUCTS_ERROR,
 } from "../types";
 
 const initialState = {
@@ -115,6 +117,17 @@ const reducer = (state = initialState, action: any) => {
         loading: false,
       };
     case SINGLE_ITEM_ERROR:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case GET_ALL_PRODUCTS:
+      return {
+        ...state,
+        allProducts: action.payload,
+        loading: false,
+      };
+    case ALL_PRODUCTS_ERROR:
       return {
         loading: false,
         error: action.payload,

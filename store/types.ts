@@ -63,3 +63,11 @@ export interface SingleItemInterface {
   type: typeof GET_SINGLE_ITEM | typeof SINGLE_ITEM_ERROR;
   payload: ProductItem | string;
 }
+
+// get all products
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const ALL_PRODUCTS_ERROR = "ALL_PRODUCTS_ERROR";
+export interface AllProductsInterface {
+  type: typeof GET_ALL_PRODUCTS | typeof ALL_PRODUCTS_ERROR;
+  payload: ProductItem | string;
+}
