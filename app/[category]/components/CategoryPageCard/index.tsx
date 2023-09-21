@@ -1,15 +1,16 @@
-import { getItemByCategory } from "@/store/actions";
 import "./style.scss";
 
 import RatingStar from "@/public/assets/rating-star.png";
 
-import { ProductItem, CategoryPageCard } from "@/types";
-import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
 import ReactLoading from "react-loading";
+import Link from "next/link";
+
+import { ProductItem, CategoryPageCard } from "@/types";
+import { useDispatch, useSelector } from "react-redux";
+import { getItemByCategory } from "@/store/actions";
+import { usePathname } from "next/navigation";
 
 function CategoryPCard({ selectedValue, renderPattern }: CategoryPageCard) {
   const [sortedItems, setSortedItems] = useState<ProductItem[]>([]);
