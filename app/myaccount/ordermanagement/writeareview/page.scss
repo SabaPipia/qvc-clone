@@ -23,6 +23,16 @@
       img {
         cursor: pointer;
       }
+      div {
+        span {
+          font-size: 1.4rem;
+          margin-right: 1.2rem;
+        }
+        #write-review-page__sort {
+          font-size: 1.4rem;
+          cursor: pointer;
+        }
+      }
     }
   }
   .write-review-page__products-wrapper {
@@ -99,6 +109,9 @@
 
 .grid-review {
   .grid-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .write-rev-button:visited,
     .write-rev-button:link {
       display: flex;
@@ -110,8 +123,9 @@
       padding: 1.2rem;
       color: #fff;
       font-size: 1.3rem;
-      margin-top: 1.2rem;
       cursor: pointer;
+      box-sizing: border-box;
+      margin-top: 1.2rem;
     }
   }
   .product-card__image-wrapper {

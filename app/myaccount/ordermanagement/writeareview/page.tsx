@@ -84,7 +84,7 @@ export default function WriteReview() {
               <span>Sort by:</span>
               <select
                 name="sort"
-                id="category-page__sort"
+                id="write-review-page__sort"
                 onChange={(e: any) => setSelectedValue(e.target.value)}
               >
                 <option value="BEST">Best Match</option>
