@@ -25,7 +25,6 @@ export default function Home() {
     };
     window.addEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <main>
       <Hero />

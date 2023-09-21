@@ -24,7 +24,7 @@ function TopSelling() {
 
   return (
     <div className="container top">
-      <div className="top-selling">
+      <div className="top-selling component-wrapper">
         <div className="top-selling__header-wrapper">
           <h2 className="top-selling__heading">Top Selling</h2>
           <Link href="/top-selling">Shop now</Link>

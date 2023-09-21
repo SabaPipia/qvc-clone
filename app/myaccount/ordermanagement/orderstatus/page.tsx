@@ -5,7 +5,7 @@ export default function OrderStatus() {
   return (
     <div>
       <div className="container">
-        <div className="order-status-page-wrapper">
+        <div className="order-status-page-wrapper component-wrapper">
           <div className="order-status-page__heading">
             <h2>Order Status</h2>
           </div>

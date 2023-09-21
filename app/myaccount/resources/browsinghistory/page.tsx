@@ -19,7 +19,7 @@ export default function BrowsingHistory() {
   }, [dispatch]);
   return (
     <div className="container">
-      <div className="browsing-history-page-wrapper">
+      <div className="browsing-history-page-wrapper component-wrapper">
         <div className="browsing-history-page__heading">
           <h2>Browsing History</h2>
         </div>

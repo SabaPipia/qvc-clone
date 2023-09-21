@@ -42,15 +42,15 @@ function SingleProduct({ item }: SingleProduct) {
             navigation={true}
             thumbs={{ swiper: null }}
             modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper2"
+            className="mySwiper3"
           >
             {item.images &&
               item.images.map((img, index) => (
                 <SwiperSlide key={index}>
                   <Image
                     src={`${img}`}
-                    width={5000}
-                    height={500}
+                    width={1000}
+                    height={1000}
                     alt={`${index}`}
                     priority
                   />

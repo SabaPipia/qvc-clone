@@ -4,6 +4,7 @@ import "./page.scss";
 
 import React, { useState } from "react";
 import Link from "next/link";
+
 import { useRouter } from "next/navigation";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -49,7 +50,6 @@ export default function CreateAccount() {
   };
   const handleInputBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,24}$/;
 

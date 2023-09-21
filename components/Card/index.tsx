@@ -7,10 +7,6 @@ import Link from "next/link";
 import React from "react";
 
 function Card({ data }: CardProps) {
-  const SaveItemToLocalStorage = (title: string, id: string) => {
-    localStorage.setItem(`history ${id}`, title);
-  };
-
   return (
     <>
       {data ? (
@@ -18,9 +14,6 @@ function Card({ data }: CardProps) {
           <Link
             href={`/${data.category}/${data.id}`}
             className="main-card__item-link"
-            onClick={() =>
-              SaveItemToLocalStorage(data.title, data.id.toString())
-            }
           >
             <div className="main-card-image">
               <Image

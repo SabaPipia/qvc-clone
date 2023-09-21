@@ -9,11 +9,10 @@ import Image from "next/image";
 import React from "react";
 
 function Footer() {
-  const emptyArray = new Array(8).fill(null);
   return (
     <>
       <div className="footer-usr-bg footer-bg">
-        <div className="footer__user">
+        <div className="footer__user component-wrapper">
           <div className="stay-in-touch user-option-wrapper">
             <Image
               src={stayInTouch.icon}
@@ -76,8 +75,8 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer-bg footer-main-bg">
-        <div className="footer-main">
+      <div className="footer-main-bg footer-bg">
+        <div className="footer-main component-wrapper">
           <div className="footer__about-company">
             <Image src={logo} width={60} height={60} alt="company logo" />
             <p>This is hopping brought to life</p>

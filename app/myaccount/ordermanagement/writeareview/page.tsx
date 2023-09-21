@@ -57,7 +57,7 @@ export default function WriteReview() {
 
   return (
     <div className="container">
-      <div className="write-review-page-wrapper">
+      <div className="write-review-page-wrapper component-wrapper">
         <div className="write-review-page__heading">
           <div>
             <h1>Write a Review</h1>

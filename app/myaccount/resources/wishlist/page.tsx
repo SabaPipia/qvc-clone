@@ -5,7 +5,7 @@ import React from "react";
 export default function WishList() {
   return (
     <div className="container">
-      <div className="wishlist-page-wrapper">
+      <div className="wishlist-page-wrapper component-wrapper">
         <div className="wishlist-page__heading">
           <h2>My Wish List</h2>
         </div>

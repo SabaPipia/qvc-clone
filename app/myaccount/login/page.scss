@@ -1,6 +1,4 @@
 .login-page-wrapper {
-  width: 116rem;
-  max-width: 100%;
   .login-page__heading {
     font-size: 1.6rem;
     color: #091035;
@@ -44,6 +42,10 @@
       padding: 0.2rem 0.6rem;
     }
   }
+  .password-input-wrapper {
+    margin-top: 1.2rem;
+  }
+
   .login__button-wrapper {
     margin-top: 1.2rem;
     button {
@@ -60,48 +62,41 @@
       }
     }
   }
-}
-
-.password-input-wrapper {
-  margin-top: 1.2rem;
-}
-
-.password-reset-wrapper {
-  margin: 3.2rem 0rem;
-  a:link,
-  a:visited {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.6rem;
-    &:hover {
-      text-decoration: underline;
+  .password-reset-wrapper {
+    margin: 3.2rem 0rem;
+    a:link,
+    a:visited {
+      color: #333;
+      text-decoration: none;
+      font-size: 1.6rem;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
-}
-
-.new-to-qvc {
-  font-weight: 700;
-  margin-top: 5.2rem;
-  font-size: 1.4rem;
-  color: #333;
-  a:visited,
-  a:link {
-    color: #333;
-    font-weight: 400;
-  }
-}
-
-.shop-confidence {
-  margin-top: 2.4rem;
-  width: 40%;
-  display: flex;
-  align-items: flex-end;
-  span {
+  .new-to-qvc {
+    font-weight: 700;
+    margin-top: 5.2rem;
     font-size: 1.4rem;
-    line-height: 2rem;
     color: #333;
-    a {
+    a:visited,
+    a:link {
       color: #333;
+      font-weight: 400;
+    }
+  }
+  .shop-confidence {
+    margin-top: 2.4rem;
+    width: 40%;
+    display: flex;
+    align-items: flex-end;
+    span {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: #333;
+      a {
+        color: #333;
+      }
     }
   }
 }

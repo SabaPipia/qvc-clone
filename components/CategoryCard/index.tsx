@@ -1,11 +1,9 @@
-import { CategoryCardProps } from "@/types";
 import "./style.scss";
 
-import categoryImage from "@/public/assets/categoryImgDummy.jpg";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-import React from "react";
+import { CategoryCardProps } from "@/types";
 
 function CategoryCard({ item }: CategoryCardProps) {
   return (

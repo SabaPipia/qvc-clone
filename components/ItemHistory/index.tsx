@@ -32,7 +32,7 @@ function ItemHistory() {
         </div>
       ) : history && history.length >= 1 ? (
         <div className="container top">
-          <div className="top-selling">
+          <div className="top-selling component-wrapper">
             <div className="top-selling__header-wrapper">
               <h2 className="top-selling__heading">Items You've Viewed</h2>
               <Link href="/browsing-history">See My Browsing History</Link>

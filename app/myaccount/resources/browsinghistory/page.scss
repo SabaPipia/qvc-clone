@@ -1,6 +1,4 @@
 .browsing-history-page-wrapper {
-  width: 116rem;
-  max-width: 100%;
   .browsing-history-page__heading {
     display: flex;
     border-bottom: 1px solid rgb(61, 61, 68);
@@ -34,7 +32,7 @@
 
 .category-page-main-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2.4rem;
   margin-top: 2.2rem;
   .category-page-card {

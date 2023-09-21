@@ -72,7 +72,7 @@ export default function Login() {
   };
   return (
     <div className="container">
-      <div className="login-container">
+      <div className="login-container component-wrapper">
         <div
           className="login-error-container"
           style={{ height: `${isError ? "5.2rem" : "0rem"}` }}

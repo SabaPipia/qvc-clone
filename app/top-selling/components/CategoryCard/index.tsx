@@ -4,13 +4,13 @@ import "./style.scss";
 
 import RatingStar from "@/public/assets/rating-star.png";
 
-import { ProductItem, BrowsingPageCard } from "@/types";
 import Image from "next/image";
+import ReactLoading from "react-loading";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import { ProductItem, BrowsingPageCard } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopSelling } from "@/store/actions";
-import ReactLoading from "react-loading";
 
 function CategoryPageCard({ renderPattern }: BrowsingPageCard) {
   const dispatch: any = useDispatch();

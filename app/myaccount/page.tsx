@@ -13,7 +13,7 @@ export default function MyAccount() {
   const context = useContext(userAuth);
   return (
     <div className="container">
-      <div className="my-account-wrapper">
+      <div className="my-account-wrapper component-wrapper">
         <div className="my-account__profile">
           <div className="profile__avatar">
             <Image src={UserAvatar} alt="user image" />
@@ -29,15 +29,15 @@ export default function MyAccount() {
           </div>
         </div>
         <div className="my-account__options">
-          {myAccount.map((item) => {
+          {myAccount.map((item, index) => {
             return (
-              <div className="option__item">
+              <div className="option__item" key={index}>
                 <h3>{item.heading}</h3>
                 <ul>
-                  {item.links.map((i) => {
+                  {item.links.map((i, index) => {
                     const link = i.split(" ").join("").toLocaleLowerCase();
                     return (
-                      <li>
+                      <li key={index}>
                         <Link
                           href={`/myaccount/${item.heading
                             .split(" ")

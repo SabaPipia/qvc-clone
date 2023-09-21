@@ -1,6 +1,4 @@
 .category-page-wrapper {
-  width: 116rem;
-  max-width: 100%;
   .category-page-heading {
     display: flex;
     justify-content: space-between;
@@ -11,6 +9,16 @@
       text-transform: uppercase;
       font-weight: 600;
     }
+    .toggle-wrapper {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+      .toggle__pattern {
+        img {
+          cursor: pointer;
+        }
+      }
+    }
     .category-page__sort-dropdown {
       span {
         font-size: 1.6rem;
@@ -18,17 +26,6 @@
         font-weight: 400;
         margin-right: 2.2rem;
       }
-    }
-  }
-}
-
-.toggle-wrapper {
-  display: flex;
-  gap: 2.2rem;
-  align-items: center;
-  .toggle__pattern {
-    img {
-      cursor: pointer;
     }
   }
 }

@@ -58,12 +58,14 @@
     }
   }
 }
+
 .category-grid-wrapper-list,
 .category-list-wrapper-list {
   display: grid;
   padding: 1.1rem;
   gap: 2rem;
 }
+
 .category-grid-wrapper-list {
   grid-template-columns: 1fr 1fr 1fr;
 }

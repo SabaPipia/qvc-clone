@@ -5,7 +5,7 @@ import GridIcon from "@/public/assets/grid-icon.png";
 import ListIcon from "@/public/assets/list-icon.png";
 
 import React, { useState } from "react";
-import { CategoryPageCard } from "./components";
+import CategoryPageCard from "./components/CategoryCard";
 import Image from "next/image";
 
 function Category() {
@@ -13,7 +13,7 @@ function Category() {
 
   return (
     <div className="container">
-      <div className="category-page-wrapper">
+      <div className="category-page-wrapper component-wrapper">
         <div className="category-page-heading">
           <span>Top Selling</span>
           <div className="toggle-wrapper">

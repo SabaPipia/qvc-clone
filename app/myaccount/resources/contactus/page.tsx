@@ -8,7 +8,7 @@ import CallIcon from "@/public/assets/icons8-call-50.png";
 export default function ContactUs() {
   return (
     <div className="container">
-      <div className="contact-us-wrapper">
+      <div className="contact-us-wrapper component-wrapper">
         <div className="contact-us-container">
           <div className="main-heading">
             <h2>Contact Us</h2>
