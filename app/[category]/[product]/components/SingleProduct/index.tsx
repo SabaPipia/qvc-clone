@@ -9,17 +9,14 @@ import "./style.scss";
 import CartIcon from "@/public/assets/icons8-cart-64.png";
 import BankCard from "@/public/assets/credit-card-svgrepo-com.svg";
 
-import { ProductItem, SingleProduct } from "@/types";
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
-
+import { ProductItem, SingleProduct } from "@/types";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavourite } from "@/store/actions";
-import { spec } from "node:test/reporters";
-import { spawn } from "child_process";
 
 function SingleProduct({ item }: SingleProduct) {
   const [quantity, setQuantity] = useState(1);
