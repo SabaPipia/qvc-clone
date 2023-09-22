@@ -27,13 +27,12 @@ function ProviderWrapper({ children }: { children: React.ReactNode }) {
   const [renderChildren, setRenderChildren] = useState<boolean>(false);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setRenderChildren(true);
+    }, 1000);
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
-        const timer = setTimeout(() => {
-          setRenderChildren(true);
-        }, 1000);
-        return () => clearTimeout(timer);
       } else {
         setAuthUser(null);
       }
@@ -45,7 +44,7 @@ function ProviderWrapper({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
       <userAuth.Provider value={authUser}>
-        {authUser ? renderChildren && children : children}
+        {renderChildren && children}
       </userAuth.Provider>
     </Provider>
   );
