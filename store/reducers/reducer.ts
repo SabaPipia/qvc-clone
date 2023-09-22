@@ -17,6 +17,8 @@ import {
   SINGLE_ITEM_ERROR,
   GET_ALL_PRODUCTS,
   ALL_PRODUCTS_ERROR,
+  GET_FAVOURITES,
+  FAVOURITES_ERROR,
 } from "../types";
 
 const initialState = {
@@ -29,6 +31,7 @@ const initialState = {
   history: [],
   itemCategory: [],
   singleProduct: [],
+  favourites: [],
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -128,6 +131,17 @@ const reducer = (state = initialState, action: any) => {
         loading: false,
       };
     case ALL_PRODUCTS_ERROR:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case GET_FAVOURITES:
+      return {
+        ...state,
+        favourites: action.payload,
+        loading: false,
+      };
+    case FAVOURITES_ERROR:
       return {
         loading: false,
         error: action.payload,

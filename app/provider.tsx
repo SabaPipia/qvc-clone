@@ -21,13 +21,11 @@ interface User {
 export const userAuth = createContext<User | null>(null);
 
 function ProviderWrapper({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const { push } = useRouter();
   const [authUser, setAuthUser] = useState<any>(null);
   const [renderChildren, setRenderChildren] = useState<boolean>(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setRenderChildren(true);
     }, 1000);
     const listen = onAuthStateChanged(auth, (user) => {

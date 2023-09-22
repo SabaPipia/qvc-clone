@@ -1,8 +1,20 @@
 .single-product-wrapper {
-  .product-title {
-    font-size: 2.8rem;
-    color: #232846;
-    margin-bottom: 1.2rem;
+  .product-title__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        animation: beat 0.4s infinite alternate;
+      }
+    }
+    .product-title {
+      font-size: 2.8rem;
+      color: #232846;
+      margin-bottom: 1.2rem;
+    }
   }
   .main-product-container {
     max-width: 116rem;
@@ -122,5 +134,11 @@
         }
       }
     }
+  }
+}
+
+@keyframes beat {
+  to {
+    transform: scale(1.1);
   }
 }

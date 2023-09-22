@@ -71,3 +71,10 @@ export interface AllProductsInterface {
   type: typeof GET_ALL_PRODUCTS | typeof ALL_PRODUCTS_ERROR;
   payload: ProductItem | string;
 }
+
+export const GET_FAVOURITES = "GET_FAVOURITES";
+export const FAVOURITES_ERROR = "FAVOURITES_ERROR";
+export interface FavouritesInterface {
+  type: typeof GET_FAVOURITES | typeof FAVOURITES_ERROR;
+  payload: ProductItem[] | string;
+}

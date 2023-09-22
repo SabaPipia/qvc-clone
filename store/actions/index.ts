@@ -26,6 +26,9 @@ import {
   AllProductsInterface,
   GET_ALL_PRODUCTS,
   ALL_PRODUCTS_ERROR,
+  FavouritesInterface,
+  GET_FAVOURITES,
+  FAVOURITES_ERROR,
 } from "../types";
 import { Dispatch } from "redux";
 
@@ -147,6 +150,35 @@ export const getHistory =
     } catch (error) {
       dispatch({
         type: HISTORY_ERROR,
+        payload: "error",
+      });
+    }
+  };
+
+export const getFavourite =
+  () => async (dispatch: Dispatch<FavouritesInterface>) => {
+    try {
+      const localStorageKeys = Object.keys(localStorage);
+      const itemKeysHistory = localStorageKeys.filter((k) =>
+        k.startsWith("favourite")
+      );
+      const itemPromises = itemKeysHistory.map(async (item) => {
+        const itemId = item.split(" ")[1];
+        const response = await fetch(
+          `https://dummyjson.com/products/${itemId}`
+        );
+        const responseJson = await response.json();
+        return responseJson;
+      });
+      const items = await Promise.all(itemPromises);
+
+      dispatch({
+        type: GET_FAVOURITES,
+        payload: items,
+      });
+    } catch (error) {
+      dispatch({
+        type: FAVOURITES_ERROR,
         payload: "error",
       });
     }

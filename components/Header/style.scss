@@ -29,12 +29,16 @@ header {
       .dropdown-menu {
         position: absolute;
         display: none;
+        opacity: 0;
         gap: 10px;
         z-index: 99;
-        bottom: -530px;
+        top: 40px;
         width: 230px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.309);
         background-color: #fff;
+        transition: all 1s;
+        // height: 0px;
+        // overflow: hidden;
         ul a {
           text-decoration: none;
           color: #333;
@@ -58,6 +62,7 @@ header {
         }
         &:hover .dropdown-menu {
           display: block;
+          opacity: 1;
         }
       }
       p {

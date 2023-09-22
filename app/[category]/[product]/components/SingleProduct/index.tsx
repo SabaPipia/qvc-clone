@@ -9,15 +9,22 @@ import "./style.scss";
 import CartIcon from "@/public/assets/icons8-cart-64.png";
 import BankCard from "@/public/assets/credit-card-svgrepo-com.svg";
 
-import { SingleProduct } from "@/types";
-import React, { useState } from "react";
+import { ProductItem, SingleProduct } from "@/types";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getFavourite } from "@/store/actions";
+import { spec } from "node:test/reporters";
+import { spawn } from "child_process";
+
 function SingleProduct({ item }: SingleProduct) {
   const [quantity, setQuantity] = useState(1);
+  const [isFavourite, setIsFavourite] = useState(false);
+
   const decreaceHandler = () => {
     if (quantity != 1) {
       setQuantity(quantity - 1);
@@ -32,9 +39,58 @@ function SingleProduct({ item }: SingleProduct) {
       console.log("u cant increase item count anymore");
     }
   };
+
+  const dispatch: any = useDispatch();
+  const DATA = useSelector((state: any) => state.data);
+  let { favourites } = DATA;
+  useEffect(() => {
+    dispatch(getFavourite());
+  }, [dispatch]);
+
+  useEffect(() => {
+    favourites.map((i: ProductItem) => {
+      if (i.id === item.id) {
+        setIsFavourite(true);
+      }
+    });
+  }, [favourites]);
+
+  const handleFavourite = () => {
+    const favItem = localStorage.getItem(`favourite ${item.id}`);
+    if (favItem === null) {
+      localStorage.setItem(`favourite ${item.id}`, item.title);
+    } else if (favItem) {
+      localStorage.removeItem(`favourite ${item.id}`);
+    }
+    setIsFavourite(!isFavourite);
+  };
   return (
     <div className="single-product-wrapper">
-      <h1 className="product-title">{item.title}</h1>
+      <div className="product-title__wrapper">
+        <h1 className="product-title">
+          {item.title}
+          {item.id}
+        </h1>
+        <span onClick={handleFavourite}>
+          <svg
+            width="40px"
+            height="40px"
+            viewBox="0 0 24 24"
+            fill={`${isFavourite ? "#F48A75" : "#fff"}`}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
+              stroke={`${isFavourite ? "#F48A75" : "#000"}`}
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
       <div className="main-product-container">
         <div className="product-carousel">
           <Swiper
