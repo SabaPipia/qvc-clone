@@ -5,14 +5,14 @@ import "./page.scss";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { getHistory } from "@/store/actions";
-import { ProductItem } from "@/types";
+import { ProductItem, appState } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
 import RatingStar from "@/public/assets/rating-star.png";
 
 export default function BrowsingHistory() {
-  const dispatch: any = useDispatch();
-  const historyItems = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const historyItems = useSelector((state: appState) => state.data);
   const { history, loading } = historyItems;
   useEffect(() => {
     dispatch(getHistory());

@@ -67,7 +67,7 @@ export default function Login() {
             push("/myaccount");
           }
         })
-        .catch((error) => setError(true));
+        .catch(() => setError(true));
     }
   };
   return (

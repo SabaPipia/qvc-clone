@@ -9,7 +9,7 @@ import RatingStar from "@/public/assets/rating-star.png";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavourite } from "@/store/actions";
-import { ProductItem } from "@/types";
+import { ProductItem, appState } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import ReactLoading from "react-loading";
@@ -17,8 +17,8 @@ import ReactLoading from "react-loading";
 export default function WishList() {
   const [renderPattern, setRenderPattern] = useState("grid");
 
-  const dispatch: any = useDispatch();
-  const DATA = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const DATA = useSelector((state: appState) => state.data);
   const { favourites, loading } = DATA;
   useEffect(() => {
     dispatch(getFavourite());

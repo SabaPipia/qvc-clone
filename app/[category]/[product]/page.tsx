@@ -5,7 +5,7 @@ import "./page.scss";
 import React, { useEffect } from "react";
 
 import { usePathname } from "next/navigation";
-import { ProductItem } from "@/types";
+import { ProductItem, appState } from "@/types";
 import { Accordion, YouMayLike, SingleProduct } from "./components";
 import { getItemByCategory, getSingleItem } from "@/store/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,16 +20,20 @@ function Product() {
   const mayLikeItemsPathname = pathname;
   const mayLikeValidPathname = mayLikeItemsPathname.split("/")[1];
 
-  const dispatch: any = useDispatch();
-  const DATA = useSelector((state: any) => state.data);
+  // ================================================
+  const dispatch: (func: any) => void = useDispatch();
+  console.log(dispatch);
+  const DATA = useSelector((state: appState) => state.data);
   let { singleProduct, itemCategory, loading } = DATA;
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     dispatch(getSingleItem(itemId.toString()));
     dispatch(getItemByCategory(`/${mayLikeValidPathname}`));
   }, [dispatch]);
+
   singleProduct &&
-    localStorage.setItem(`history ${itemId}`, singleProduct?.title);
+    localStorage.setItem(`history ${itemId}`, singleProduct.title);
 
   return (
     <>
@@ -55,7 +59,7 @@ function Product() {
             </div>
           ) : (
             <>
-              <div className="container" onClick={() => (singleProduct = [])}>
+              <div className="container">
                 {singleProduct && <SingleProduct item={singleProduct} />}
               </div>
               <div className="container">

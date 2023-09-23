@@ -1,3 +1,5 @@
+import { promises } from "dns";
+
 export interface CardProps {
   data: {
     id: number;
@@ -45,4 +47,25 @@ export interface BrowsingPageCard {
 }
 export interface SingleProduct {
   item: ProductItem;
+}
+
+export interface appState {
+  data: {
+    loading: true;
+    categories: string[];
+    topSelling: ProductItem[];
+    categoryItem: ProductItem[];
+    searchedItem: ProductItem[];
+    lowStock: ProductItem[];
+    history: ProductItem[];
+    itemCategory: ProductItem[];
+    singleProduct: ProductItem;
+    allProducts: ProductItem[];
+    favourites: ProductItem[];
+  };
+}
+
+export interface actionInterface {
+  type: string;
+  payload: ProductItem | string;
 }

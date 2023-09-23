@@ -7,7 +7,7 @@ import Image from "next/image";
 import ReactLoading from "react-loading";
 import Link from "next/link";
 
-import { ProductItem, CategoryPageCard } from "@/types";
+import { ProductItem, CategoryPageCard, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { getItemByCategory } from "@/store/actions";
 import { usePathname } from "next/navigation";
@@ -16,8 +16,8 @@ function CategoryPCard({ selectedValue, renderPattern }: CategoryPageCard) {
   const [sortedItems, setSortedItems] = useState<ProductItem[]>([]);
   const pathname = usePathname();
 
-  const dispatch: any = useDispatch();
-  const categoryItem = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const categoryItem = useSelector((state: appState) => state.data);
   const { itemCategory, loading } = categoryItem;
 
   useEffect(() => {

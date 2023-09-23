@@ -8,13 +8,13 @@ import Image from "next/image";
 import ReactLoading from "react-loading";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { ProductItem, BrowsingPageCard } from "@/types";
+import { ProductItem, BrowsingPageCard, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopSelling } from "@/store/actions";
 
 function CategoryPageCard({ renderPattern }: BrowsingPageCard) {
-  const dispatch: any = useDispatch();
-  const topSellingData = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const topSellingData = useSelector((state: appState) => state.data);
   const { topSelling, loading } = topSellingData;
 
   useEffect(() => {

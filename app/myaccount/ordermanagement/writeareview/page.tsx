@@ -20,7 +20,7 @@ export default function WriteReview() {
   const [selectedValue, setSelectedValue] = useState("BEST");
   const [sortedItems, setSortedItems] = useState<ProductItem[]>([]);
 
-  const dispatch: any = useDispatch();
+  const dispatch: (func: any) => void = useDispatch();
   const topSellingData = useSelector((state: any) => state.data);
   const { allProducts, loading } = topSellingData;
   useEffect(() => {
@@ -85,7 +85,9 @@ export default function WriteReview() {
               <select
                 name="sort"
                 id="write-review-page__sort"
-                onChange={(e: any) => setSelectedValue(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  setSelectedValue(e.target.value)
+                }
               >
                 <option value="BEST">Best Match</option>
                 <option value="RATING">Highest Rating</option>
@@ -123,6 +125,7 @@ export default function WriteReview() {
                             width={1000}
                             height={1000}
                             alt={item.title}
+                            priority
                           />
                         </div>
                         <div className="product-card__content-wrapper">

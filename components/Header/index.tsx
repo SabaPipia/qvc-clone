@@ -18,12 +18,13 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/app/firebase";
 import { signOut } from "firebase/auth";
 import { userAuth } from "@/app/provider";
+import { appState } from "@/types";
 
 function Header() {
   const context = useContext(userAuth);
 
-  const dispatch: any = useDispatch();
-  const categoriesData = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const categoriesData = useSelector((state: appState) => state.data);
   const { categories } = categoriesData;
 
   useEffect(() => {

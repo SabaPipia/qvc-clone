@@ -18,11 +18,11 @@ function CustomInput() {
   const [isInputClear, setIsInputClear] = useState(true);
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const dispatch: any = useDispatch();
+  const dispatch: (func: any) => void = useDispatch();
   const searchedData = useSelector((state: any) => state.data);
   const { searchedItem } = searchedData;
 
-  const handleSearchInput = (value: any) => {
+  const handleSearchInput = (value: string) => {
     value.length === 0 ? setIsInputClear(true) : setIsInputClear(false);
     if (value.length >= 3) {
       dispatch(getSearchedItem(value));

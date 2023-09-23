@@ -8,14 +8,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import React, { useEffect } from "react";
 import Card from "../Card";
 import Link from "next/link";
-import { ProductItem } from "@/types";
+import { ProductItem, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopSelling } from "@/store/actions";
 import ReactLoading from "react-loading";
 
 function TopSelling() {
-  const dispatch: any = useDispatch();
-  const topSellingData = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const topSellingData = useSelector((state: appState) => state.data);
   const { topSelling, loading } = topSellingData;
 
   useEffect(() => {

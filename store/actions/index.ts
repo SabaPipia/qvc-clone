@@ -1,4 +1,4 @@
-import { ProductItem } from "@/types";
+import { CategoryCardInterface, CategoryCardProps, ProductItem } from "@/types";
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,
@@ -76,10 +76,10 @@ export const getCategoryImages =
       );
       const data = await response.json();
 
-      const categoryArr: any[] = [];
-      const items: any[] = [];
+      const categoryArr: string[] = [];
+      const items: CategoryCardInterface[] = [];
 
-      data.products.map((item: any) => {
+      data.products.map((item: CategoryCardInterface) => {
         if (!categoryArr.includes(item.category)) {
           categoryArr.push(item.category);
           items.push(item);
@@ -104,10 +104,10 @@ export const getTopSelling =
       const response = await fetch("https://dummyjson.com/products?limit=100");
       const data = await response.json();
       const filteredItemsByRating = data.products.filter(
-        (item: any) => item.rating >= 4.9
+        (item: ProductItem) => item.rating >= 4.9
       );
       const filteredItemsByStock = data.products.filter(
-        (item: any) => item.stock <= 10
+        (item: ProductItem) => item.stock <= 10
       );
 
       dispatch({

@@ -5,7 +5,7 @@ import GridIcon from "@/public/assets/grid-icon.png";
 import ListIcon from "@/public/assets/list-icon.png";
 
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { CategoryPCard } from "./components";
 import Image from "next/image";
 
@@ -43,7 +43,9 @@ function Category() {
               <select
                 name="sort"
                 id="category-page__sort"
-                onChange={(e: any) => setSelectedValue(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  setSelectedValue(e.target.value)
+                }
               >
                 <option value="BEST">Best Match</option>
                 <option value="RATING">Highest Rating</option>

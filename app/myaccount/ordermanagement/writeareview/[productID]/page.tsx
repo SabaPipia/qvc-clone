@@ -5,19 +5,18 @@ import "./page.scss";
 import { getSingleItem } from "@/store/actions";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-// import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { appState } from "@/types";
 
 export default function ProductReviewPage() {
   const pathname = usePathname();
   const itemId = pathname.split("/").at(-1);
 
-  const dispatch: any = useDispatch();
-  const DATA = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const DATA = useSelector((state: appState) => state.data);
   let { singleProduct, loading } = DATA;
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function ProductReviewPage() {
               className="mySwiper4"
             >
               {singleProduct.images &&
-                singleProduct.images.map((img: any, index: number) => (
+                singleProduct.images.map((img: string[], index: number) => (
                   <SwiperSlide key={index}>
                     <Image
                       src={`${img}`}

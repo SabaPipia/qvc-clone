@@ -8,15 +8,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import React, { useContext, useEffect } from "react";
 import LowInStockCard from "./Card";
-import { DataContext } from "@/app/provider";
-import { ProductItem } from "@/types";
+import { ProductItem, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopSelling } from "@/store/actions";
 import ReactLoading from "react-loading";
 
 function LowInStock({}) {
-  const dispatch: any = useDispatch();
-  const lowStockItems = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const lowStockItems = useSelector((state: appState) => state.data);
   const { lowStock, loading } = lowStockItems;
 
   useEffect(() => {

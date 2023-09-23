@@ -12,7 +12,7 @@ import BankCard from "@/public/assets/credit-card-svgrepo-com.svg";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ProductItem, SingleProduct } from "@/types";
+import { ProductItem, SingleProduct, appState } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,8 +37,8 @@ function SingleProduct({ item }: SingleProduct) {
     }
   };
 
-  const dispatch: any = useDispatch();
-  const DATA = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const DATA = useSelector((state: appState) => state.data);
   let { favourites } = DATA;
   useEffect(() => {
     dispatch(getFavourite());

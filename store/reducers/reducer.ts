@@ -1,4 +1,4 @@
-import { usePathname } from "next/navigation";
+import { actionInterface } from "@/types";
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,
@@ -31,10 +31,11 @@ const initialState = {
   history: [],
   itemCategory: [],
   singleProduct: [],
+  allProducts: [],
   favourites: [],
 };
 
-const reducer = (state = initialState, action: any) => {
+const reducer = (state = initialState, action: actionInterface) => {
   switch (action.type) {
     case GET_CATEGORIES:
       return {

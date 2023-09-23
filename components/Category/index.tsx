@@ -6,14 +6,14 @@ import "./style.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import React, { useEffect } from "react";
 import CategoryCard from "../CategoryCard";
-import { CategoryCardInterface } from "@/types";
+import { CategoryCardInterface, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryImages } from "@/store/actions";
 import ReactLoading from "react-loading";
 
 function Category() {
-  const dispatch: any = useDispatch();
-  const categoryItems = useSelector((state: any) => state.data);
+  const dispatch: (func: any) => void = useDispatch();
+  const categoryItems = useSelector((state: appState) => state.data);
   const { categoryItem, loading } = categoryItems;
 
   useEffect(() => {
