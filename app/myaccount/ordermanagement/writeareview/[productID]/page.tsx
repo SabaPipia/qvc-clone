@@ -17,7 +17,7 @@ export default function ProductReviewPage() {
 
   const dispatch: (func: any) => void = useDispatch();
   const DATA = useSelector((state: appState) => state.data);
-  let { singleProduct, loading } = DATA;
+  let { singleProduct } = DATA;
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });

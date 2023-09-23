@@ -1,4 +1,4 @@
-import { CategoryCardInterface, CategoryCardProps, ProductItem } from "@/types";
+import { CategoryCardInterface, ProductItem } from "@/types";
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,

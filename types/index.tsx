@@ -1,5 +1,3 @@
-import { promises } from "dns";
-
 export interface CardProps {
   data: {
     id: number;

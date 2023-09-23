@@ -4,10 +4,10 @@ import "./page.scss";
 import GridIcon from "@/public/assets/grid-icon.png";
 import ListIcon from "@/public/assets/list-icon.png";
 
-import { usePathname } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
-import { CategoryPCard } from "./components";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { CategoryPCard } from "./components";
 
 function Category() {
   const [selectedValue, setSelectedValue] = useState("BEST");
