@@ -45,11 +45,13 @@ function SingleProduct({ item }: SingleProduct) {
   }, [dispatch]);
 
   useEffect(() => {
-    favourites.map((i: ProductItem) => {
-      if (i.id === item.id) {
-        setIsFavourite(true);
-      }
-    });
+    if (favourites.length != 0) {
+      favourites.map((i: ProductItem) => {
+        if (i.id === item.id) {
+          setIsFavourite(true);
+        }
+      });
+    }
   }, [favourites]);
 
   const handleFavourite = () => {

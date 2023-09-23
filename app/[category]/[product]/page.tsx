@@ -88,57 +88,6 @@ function Product() {
       )}
     </>
   );
-
-  //  ( singleProduct && singleProduct.id != itemId) ?
-  //   {
-  //     return <div>loading</div>
-  //   }:{
-  //     return "correct"
-  //   }
-  // return (
-  //   <div>
-  //     {!(!loading ?? singleProduct ?? itemCategory) ? (
-  //       <div className="loading-wrapper">
-  //         <ReactLoading
-  //           type={"spokes"}
-  //           color={"#64b0ef"}
-  //           height={100}
-  //           width={100}
-  //         />
-  //       </div>
-  //     ) : (
-  //       <>
-  //         <div className="container" onClick={() => (singleProduct = [])}>
-  //           {singleProduct && <SingleProduct item={singleProduct} />}
-  //         </div>
-  //         <div className="container">
-  //           <div className="accordion-container">
-  //             <Accordion />
-  //           </div>
-  //         </div>
-  //         <div className="may-like">
-  //           <div className="may-like__heading">
-  //             <h3>You May Also Like</h3>
-  //           </div>
-  //           <div className="container">
-  //             <div className="you-may-like-wrapper">
-  //               {singleProduct &&
-  //                 itemCategory &&
-  //                 itemCategory.map((i: ProductItem) => {
-  //                   if (
-  //                     i.title.toLocaleLowerCase() !=
-  //                     singleProduct.title?.toLocaleLowerCase()
-  //                   ) {
-  //                     return <YouMayLike data={i} key={i.id} />;
-  //                   }
-  //                 })}
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </>
-  //     )}
-  //   </div>
-  // );
 }
 
 export default Product;
