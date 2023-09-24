@@ -7,7 +7,7 @@ import drowDownIcon from "@/public/assets/dropdown-50.png";
 import cartIcon from "@/public/assets/icons8-cart-64.png";
 import avatar from "@/public/assets/icons8-person-64.png";
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CustomInput } from "..";
@@ -18,19 +18,25 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/app/firebase";
 import { signOut } from "firebase/auth";
 import { userAuth } from "@/app/provider";
-import { appState } from "@/types";
+import { CartItem, appState } from "@/types";
 
 function Header() {
   const context = useContext(userAuth);
+  const [itemQuantity, setItemQuantity] = useState(0);
 
   const dispatch: (func: any) => void = useDispatch();
-  const categoriesData = useSelector((state: appState) => state.data);
-  const { categories } = categoriesData;
+  const DATA = useSelector((state: appState) => state.data);
+  const { categories, cartItem } = DATA;
 
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+
   const { push } = useRouter();
+
+  useEffect(() => {
+    setItemQuantity(cartItem.length);
+  }, [cartItem]);
 
   const signOutUser = () => {
     signOut(auth)
@@ -141,7 +147,7 @@ function Header() {
             <span>Cart</span>
             <div className="cart__cart-icon">
               <Image src={cartIcon} width={30} height={30} alt="cart icon" />
-              <span className="cart-count">0</span>
+              <span className="cart-count">{itemQuantity}</span>
             </div>
           </div>
         </div>

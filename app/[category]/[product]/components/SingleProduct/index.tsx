@@ -47,7 +47,6 @@ function SingleProduct({ item }: SingleProduct) {
       dispatch(getAllCartItems(cart));
     }
   }, [dispatch, cart]);
-  console.log(DATA);
 
   useEffect(() => {
     if (favourites.length != 0) {
