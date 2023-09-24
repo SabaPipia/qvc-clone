@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/app/firebase";
 import { signOut } from "firebase/auth";
 import { userAuth } from "@/app/provider";
-import { CartItem, appState } from "@/types";
+import { appState } from "@/types";
 
 function Header() {
   const context = useContext(userAuth);
@@ -31,7 +31,6 @@ function Header() {
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
-  console.log(DATA);
 
   const { push } = useRouter();
 

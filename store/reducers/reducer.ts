@@ -158,7 +158,7 @@ const reducer = (state = initialState, action: actionInterface) => {
       const existingItemIndex = updatedCartItem.findIndex(
         (item) => item.id === newItem[0].id
       );
-      console.log(newItem);
+
       if (existingItemIndex === -1) {
         updatedCartItem.push({
           id: newItem[0].id,
