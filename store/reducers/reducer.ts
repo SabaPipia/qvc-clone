@@ -1,4 +1,4 @@
-import { actionInterface } from "@/types";
+import { CartItem, actionInterface } from "@/types";
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,
@@ -19,6 +19,8 @@ import {
   ALL_PRODUCTS_ERROR,
   GET_FAVOURITES,
   FAVOURITES_ERROR,
+  GET_CART_ITEMS,
+  CART_ITEMS_ERROR,
 } from "../types";
 
 const initialState = {
@@ -33,6 +35,7 @@ const initialState = {
   singleProduct: [],
   allProducts: [],
   favourites: [],
+  cartItem: [],
 };
 
 const reducer = (state = initialState, action: actionInterface) => {
@@ -146,6 +149,33 @@ const reducer = (state = initialState, action: actionInterface) => {
       return {
         loading: false,
         error: action.payload,
+      };
+    case GET_CART_ITEMS:
+      const updatedCartItem: CartItem[] = [...state.cartItem];
+      const newItem: any = action.payload;
+      const existingItemIndex = updatedCartItem.findIndex(
+        (item) => item.id === newItem[0].id
+      );
+      console.log(existingItemIndex);
+      if (existingItemIndex === -1) {
+        updatedCartItem.push({
+          id: newItem[0].id,
+          cartI: [newItem],
+          quantity: 1,
+        });
+      } else {
+        updatedCartItem[existingItemIndex].quantity += 1;
+      }
+      return {
+        ...state,
+        cartItem: updatedCartItem,
+        loading: false,
+      };
+
+    case CART_ITEMS_ERROR:
+      return {
+        loading: false,
+        error: "error",
       };
     default:
       return state;

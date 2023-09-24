@@ -28,6 +28,12 @@ export interface ProductItem {
   images: [string[]];
 }
 
+export interface CartItem {
+  id: number;
+  cartI: ProductItem[];
+  quantity: number;
+}
+
 export interface CategoryCardInterface {
   category: string;
   thumbnail: string;
@@ -60,6 +66,7 @@ export interface appState {
     singleProduct: ProductItem;
     allProducts: ProductItem[];
     favourites: ProductItem[];
+    cartItem: ProductItem[];
   };
 }
 

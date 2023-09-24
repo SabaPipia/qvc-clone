@@ -23,7 +23,6 @@ export default function ProductReviewPage() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     dispatch(getSingleItem(itemId + ""));
   }, [dispatch]);
-  console.log(DATA);
   return (
     <div className="container">
       <div className="component-wrapper review__single-product-wrapper">

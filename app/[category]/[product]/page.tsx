@@ -22,7 +22,6 @@ function Product() {
 
   // ================================================
   const dispatch: (func: any) => void = useDispatch();
-  console.log(dispatch);
   const DATA = useSelector((state: appState) => state.data);
   let { singleProduct, itemCategory, loading } = DATA;
 

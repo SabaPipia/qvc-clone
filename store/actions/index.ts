@@ -1,4 +1,4 @@
-import { CategoryCardInterface, ProductItem } from "@/types";
+import { CartItem, CategoryCardInterface, ProductItem } from "@/types";
 import {
   GET_CATEGORIES,
   CATEGORIES_ERROR,
@@ -29,6 +29,9 @@ import {
   FavouritesInterface,
   GET_FAVOURITES,
   FAVOURITES_ERROR,
+  CartInterface,
+  GET_CART_ITEMS,
+  CART_ITEMS_ERROR,
 } from "../types";
 import { Dispatch } from "redux";
 
@@ -237,6 +240,22 @@ export const getAllProducts =
     } catch (error) {
       dispatch({
         type: ALL_PRODUCTS_ERROR,
+        payload: "error",
+      });
+    }
+  };
+
+export const getAllCartItems =
+  (item: CartItem[]) => async (dispatch: Dispatch<CartInterface>) => {
+    // console.log(item);
+    try {
+      dispatch({
+        type: GET_CART_ITEMS,
+        payload: item,
+      });
+    } catch (error) {
+      dispatch({
+        type: CART_ITEMS_ERROR,
         payload: "error",
       });
     }

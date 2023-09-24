@@ -12,15 +12,16 @@ import BankCard from "@/public/assets/credit-card-svgrepo-com.svg";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ProductItem, SingleProduct, appState } from "@/types";
+import { CartItem, ProductItem, SingleProduct, appState } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useDispatch, useSelector } from "react-redux";
-import { getFavourite } from "@/store/actions";
+import { getAllCartItems, getFavourite } from "@/store/actions";
 
 function SingleProduct({ item }: SingleProduct) {
   const [quantity, setQuantity] = useState(1);
   const [isFavourite, setIsFavourite] = useState(false);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   const decreaceHandler = () => {
     if (quantity != 1) {
@@ -42,7 +43,11 @@ function SingleProduct({ item }: SingleProduct) {
   let { favourites } = DATA;
   useEffect(() => {
     dispatch(getFavourite());
-  }, [dispatch]);
+    if (cart.length != 0) {
+      dispatch(getAllCartItems(cart));
+    }
+  }, [dispatch, cart]);
+  console.log(DATA);
 
   useEffect(() => {
     if (favourites.length != 0) {
@@ -63,6 +68,21 @@ function SingleProduct({ item }: SingleProduct) {
     }
     setIsFavourite(!isFavourite);
   };
+
+  const handleAddToCard = () => {
+    const existingItemIndex = cart.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (existingItemIndex !== -1) {
+      const updatedCart = [...cart];
+      updatedCart[existingItemIndex].quantity += 1;
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { id: item.id, cartI: [item], quantity: 1 }]);
+    }
+  };
+
   return (
     <div className="single-product-wrapper">
       <div className="product-title__wrapper">
@@ -140,7 +160,7 @@ function SingleProduct({ item }: SingleProduct) {
             <hr />
           </div>
           <div className="product__buy-buttons-wrapper">
-            <button>
+            <button onClick={handleAddToCard}>
               <Image src={CartIcon} alt="carticon" /> Add To Cart
             </button>
             <button>

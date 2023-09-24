@@ -1,4 +1,4 @@
-import { CategoryCardInterface, ProductItem } from "@/types";
+import { CartItem, CategoryCardInterface, ProductItem } from "@/types";
 
 // categories
 export const GET_CATEGORIES = "GET_CATEGORIES";
@@ -77,4 +77,11 @@ export const FAVOURITES_ERROR = "FAVOURITES_ERROR";
 export interface FavouritesInterface {
   type: typeof GET_FAVOURITES | typeof FAVOURITES_ERROR;
   payload: ProductItem[] | string;
+}
+
+export const GET_CART_ITEMS = "GET_CART_ITEMS";
+export const CART_ITEMS_ERROR = "CART_ITEMS_ERROR";
+export interface CartInterface {
+  type: typeof GET_CART_ITEMS | typeof CART_ITEMS_ERROR;
+  payload: CartItem[] | string;
 }
