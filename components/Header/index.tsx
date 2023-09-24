@@ -12,7 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CustomInput } from "..";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "@/store/actions";
+import { getCategories, removeAllCartItems } from "@/store/actions";
 import { useRouter } from "next/navigation";
 
 import { auth } from "@/app/firebase";
@@ -31,6 +31,7 @@ function Header() {
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+  console.log(DATA);
 
   const { push } = useRouter();
 
@@ -39,6 +40,7 @@ function Header() {
   }, [cartItem]);
 
   const signOutUser = () => {
+    dispatch(removeAllCartItems());
     signOut(auth)
       .then(() => {
         push("/myaccount/login");

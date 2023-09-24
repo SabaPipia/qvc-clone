@@ -32,6 +32,9 @@ import {
   CartInterface,
   GET_CART_ITEMS,
   CART_ITEMS_ERROR,
+  REMOVE_CART_ITEMS,
+  RemoveCartInterface,
+  REMOVE_CART_ITEMS_ERROR,
 } from "../types";
 import { Dispatch } from "redux";
 
@@ -247,7 +250,6 @@ export const getAllProducts =
 
 export const getAllCartItems =
   (item: CartItem[]) => async (dispatch: Dispatch<CartInterface>) => {
-    // console.log(item);
     try {
       dispatch({
         type: GET_CART_ITEMS,
@@ -256,6 +258,20 @@ export const getAllCartItems =
     } catch (error) {
       dispatch({
         type: CART_ITEMS_ERROR,
+        payload: "error",
+      });
+    }
+  };
+export const removeAllCartItems =
+  () => async (dispatch: Dispatch<RemoveCartInterface>) => {
+    try {
+      dispatch({
+        type: REMOVE_CART_ITEMS,
+        payload: [],
+      });
+    } catch (error) {
+      dispatch({
+        type: REMOVE_CART_ITEMS_ERROR,
         payload: "error",
       });
     }

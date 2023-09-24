@@ -21,6 +21,8 @@ import {
   FAVOURITES_ERROR,
   GET_CART_ITEMS,
   CART_ITEMS_ERROR,
+  REMOVE_CART_ITEMS,
+  REMOVE_CART_ITEMS_ERROR,
 } from "../types";
 
 const initialState = {
@@ -156,24 +158,36 @@ const reducer = (state = initialState, action: actionInterface) => {
       const existingItemIndex = updatedCartItem.findIndex(
         (item) => item.id === newItem[0].id
       );
-
+      console.log(newItem);
       if (existingItemIndex === -1) {
         updatedCartItem.push({
           id: newItem[0].id,
           cartI: [newItem],
-          quantity: 1,
+          quantity: newItem[0].quantity,
         });
       } else {
-        updatedCartItem[existingItemIndex].quantity += 1;
+        updatedCartItem[existingItemIndex].quantity = newItem[0].quantity;
       }
       return {
         ...state,
         cartItem: updatedCartItem,
         loading: false,
       };
-
     case CART_ITEMS_ERROR:
       return {
+        ...state,
+        loading: false,
+        error: "error",
+      };
+    case REMOVE_CART_ITEMS:
+      return {
+        ...state,
+        loading: false,
+        cartItem: [],
+      };
+    case REMOVE_CART_ITEMS_ERROR:
+      return {
+        ...state,
         loading: false,
         error: "error",
       };

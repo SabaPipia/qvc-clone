@@ -85,3 +85,10 @@ export interface CartInterface {
   type: typeof GET_CART_ITEMS | typeof CART_ITEMS_ERROR;
   payload: CartItem[] | string;
 }
+
+export const REMOVE_CART_ITEMS = "REMOVE_CART_ITEMS";
+export const REMOVE_CART_ITEMS_ERROR = "REMOVE_CART_ITEMS_ERROR";
+export interface RemoveCartInterface {
+  type: typeof REMOVE_CART_ITEMS | typeof REMOVE_CART_ITEMS_ERROR;
+  payload: [] | string;
+}

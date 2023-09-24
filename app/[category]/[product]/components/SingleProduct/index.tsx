@@ -9,7 +9,7 @@ import "./style.scss";
 import CartIcon from "@/public/assets/icons8-cart-64.png";
 import BankCard from "@/public/assets/credit-card-svgrepo-com.svg";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CartItem, ProductItem, SingleProduct, appState } from "@/types";
@@ -17,8 +17,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCartItems, getFavourite } from "@/store/actions";
+import { userAuth } from "@/app/provider";
 
 function SingleProduct({ item }: SingleProduct) {
+  const context = useContext(userAuth);
+
   const [quantity, setQuantity] = useState(1);
   const [isFavourite, setIsFavourite] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -37,12 +40,12 @@ function SingleProduct({ item }: SingleProduct) {
       console.log("u cant increase item count anymore");
     }
   };
-
   const dispatch: (func: any) => void = useDispatch();
   const DATA = useSelector((state: appState) => state.data);
   let { favourites } = DATA;
   useEffect(() => {
     dispatch(getFavourite());
+
     if (cart.length != 0) {
       dispatch(getAllCartItems(cart));
     }
@@ -69,16 +72,18 @@ function SingleProduct({ item }: SingleProduct) {
   };
 
   const handleAddToCard = () => {
-    const existingItemIndex = cart.findIndex(
-      (cartItem) => cartItem.id === item.id
-    );
+    if (context) {
+      const existingItemIndex = cart.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
 
-    if (existingItemIndex !== -1) {
-      const updatedCart = [...cart];
-      updatedCart[existingItemIndex].quantity += 1;
-      setCart(updatedCart);
-    } else {
-      setCart([...cart, { id: item.id, cartI: [item], quantity: 1 }]);
+      if (existingItemIndex !== -1) {
+        const updatedCart = [...cart];
+        updatedCart[existingItemIndex].quantity += quantity;
+        setCart(updatedCart);
+      } else {
+        setCart([...cart, { id: item.id, cartI: [item], quantity: quantity }]);
+      }
     }
   };
 
