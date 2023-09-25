@@ -144,13 +144,16 @@ function Header() {
               </ul>
             </div>
           </div>
-          <div className="right-side__cart flex-container ">
+          <Link
+            href="/checkout/cart"
+            className="right-side__cart flex-container"
+          >
             <span>Cart</span>
             <div className="cart__cart-icon">
               <Image src={cartIcon} width={30} height={30} alt="cart icon" />
               <span className="cart-count">{itemQuantity}</span>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </header>

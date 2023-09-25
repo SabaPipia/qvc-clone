@@ -81,8 +81,10 @@ header {
       .right-side__cart {
         font-size: 1.5rem;
         color: #333;
+        text-decoration: none;
         span {
           margin-right: 0.5rem;
+          margin: auto;
         }
         .cart__cart-icon {
           position: relative;
