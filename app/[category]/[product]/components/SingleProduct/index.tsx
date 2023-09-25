@@ -43,13 +43,10 @@ function SingleProduct({ item }: SingleProduct) {
   const dispatch: (func: any) => void = useDispatch();
   const DATA = useSelector((state: appState) => state.data);
   let { favourites } = DATA;
+
   useEffect(() => {
     dispatch(getFavourite());
-
-    if (cart.length != 0) {
-      dispatch(getAllCartItems(cart));
-    }
-  }, [dispatch, cart]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (favourites.length != 0) {
@@ -73,17 +70,12 @@ function SingleProduct({ item }: SingleProduct) {
 
   const handleAddToCard = () => {
     if (context) {
-      const existingItemIndex = cart.findIndex(
-        (cartItem) => cartItem.id === item.id
+      dispatch(
+        getAllCartItems([
+          ...cart,
+          { id: item.id, cartI: item, quantity: quantity },
+        ])
       );
-
-      if (existingItemIndex !== -1) {
-        const updatedCart = [...cart];
-        updatedCart[existingItemIndex].quantity += quantity;
-        setCart(updatedCart);
-      } else {
-        setCart([...cart, { id: item.id, cartI: [item], quantity: quantity }]);
-      }
     }
   };
 

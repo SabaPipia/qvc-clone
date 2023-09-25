@@ -158,15 +158,14 @@ const reducer = (state = initialState, action: actionInterface) => {
       const existingItemIndex = updatedCartItem.findIndex(
         (item) => item.id === newItem[0].id
       );
-
       if (existingItemIndex === -1) {
         updatedCartItem.push({
           id: newItem[0].id,
-          cartI: [newItem],
+          cartI: newItem[0].cartI,
           quantity: newItem[0].quantity,
         });
       } else {
-        updatedCartItem[existingItemIndex].quantity = newItem[0].quantity;
+        updatedCartItem[existingItemIndex].quantity += newItem[0].quantity;
       }
       return {
         ...state,

@@ -8,15 +8,14 @@
     grid-template-columns: 7fr 3fr;
     gap: 2rem;
     .cart-item__product-wrapper {
-      div {
-        width: 100%;
+      .main-cart-items-wrapper {
+        margin-bottom: 4.6rem;
         .product-information__content {
           display: flex;
           gap: 1.2rem;
-        }
-        .product-information__content {
+          width: 100%;
           .content__image-wrapper {
-            width: 25rem;
+            min-width: 25rem;
             height: 18rem;
             img {
               width: 100%;
@@ -29,6 +28,7 @@
             justify-content: space-between;
             padding: 1.2rem;
             box-sizing: border-box;
+            width: 100%;
             .product-info__id {
               font-size: 1.6rem;
               color: #535353;
@@ -55,29 +55,43 @@
               & {
                 font-size: 1.8rem;
               }
+              div {
+                display: flex;
+                justify-content: flex-end;
+                gap: 1.2rem;
+                .price__sale-price {
+                  font-size: 3rem;
+                  color: rgb(253, 68, 68);
+                }
+                .price__item-sale {
+                  text-decoration: line-through;
+                  display: flex;
+                  align-items: flex-end;
+                }
+              }
             }
           }
         }
-        .product-information__action {
+      }
+      .product-information__action {
+        margin-top: 1.2rem;
+        span {
+          font-size: 1.3rem;
+          text-transform: uppercase;
+        }
+        button {
+          width: 100%;
+          background-color: #fff;
+          border: 1px solid rgb(156, 156, 156);
+          padding: 1rem 0rem;
           margin-top: 1.2rem;
-          select {
-            width: 13rem;
-            font-size: 1.8rem;
-          }
-          button {
-            width: 100%;
-            background-color: #fff;
-            border: 1px solid rgb(156, 156, 156);
-            padding: 1rem 0rem;
-            margin-top: 1.2rem;
-            font-size: 1.4rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            &:hover {
-              background-color: rgb(255, 108, 108);
-              outline: 1px solid black;
-              outline-offset: 1px;
-            }
+          font-size: 1.4rem;
+          cursor: pointer;
+          transition: all 0.2s;
+          &:hover {
+            background-color: rgb(255, 108, 108);
+            outline: 1px solid black;
+            outline-offset: 1px;
           }
         }
       }

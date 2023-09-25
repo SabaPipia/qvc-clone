@@ -30,7 +30,7 @@ export interface ProductItem {
 
 export interface CartItem {
   id: number;
-  cartI: ProductItem[];
+  cartI: ProductItem;
   quantity: number;
 }
 
