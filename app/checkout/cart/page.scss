@@ -140,4 +140,32 @@
       }
     }
   }
+  .cart-empty {
+    height: 25rem;
+    background-color: #fbf6f3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    div {
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h3 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        color: #28334a;
+        margin-bottom: 1.3rem;
+      }
+      .empty-link {
+        background-color: #fff;
+        padding: 1.8rem;
+        border: 1px solid #535353;
+        text-decoration: none;
+        color: #535353;
+        font-weight: 500;
+      }
+    }
+  }
 }
