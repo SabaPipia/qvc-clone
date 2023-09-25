@@ -1,16 +1,17 @@
 "use client";
 
 import "./page.scss";
-import DummyImage from "@/public/assets/card-dummyimg.jpg";
 import PayPal from "@/public/assets/paypal.svg";
 
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { appState } from "@/types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCartItem } from "@/store/actions";
 
 export default function Cart() {
+  const dispatch: (func: any) => void = useDispatch();
   const { cartItem } = useSelector((state: appState) => state.data);
 
   let sum = 0;
@@ -27,6 +28,12 @@ export default function Cart() {
       ((item.cartI.discountPercentage / 100) * item.cartI.price).toFixed(0)
     );
   });
+
+  const handleRemoveButton = (product: any) => {
+    const updatedCartItems: any = cartItem.filter((i) => i.id !== product.id);
+    dispatch(removeCartItem(updatedCartItems));
+  };
+
   return (
     <div className="container">
       <div className="component-wrapper cart-wrapper">
@@ -41,7 +48,7 @@ export default function Cart() {
                   <div className="product-information__content">
                     <div className="content__image-wrapper">
                       <Image
-                        src={item.cartI.thumbnail}
+                        src={item.cartI.images[0]}
                         width={1000}
                         height={1000}
                         alt="product card"
@@ -88,7 +95,9 @@ export default function Cart() {
                   <div className="product-information__action">
                     <span>quantity: {item.quantity}</span>
                     <div>
-                      <button>Remove</button>
+                      <button onClick={() => handleRemoveButton(item)}>
+                        Remove
+                      </button>
                     </div>
                   </div>
                 </div>

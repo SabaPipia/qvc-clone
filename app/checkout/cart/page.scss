@@ -1,4 +1,9 @@
 .cart-wrapper {
+  a:link,
+  a:visited {
+    color: #535353;
+    font-size: 1.6rem;
+  }
   .continue-shopping {
     display: block;
     text-align: end;
@@ -15,7 +20,7 @@
           gap: 1.2rem;
           width: 100%;
           .content__image-wrapper {
-            min-width: 25rem;
+            width: 25rem;
             height: 18rem;
             img {
               width: 100%;

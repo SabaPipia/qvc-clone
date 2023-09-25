@@ -23,6 +23,8 @@ import {
   CART_ITEMS_ERROR,
   REMOVE_CART_ITEMS,
   REMOVE_CART_ITEMS_ERROR,
+  REMOVE_CART_ITEM,
+  REMOVE_CART_ITEM_ERROR,
 } from "../types";
 
 const initialState = {
@@ -185,6 +187,18 @@ const reducer = (state = initialState, action: actionInterface) => {
         cartItem: [],
       };
     case REMOVE_CART_ITEMS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: "error",
+      };
+    case REMOVE_CART_ITEM:
+      return {
+        ...state,
+        loading: false,
+        cartItem: action.payload,
+      };
+    case REMOVE_CART_ITEM_ERROR:
       return {
         ...state,
         loading: false,

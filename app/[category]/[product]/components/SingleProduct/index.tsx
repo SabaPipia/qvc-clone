@@ -71,10 +71,7 @@ function SingleProduct({ item }: SingleProduct) {
   const handleAddToCard = () => {
     if (context) {
       dispatch(
-        getAllCartItems([
-          ...cart,
-          { id: item.id, cartI: item, quantity: quantity },
-        ])
+        getAllCartItems([{ id: item.id, cartI: item, quantity: quantity }])
       );
     }
   };

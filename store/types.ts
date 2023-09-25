@@ -92,3 +92,10 @@ export interface RemoveCartInterface {
   type: typeof REMOVE_CART_ITEMS | typeof REMOVE_CART_ITEMS_ERROR;
   payload: [] | string;
 }
+
+export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";
+export const REMOVE_CART_ITEM_ERROR = "REMOVE_CART_ITEM_ERROR";
+export interface RemoveCartItemInterface {
+  type: typeof REMOVE_CART_ITEM | typeof REMOVE_CART_ITEM_ERROR;
+  payload: CartItem[] | string;
+}
