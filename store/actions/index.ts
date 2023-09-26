@@ -162,15 +162,10 @@ export const getHistory =
 export const getFavourite =
   () => async (dispatch: Dispatch<FavouritesInterface>) => {
     try {
-      const localStorageKeys = Object.keys(localStorage);
-      const itemKeysHistory = localStorageKeys.filter((k) =>
-        k.startsWith("favourite")
-      );
-      const itemPromises = itemKeysHistory.map(async (item) => {
-        const itemId = item.split(" ")[1];
-        const response = await fetch(
-          `https://dummyjson.com/products/${itemId}`
-        );
+      const getFavItems: any = localStorage.getItem("favourite");
+      const parsedFavItems = JSON.parse(getFavItems);
+      const itemPromises = parsedFavItems.map(async (item: any) => {
+        const response = await fetch(`https://dummyjson.com/products/${item}`);
         const responseJson = await response.json();
         return responseJson;
       });

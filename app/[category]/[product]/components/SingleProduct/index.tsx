@@ -18,6 +18,7 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCartItems, getFavourite } from "@/store/actions";
 import { userAuth } from "@/app/provider";
+import { usePathname } from "next/navigation";
 
 function SingleProduct({ item }: SingleProduct) {
   const context = useContext(userAuth);
@@ -49,6 +50,7 @@ function SingleProduct({ item }: SingleProduct) {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log(favourites);
     if (favourites.length != 0) {
       favourites.map((i: ProductItem) => {
         if (i.id === item.id) {
@@ -57,15 +59,23 @@ function SingleProduct({ item }: SingleProduct) {
       });
     }
   }, [favourites]);
+  const pathname = usePathname();
 
   const handleFavourite = () => {
-    const favItem = localStorage.getItem(`favourite ${item.id}`);
-    if (favItem === null) {
-      localStorage.setItem(`favourite ${item.id}`, item.title);
-    } else if (favItem) {
-      localStorage.removeItem(`favourite ${item.id}`);
+    setIsFavourite(true);
+    const favItems = localStorage.getItem("favourite");
+    const itemId = pathname.split("/").at(-1);
+    if (favItems) {
+      const parsedFavItems = JSON.parse(favItems);
+      const allData = [...parsedFavItems, itemId];
+      const isF = parsedFavItems.filter((i: any) => i === itemId);
+      if (isF.length === 0) {
+        localStorage.removeItem("favourite");
+        localStorage.setItem("favourite", JSON.stringify(allData));
+      }
+    } else {
+      localStorage.setItem("favourite", JSON.stringify([itemId]));
     }
-    setIsFavourite(!isFavourite);
   };
 
   const handleAddToCard = () => {
