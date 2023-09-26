@@ -35,7 +35,7 @@ function Header() {
   const { push } = useRouter();
 
   useEffect(() => {
-    setItemQuantity(0);
+    setItemQuantity(cartItem.length);
   }, [cartItem]);
 
   const signOutUser = () => {
