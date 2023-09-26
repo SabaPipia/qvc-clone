@@ -8,15 +8,11 @@ import React from "react";
 
 function LowInStockCard({ data }: CardProps) {
   const lastImageSrc = data.images[data.images.length - 1].toString();
-  const SaveItemToLocalStorage = (title: string, id: string) => {
-    localStorage.setItem(`history ${id}`, title);
-  };
   return (
     <div className="card-lowStock">
       <Link
         href={`/${data.category}/${data.id}`}
         className="card-lowStock__item-link"
-        onClick={() => SaveItemToLocalStorage(data.title, data.id.toString())}
       >
         <div className="card-image">
           <Image
