@@ -142,19 +142,17 @@ function SingleProduct({ item }: SingleProduct) {
           <div className="single-product-price">
             {item.discountPercentage > 13 ? (
               <>
-                <span className="item-sale-price">
+                <span className="sale-price">
                   $
                   {(
                     item.price -
                     item.price * (item.discountPercentage / 100)
                   ).toFixed(0)}
                 </span>
-                <span className="product-item-price item-sale">
-                  ${item.price}
-                </span>
+                <span className="item-sale">${item.price}</span>
               </>
             ) : (
-              <span className="product-item-price">${item.price}</span>
+              <span className="real-price">${item.price}</span>
             )}
           </div>
           <span className="product__price-details">Price Details</span>

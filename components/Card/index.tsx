@@ -33,21 +33,17 @@ function Card({ data }: CardProps) {
               <div className="card__item-price-wrapper">
                 {data.discountPercentage > 13 ? (
                   <>
-                    <span className="main-card__item-sale-price">
+                    <span className="sale-price">
                       $
                       {(
                         data.price -
                         data.price * (data.discountPercentage / 100)
                       ).toFixed(0)}
                     </span>
-                    <span className="main-card__item-price item-sale">
-                      ${data.price}
-                    </span>
+                    <span className="item-sale">${data.price}</span>
                   </>
                 ) : (
-                  <span className="main-card__item-real-price">
-                    ${data.price}
-                  </span>
+                  <span className="real-price">${data.price}</span>
                 )}
               </div>
             </div>

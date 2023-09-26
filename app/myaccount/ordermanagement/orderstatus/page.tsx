@@ -28,9 +28,12 @@ export default function OrderStatus() {
                     </div>
                     <div className="orders-content__product-info">
                       <div>
-                        <span className="orders-product-info__id">
-                          {item.id}
-                        </span>
+                        <div className="product-about">
+                          <span className="orders-product-info__id">
+                            ID:{item.id}
+                          </span>
+                          <span>Quantity: {item.quantity}</span>
+                        </div>
                         <h4 className="orders-product-info__title">
                           {item.cartI.title}, {item.cartI.brand}
                         </h4>
@@ -39,7 +42,7 @@ export default function OrderStatus() {
                       <div className="orders-product-info__price-wrapper">
                         {item.cartI.discountPercentage > 13 ? (
                           <div>
-                            <span className="price__sale-price">
+                            <span className="sale-price">
                               $
                               {(
                                 item.cartI.price -
@@ -47,26 +50,23 @@ export default function OrderStatus() {
                                   (item.cartI.discountPercentage / 100)
                               ).toFixed(0)}
                             </span>
-                            <span className="price__item-sale">
+                            <span className="item-sale">
                               ${item.cartI.price}
                             </span>
                           </div>
                         ) : (
-                          <span className="price__main-price">
+                          <span className="real-price">
                             ${item.cartI.price}
                           </span>
                         )}
                       </div>
                     </div>
                   </div>
-                  {/* <div className="product-information__action">
-                  <span>quantity: {item.quantity}</span>
-                  <div>
-                  <button onClick={() => handleRemoveButton(item)}>
-                      Remove
-                      </button>
-                      </div>
-                    </div> */}
+                  <div className="product-information__action">
+                    <div>
+                      <button>Cancel Order</button>
+                    </div>
+                  </div>
                 </div>
               );
             })

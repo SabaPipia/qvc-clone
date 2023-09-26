@@ -57,22 +57,9 @@
               flex-direction: column;
               align-items: flex-end;
               gap: 1.6rem;
-              & {
-                font-size: 1.8rem;
-              }
-              div {
-                display: flex;
-                justify-content: flex-end;
-                gap: 1.2rem;
-                .price__sale-price {
-                  font-size: 3rem;
-                  color: rgb(253, 68, 68);
-                }
-                .price__item-sale {
-                  text-decoration: line-through;
-                  display: flex;
-                  align-items: flex-end;
-                }
+              .price__tax {
+                font-size: 1.4rem;
+                color: #535353;
               }
             }
           }

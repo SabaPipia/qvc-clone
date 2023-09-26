@@ -28,28 +28,6 @@
         font-size: 1.7rem;
         text-transform: capitalize;
       }
-      .card__item-price-wrapper {
-        .main-card__item-price {
-          font-size: 2.2rem;
-          color: #131932;
-          font-weight: 500;
-        }
-        .main-card__item-sale-price {
-          font-size: 2.2rem;
-          color: rgb(197, 58, 58);
-        }
-        .item-sale {
-          font-size: 1.8rem;
-          margin-left: 2rem;
-          text-decoration: line-through;
-          color: #344343;
-        }
-        .main-card__item-real-price {
-          font-size: 2.2rem;
-          color: #131932;
-          font-weight: 600;
-        }
-      }
     }
   }
 }

@@ -39,20 +39,6 @@
     .review__right-side-product {
       display: flex;
       flex-direction: column;
-      .review__single-product-price {
-        .review__item-sale-price {
-          font-size: 2.2rem;
-          color: orangered;
-          margin-right: 0.8rem;
-        }
-      }
-      .review__product-item-price {
-        font-size: 2.2rem;
-      }
-      .item-sale {
-        font-size: 1.8rem;
-        text-decoration: line-through;
-      }
       .review__product-about {
         display: flex;
         flex-direction: column;

@@ -84,7 +84,7 @@ export default function Cart() {
                           <div className="product-info__price-wrapper">
                             {item.cartI.discountPercentage > 13 ? (
                               <div>
-                                <span className="price__sale-price">
+                                <span className="sale-price">
                                   $
                                   {(
                                     item.cartI.price -
@@ -92,12 +92,12 @@ export default function Cart() {
                                       (item.cartI.discountPercentage / 100)
                                   ).toFixed(0)}
                                 </span>
-                                <span className="price__item-sale">
+                                <span className="item-sale">
                                   ${item.cartI.price}
                                 </span>
                               </div>
                             ) : (
-                              <span className="price__main-price">
+                              <span className="real-price">
                                 ${item.cartI.price}
                               </span>
                             )}

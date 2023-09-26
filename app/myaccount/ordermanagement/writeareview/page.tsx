@@ -140,21 +140,17 @@ export default function WriteReview() {
                           <div className="card-content__item-price-wrapper">
                             {item.discountPercentage > 13 ? (
                               <>
-                                <span className="main-card__item-sale-price">
+                                <span className="sale-price">
                                   $
                                   {(
                                     item.price -
                                     item.price * (item.discountPercentage / 100)
                                   ).toFixed(0)}
                                 </span>
-                                <span className="main-card__item-price item-sale">
-                                  ${item.price}
-                                </span>
+                                <span className="item-sale">${item.price}</span>
                               </>
                             ) : (
-                              <span className="main-card__item-real-price">
-                                ${item.price}
-                              </span>
+                              <span className="real-price">${item.price}</span>
                             )}
                           </div>
                         </div>

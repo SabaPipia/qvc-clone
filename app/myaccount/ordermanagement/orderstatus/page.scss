@@ -21,10 +21,11 @@
     }
   }
   .orders__items-wrapper {
+    margin-bottom: 4.6rem;
     .orders__content {
-      margin-bottom: 4.6rem;
       display: flex;
       gap: 30px;
+      margin-bottom: 1.2rem;
       .orders-content__image-wrapper {
         width: 25rem;
         height: 25rem;
@@ -40,9 +41,12 @@
         padding: 1.2rem;
         box-sizing: border-box;
         width: 100%;
-        .orders-product-info__id {
-          font-size: 1.6rem;
+        .product-about {
+          display: flex;
+          flex-direction: column;
+          font-size: 1.2rem;
           color: #535353;
+          gap: 0.8rem;
         }
         .orders-product-info__title {
           font-size: 1.8rem;
@@ -65,15 +69,27 @@
             display: flex;
             justify-content: flex-end;
             gap: 1.2rem;
-            .price__sale-price {
-              font-size: 3rem;
-              color: rgb(253, 68, 68);
-            }
-            .price__item-sale {
-              text-decoration: line-through;
-              display: flex;
-              align-items: flex-end;
-            }
+          }
+        }
+      }
+    }
+    .product-information__action {
+      display: flex;
+      width: 100%;
+      div {
+        display: flex;
+        width: 100%;
+        button {
+          background-color: #fff;
+          width: 100%;
+          padding: 1.2rem 0rem;
+          font-size: 1.6rem;
+          border: 1px solid #53535360;
+          cursor: pointer;
+          &:hover {
+            background-color: rgb(243, 152, 152);
+            color: #fff;
+            border-color: rgb(243, 152, 152);
           }
         }
       }

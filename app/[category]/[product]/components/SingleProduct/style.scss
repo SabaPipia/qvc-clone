@@ -38,20 +38,10 @@
     .right-side-product {
       display: flex;
       flex-direction: column;
-      .single-product-price {
-        .item-sale-price {
-          font-size: 2.2rem;
-          color: orangered;
-          margin-right: 0.8rem;
-        }
-      }
       .product__price-details {
         padding: 1.2rem 0rem;
         font-size: 1.6rem;
         color: #333;
-      }
-      .product-item-price {
-        font-size: 2.2rem;
       }
       .item-sale {
         font-size: 1.8rem;

@@ -60,21 +60,17 @@ export default function BrowsingHistory() {
                         <div>
                           {item.discountPercentage > 13 ? (
                             <>
-                              <span className="category-page-item__sale-price">
+                              <span className="sale-price">
                                 $
                                 {(
                                   item.price -
                                   item.price * (item.discountPercentage / 100)
                                 ).toFixed(0)}
                               </span>
-                              <span className="category-page-item__price item-sale">
-                                ${item.price}
-                              </span>
+                              <span className="item-sale">${item.price}</span>
                             </>
                           ) : (
-                            <span className="category-page-item__real-price">
-                              ${item.price}
-                            </span>
+                            <span className="real-price">${item.price}</span>
                           )}
                         </div>
                         <div className="price-wrapper__product-rating">

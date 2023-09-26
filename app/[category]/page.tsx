@@ -1,4 +1,5 @@
 "use client";
+
 import "./page.scss";
 
 import GridIcon from "@/public/assets/grid-icon.png";

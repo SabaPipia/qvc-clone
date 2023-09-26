@@ -56,7 +56,7 @@ export default function ProductReviewPage() {
             <div className="review__single-product-price">
               {singleProduct.discountPercentage > 13 ? (
                 <>
-                  <span className="review__item-sale-price">
+                  <span className="sale-price ">
                     $
                     {(
                       singleProduct.price -
@@ -64,17 +64,12 @@ export default function ProductReviewPage() {
                         (singleProduct.discountPercentage / 100)
                     ).toFixed(0)}
                   </span>
-                  <span className="review__product-item-price item-sale">
-                    ${singleProduct.price}
-                  </span>
+                  <span className="item-sale">${singleProduct.price}</span>
                 </>
               ) : (
-                <span className="review__product-item-price">
-                  ${singleProduct.price}
-                </span>
+                <span className="real-price">${singleProduct.price}</span>
               )}
             </div>
-
             <div className="review__product-about">
               <span>{singleProduct.title}</span>
               <p>{singleProduct.description}</p>

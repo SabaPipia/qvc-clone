@@ -96,7 +96,7 @@ export default function WishList() {
                             <div>
                               {item.discountPercentage > 13 ? (
                                 <>
-                                  <span className="wishlist-page-item__sale-price">
+                                  <span className="sale-price">
                                     $
                                     {(
                                       item.price -
@@ -104,12 +104,12 @@ export default function WishList() {
                                         (item.discountPercentage / 100)
                                     ).toFixed(0)}
                                   </span>
-                                  <span className="wishlist-page-item__price item-sale">
+                                  <span className="item-sale">
                                     ${item.price}
                                   </span>
                                 </>
                               ) : (
-                                <span className="wishlist-page-item__real-price">
+                                <span className="real-price">
                                   ${item.price}
                                 </span>
                               )}
