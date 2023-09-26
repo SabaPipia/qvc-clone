@@ -46,7 +46,6 @@ function Product() {
       localStorage.setItem("history", JSON.stringify([itemId]));
     }
   }, []);
-
   return (
     <>
       {singleProduct && singleProduct.id != itemId ? (

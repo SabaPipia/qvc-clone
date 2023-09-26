@@ -26,7 +26,6 @@ function SingleProduct({ item }: SingleProduct) {
   const [quantity, setQuantity] = useState(1);
   const [isFavourite, setIsFavourite] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
-
   const decreaceHandler = () => {
     if (quantity != 1) {
       setQuantity(quantity - 1);
@@ -50,13 +49,14 @@ function SingleProduct({ item }: SingleProduct) {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(favourites);
-    if (favourites.length != 0) {
-      favourites.map((i: ProductItem) => {
-        if (i.id === item.id) {
-          setIsFavourite(true);
-        }
-      });
+    if (favourites) {
+      if (favourites.length != 0) {
+        favourites.map((i: ProductItem) => {
+          if (i.id === item.id) {
+            setIsFavourite(true);
+          }
+        });
+      }
     }
   }, [favourites]);
   const pathname = usePathname();
@@ -72,6 +72,11 @@ function SingleProduct({ item }: SingleProduct) {
       if (isF.length === 0) {
         localStorage.removeItem("favourite");
         localStorage.setItem("favourite", JSON.stringify(allData));
+      } else {
+        localStorage.removeItem("favourite");
+        const updatedFavList = allData.filter((i) => i != itemId);
+        localStorage.setItem("favourite", JSON.stringify(updatedFavList));
+        setIsFavourite(false);
       }
     } else {
       localStorage.setItem("favourite", JSON.stringify([itemId]));

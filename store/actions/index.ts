@@ -164,12 +164,14 @@ export const getFavourite =
     try {
       const getFavItems: any = localStorage.getItem("favourite");
       const parsedFavItems = JSON.parse(getFavItems);
+      console.log(parsedFavItems);
       const itemPromises = parsedFavItems.map(async (item: any) => {
         const response = await fetch(`https://dummyjson.com/products/${item}`);
         const responseJson = await response.json();
         return responseJson;
       });
       const items = await Promise.all(itemPromises);
+      console.log(items);
 
       dispatch({
         type: GET_FAVOURITES,
