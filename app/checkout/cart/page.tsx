@@ -4,11 +4,11 @@ import "./page.scss";
 import PayPal from "@/public/assets/paypal.svg";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { appState } from "@/types";
+import { ProductItem, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCartItem } from "@/store/actions";
+import { removeAllCartItems, removeCartItem } from "@/store/actions";
 
 export default function Cart() {
   const dispatch: (func: any) => void = useDispatch();
@@ -32,6 +32,22 @@ export default function Cart() {
   const handleRemoveButton = (product: any) => {
     const updatedCartItems: any = cartItem.filter((i) => i.id !== product.id);
     dispatch(removeCartItem(updatedCartItems));
+  };
+
+  const handleCheckoutButton = (item: ProductItem[]) => {
+    const orderItemsString = JSON.stringify(item);
+    const isOrder: any = localStorage.getItem("orders");
+
+    if (isOrder) {
+      const parsedData = JSON.parse(isOrder);
+      const parsedItems = JSON.parse(orderItemsString);
+      const AllOrders = [...parsedData, ...parsedItems];
+      localStorage.removeItem("order");
+      localStorage.setItem("orders", JSON.stringify(AllOrders));
+    } else {
+      localStorage.setItem("orders", orderItemsString);
+    }
+    dispatch(removeAllCartItems());
   };
 
   return (
@@ -108,21 +124,25 @@ export default function Cart() {
                 })}
               </div>
               <div className="cart-item__product-checkout">
-                <div className="checkout__subtotal">
-                  <span>Subtotal({cartItem.length} item)</span>
-                  <span>
-                    {sum.toLocaleString("en-US", {
-                      style: "currency",
-                      currency: "USD",
-                    })}
-                  </span>
-                </div>
-                <div className="checkout__buttons">
-                  <button>Checkout</button>
-                  <button>
-                    <Image src={PayPal} alt="paypal icon" />
-                    Checkout
-                  </button>
+                <div className="cart-fixed">
+                  <div className="checkout__subtotal">
+                    <span>Subtotal({cartItem.length} item)</span>
+                    <span>
+                      {sum.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}
+                    </span>
+                  </div>
+                  <div className="checkout__buttons">
+                    <button onClick={() => handleCheckoutButton(cartItem)}>
+                      Checkout
+                    </button>
+                    <button>
+                      <Image src={PayPal} alt="paypal icon" />
+                      Checkout
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

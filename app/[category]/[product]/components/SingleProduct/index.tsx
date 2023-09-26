@@ -79,10 +79,7 @@ function SingleProduct({ item }: SingleProduct) {
   return (
     <div className="single-product-wrapper">
       <div className="product-title__wrapper">
-        <h1 className="product-title">
-          {item.title}
-          {item.id}
-        </h1>
+        <h1 className="product-title">{item.title}</h1>
         <span onClick={handleFavourite}>
           <svg
             width="40px"
