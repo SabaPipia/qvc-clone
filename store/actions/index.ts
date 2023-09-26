@@ -138,15 +138,10 @@ export const getTopSelling =
 export const getHistory =
   () => async (dispatch: Dispatch<HistoryInterface>) => {
     try {
-      const localStorageKeys = Object.keys(localStorage);
-      const itemKeysHistory = localStorageKeys.filter((k) =>
-        k.startsWith("history")
-      );
-      const itemPromises = itemKeysHistory.map(async (item) => {
-        const itemId = item.split(" ")[1];
-        const response = await fetch(
-          `https://dummyjson.com/products/${itemId}`
-        );
+      const getHistoryItems: any = localStorage.getItem("history");
+      const parsedHistory = JSON.parse(getHistoryItems);
+      const itemPromises = parsedHistory.map(async (item: any) => {
+        const response = await fetch(`https://dummyjson.com/products/${item}`);
         const responseJson = await response.json();
         return responseJson;
       });

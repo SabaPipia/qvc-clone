@@ -6,15 +6,11 @@ import Link from "next/link";
 import { CardProps } from "@/types";
 
 function YouMayLike({ data }: CardProps) {
-  const SaveItemToLocalStorage = (title: string, id: string) => {
-    localStorage.setItem(`history ${id}`, title);
-  };
   return (
     <div className="main-may-like-card">
       <Link
         href={`/${data.category}/${data.id}`}
         className="main-may-like-card__item-link"
-        onClick={() => SaveItemToLocalStorage(data.title, data.id.toString())}
       >
         <div className="main-may-like-card__image">
           <Image

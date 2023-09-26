@@ -19,6 +19,7 @@ function ItemHistory() {
   useEffect(() => {
     dispatch(getHistory());
   }, [dispatch]);
+  // console.log(history);
   return (
     <>
       {loading ? (

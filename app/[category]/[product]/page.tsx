@@ -31,8 +31,21 @@ function Product() {
     dispatch(getItemByCategory(`/${mayLikeValidPathname}`));
   }, [dispatch]);
 
-  singleProduct &&
-    localStorage.setItem(`history ${itemId}`, singleProduct.title);
+  useEffect(() => {
+    const historyItem = localStorage.getItem("history");
+    const itemId = pathname.split("/").at(-1);
+    if (historyItem) {
+      const parsedHistory = JSON.parse(historyItem);
+      const allData = [...parsedHistory, itemId];
+      const isH = parsedHistory.filter((i: any) => i === itemId);
+      if (isH.length === 0) {
+        localStorage.removeItem("history");
+        localStorage.setItem("history", JSON.stringify(allData));
+      }
+    } else {
+      localStorage.setItem("history", JSON.stringify([itemId]));
+    }
+  }, []);
 
   return (
     <>
