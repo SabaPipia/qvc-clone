@@ -9,6 +9,7 @@ import Image from "next/image";
 import { ProductItem, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { removeAllCartItems, removeCartItem } from "@/store/actions";
+import { Price } from "@/components";
 
 export default function Cart() {
   const dispatch: (func: any) => void = useDispatch();
@@ -82,25 +83,12 @@ export default function Cart() {
                             <Link href="#">(Details)</Link>
                           </span>
                           <div className="product-info__price-wrapper">
-                            {item.cartI.discountPercentage > 13 ? (
-                              <div>
-                                <span className="sale-price">
-                                  $
-                                  {(
-                                    item.cartI.price -
-                                    item.cartI.price *
-                                      (item.cartI.discountPercentage / 100)
-                                  ).toFixed(0)}
-                                </span>
-                                <span className="item-sale">
-                                  ${item.cartI.price}
-                                </span>
-                              </div>
-                            ) : (
-                              <span className="real-price">
-                                ${item.cartI.price}
-                              </span>
-                            )}
+                            <div>
+                              <Price
+                                discount={item.cartI.discountPercentage}
+                                price={item.cartI.price}
+                              />
+                            </div>
                             <span className="price__tax">
                               S&H $
                               {(

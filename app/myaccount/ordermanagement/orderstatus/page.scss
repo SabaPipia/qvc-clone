@@ -60,16 +60,6 @@
         .orders-product-info__price-wrapper {
           display: flex;
           justify-content: flex-end;
-          margin-top: 1.2rem;
-          gap: 1.6rem;
-          & {
-            font-size: 1.8rem;
-          }
-          div {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1.2rem;
-          }
         }
       }
     }

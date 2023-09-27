@@ -11,6 +11,7 @@ import React, { useEffect } from "react";
 import { ProductItem, BrowsingPageCard, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopSelling } from "@/store/actions";
+import { Price } from "@/components";
 
 function CategoryPageCard({ renderPattern }: BrowsingPageCard) {
   const dispatch: (func: any) => void = useDispatch();
@@ -59,22 +60,12 @@ function CategoryPageCard({ renderPattern }: BrowsingPageCard) {
                       </div>
                       <div className="category-page-card__item-price-wrapper">
                         <div>
-                          {item.discountPercentage > 13 ? (
-                            <>
-                              <span className="sale-price">
-                                $
-                                {(
-                                  item.price -
-                                  item.price * (item.discountPercentage / 100)
-                                ).toFixed(0)}
-                              </span>
-                              <span className="item-sale">${item.price}</span>
-                            </>
-                          ) : (
-                            <span className="real-price">${item.price}</span>
-                          )}
+                          <Price
+                            discount={item.discountPercentage}
+                            price={item.price}
+                          />
                         </div>
-                        <div className="">
+                        <div className="price-wrapper__product-rating">
                           <Image
                             src={RatingStar}
                             width={15}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { CardProps } from "@/types";
+import { Price } from "@/components";
 
 function YouMayLike({ data }: CardProps) {
   return (
@@ -25,20 +26,7 @@ function YouMayLike({ data }: CardProps) {
             {data.title},{data.brand}
           </span>
           <div className="main-may-like-card__title__item-price-wrapper">
-            {data.discountPercentage > 13 ? (
-              <>
-                <span className="sale-price">
-                  $
-                  {(
-                    data.price -
-                    data.price * (data.discountPercentage / 100)
-                  ).toFixed(0)}
-                </span>
-                <span className="item-sale">${data.price}</span>
-              </>
-            ) : (
-              <span className="real-price">${data.price}</span>
-            )}
+            <Price discount={data.discountPercentage} price={data.price} />
           </div>
         </div>
       </Link>

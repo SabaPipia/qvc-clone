@@ -20,11 +20,11 @@
         background-color: #fae2d6;
       }
     }
-    a:active,
-    a:link {
+    a:link,
+    a:visited {
       color: #333;
       text-decoration: underline;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
   }
 }

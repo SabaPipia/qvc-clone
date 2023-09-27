@@ -9,6 +9,7 @@ import { ProductItem, appState } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
 import RatingStar from "@/public/assets/rating-star.png";
+import { Price } from "@/components";
 
 export default function BrowsingHistory() {
   const dispatch: (func: any) => void = useDispatch();
@@ -58,20 +59,10 @@ export default function BrowsingHistory() {
                       </div>
                       <div className="category-page-card__item-price-wrapper">
                         <div>
-                          {item.discountPercentage > 13 ? (
-                            <>
-                              <span className="sale-price">
-                                $
-                                {(
-                                  item.price -
-                                  item.price * (item.discountPercentage / 100)
-                                ).toFixed(0)}
-                              </span>
-                              <span className="item-sale">${item.price}</span>
-                            </>
-                          ) : (
-                            <span className="real-price">${item.price}</span>
-                          )}
+                          <Price
+                            discount={item.discountPercentage}
+                            price={item.price}
+                          />
                         </div>
                         <div className="price-wrapper__product-rating">
                           <Image

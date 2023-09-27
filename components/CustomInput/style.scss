@@ -81,17 +81,7 @@
           display: flex;
           flex-direction: column;
           align-items: flex;
-          .searched-item-info__sale-price {
-            font-size: 1.6rem;
-            color: rgb(207, 43, 43);
-          }
-          .item-sale {
-            font-size: 1.4rem !important;
-            text-decoration: line-through;
-          }
-          .searched-item-info__price {
-            font-size: 1.6rem;
-          }
+          scale: 0.9;
         }
       }
     }

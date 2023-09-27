@@ -12,6 +12,7 @@ import { ProductItem } from "@/types";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchedItem } from "@/store/actions";
+import { Price } from "..";
 
 function CustomInput() {
   const [searchVisible, setSearchVisible] = useState(false);
@@ -100,24 +101,10 @@ function CustomInput() {
                             </span>
                           </div>
                           <div className="searched-item__main-price">
-                            {item.discountPercentage > 13 ? (
-                              <>
-                                <span className="searched-item-info__sale-price">
-                                  $
-                                  {(
-                                    item.price -
-                                    item.price * (item.discountPercentage / 100)
-                                  ).toFixed(0)}
-                                </span>
-                                <span className="searched-item-info__price item-sale">
-                                  ${item.price}
-                                </span>
-                              </>
-                            ) : (
-                              <span className="searched-item-info__price">
-                                ${item.price}
-                              </span>
-                            )}
+                            <Price
+                              discount={item.discountPercentage}
+                              price={item.price}
+                            />
                           </div>
                         </div>
                       </Link>

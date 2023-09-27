@@ -6,6 +6,8 @@ import Category from "./Category";
 import Footer from "./Footer";
 import LowInStock from "./LowStock";
 import ItemHistory from "./ItemHistory";
+import Card from "./Card";
+import Price from "./Price";
 
 export {
   Header,
@@ -16,4 +18,6 @@ export {
   Footer,
   LowInStock,
   ItemHistory,
+  Card,
+  Price,
 };

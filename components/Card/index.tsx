@@ -5,6 +5,7 @@ import { CardProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Price } from "..";
 
 function Card({ data, lowStock }: CardProps) {
   return (
@@ -36,20 +37,7 @@ function Card({ data, lowStock }: CardProps) {
                 </div>
               ) : null}
               <div className="card__item-price-wrapper">
-                {data.discountPercentage > 13 ? (
-                  <>
-                    <span className="sale-price">
-                      $
-                      {(
-                        data.price -
-                        data.price * (data.discountPercentage / 100)
-                      ).toFixed(0)}
-                    </span>
-                    <span className="item-sale">${data.price}</span>
-                  </>
-                ) : (
-                  <span className="real-price">${data.price}</span>
-                )}
+                <Price discount={data.discountPercentage} price={data.price} />
               </div>
             </div>
           </Link>

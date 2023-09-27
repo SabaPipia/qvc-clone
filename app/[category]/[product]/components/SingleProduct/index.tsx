@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCartItems, getFavourite } from "@/store/actions";
 import { userAuth } from "@/app/provider";
 import { usePathname } from "next/navigation";
+import { Price } from "@/components";
 
 function SingleProduct({ item }: SingleProduct) {
   const context = useContext(userAuth);
@@ -140,20 +141,7 @@ function SingleProduct({ item }: SingleProduct) {
         </div>
         <div className="right-side-product">
           <div className="single-product-price">
-            {item.discountPercentage > 13 ? (
-              <>
-                <span className="sale-price">
-                  $
-                  {(
-                    item.price -
-                    item.price * (item.discountPercentage / 100)
-                  ).toFixed(0)}
-                </span>
-                <span className="item-sale">${item.price}</span>
-              </>
-            ) : (
-              <span className="real-price">${item.price}</span>
-            )}
+            <Price discount={item.discountPercentage} price={item.price} />
           </div>
           <span className="product__price-details">Price Details</span>
           <div className="quantity-wrapper">

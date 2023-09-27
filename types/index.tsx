@@ -15,6 +15,23 @@ export interface CardProps {
   };
 }
 
+export interface WishListCard {
+  renderPattern: string;
+  item: {
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    discountPercentage: number;
+    rating: number;
+    stock: number;
+    brand: string;
+    category: string;
+    thumbnail: string;
+    images: [string[]];
+  };
+}
+
 export interface ProductItem {
   id: number;
   title: string;
@@ -69,6 +86,11 @@ export interface appState {
     favourites: ProductItem[];
     cartItem: ProductItem[];
   };
+}
+
+export interface PriceInterface {
+  discount: number;
+  price: number;
 }
 
 export interface actionInterface {

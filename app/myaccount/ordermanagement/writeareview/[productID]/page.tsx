@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { appState } from "@/types";
+import { Price } from "@/components";
 
 export default function ProductReviewPage() {
   const pathname = usePathname();
@@ -54,21 +55,10 @@ export default function ProductReviewPage() {
           </div>
           <div className="review__right-side-product">
             <div className="review__single-product-price">
-              {singleProduct.discountPercentage > 13 ? (
-                <>
-                  <span className="sale-price ">
-                    $
-                    {(
-                      singleProduct.price -
-                      singleProduct.price *
-                        (singleProduct.discountPercentage / 100)
-                    ).toFixed(0)}
-                  </span>
-                  <span className="item-sale">${singleProduct.price}</span>
-                </>
-              ) : (
-                <span className="real-price">${singleProduct.price}</span>
-              )}
+              <Price
+                discount={singleProduct.discountPercentage}
+                price={singleProduct.price}
+              />
             </div>
             <div className="review__product-about">
               <span>{singleProduct.title}</span>

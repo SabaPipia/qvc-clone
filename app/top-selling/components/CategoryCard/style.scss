@@ -19,6 +19,9 @@
         }
       }
       .category-page-card__item-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
         .item-info__item-name {
           color: #555;
           line-height: 2.3rem;

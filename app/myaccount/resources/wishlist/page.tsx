@@ -4,15 +4,14 @@ import "./page.scss";
 
 import GridIcon from "@/public/assets/grid-icon.png";
 import ListIcon from "@/public/assets/list-icon.png";
-import RatingStar from "@/public/assets/rating-star.png";
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavourite } from "@/store/actions";
 import { ProductItem, appState } from "@/types";
 import Image from "next/image";
-import Link from "next/link";
 import ReactLoading from "react-loading";
+import WishListCard from "./components/Card";
 
 export default function WishList() {
   const [renderPattern, setRenderPattern] = useState("grid");
@@ -70,57 +69,7 @@ export default function WishList() {
                       className={`wishlist-page-card__item-link`}
                       key={item.id}
                     >
-                      <Link
-                        href={`/${item.category}/${item.id}`}
-                        className={`wishlist-${renderPattern}-page-card wishlist-card-wrapper`}
-                      >
-                        <div className="wishlist-page-card__image">
-                          <Image
-                            src={item.thumbnail.toString()}
-                            width={1000}
-                            height={1000}
-                            alt={item.title}
-                            priority
-                          />
-                        </div>
-                        <div className="wishlist-page-card__item-info">
-                          <div className="item-info__item-name">
-                            <span>
-                              {item.title}, {item.brand}
-                            </span>
-                            {renderPattern === "grid" ? null : (
-                              <p>{item.description}</p>
-                            )}
-                          </div>
-                          <div className="wishlist-page-card__item-price-wrapper">
-                            <div>
-                              {item.discountPercentage > 13 ? (
-                                <>
-                                  <span className="sale-price">
-                                    $
-                                    {(
-                                      item.price -
-                                      item.price *
-                                        (item.discountPercentage / 100)
-                                    ).toFixed(0)}
-                                  </span>
-                                  <span className="item-sale">
-                                    ${item.price}
-                                  </span>
-                                </>
-                              ) : (
-                                <span className="real-price">
-                                  ${item.price}
-                                </span>
-                              )}
-                            </div>
-                            <div className="price-wrapper__product-rating">
-                              <Image src={RatingStar} width={24} alt="star" />
-                              <span>{item.rating}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
+                      <WishListCard item={item} renderPattern={renderPattern} />
                     </div>
                   );
                 })}

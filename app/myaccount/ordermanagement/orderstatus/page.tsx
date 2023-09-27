@@ -4,6 +4,7 @@ import React from "react";
 import "./page.scss";
 import { CartItem } from "@/types";
 import Image from "next/image";
+import { Price } from "@/components";
 
 export default function OrderStatus() {
   const orderedItems: any = localStorage.getItem("orders");
@@ -40,25 +41,12 @@ export default function OrderStatus() {
                         <p>{item.cartI.description}</p>
                       </div>
                       <div className="orders-product-info__price-wrapper">
-                        {item.cartI.discountPercentage > 13 ? (
-                          <div>
-                            <span className="sale-price">
-                              $
-                              {(
-                                item.cartI.price -
-                                item.cartI.price *
-                                  (item.cartI.discountPercentage / 100)
-                              ).toFixed(0)}
-                            </span>
-                            <span className="item-sale">
-                              ${item.cartI.price}
-                            </span>
-                          </div>
-                        ) : (
-                          <span className="real-price">
-                            ${item.cartI.price}
-                          </span>
-                        )}
+                        <div>
+                          <Price
+                            discount={item.cartI.discountPercentage}
+                            price={item.cartI.price}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
