@@ -54,7 +54,7 @@ function ItemHistory() {
                   history.map((item: ProductItem, index: number) => {
                     return (
                       <SwiperSlide key={index}>
-                        <Card data={item} />
+                        <Card data={item} lowStock={false} />
                       </SwiperSlide>
                     );
                   })}

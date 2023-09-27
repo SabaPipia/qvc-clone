@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function Card({ data }: CardProps) {
+function Card({ data, lowStock }: CardProps) {
   return (
     <>
       {data ? (
@@ -30,6 +30,11 @@ function Card({ data }: CardProps) {
               <span className="main-card__title">
                 {data.title},{data.brand}
               </span>
+              {lowStock ? (
+                <div className="item__quantity">
+                  <span>left: {data.stock}</span>
+                </div>
+              ) : null}
               <div className="card__item-price-wrapper">
                 {data.discountPercentage > 13 ? (
                   <>

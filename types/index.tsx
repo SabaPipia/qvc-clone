@@ -1,4 +1,5 @@
 export interface CardProps {
+  lowStock: boolean;
   data: {
     id: number;
     title: string;

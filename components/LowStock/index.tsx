@@ -7,11 +7,11 @@ import "./style.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import React, { useEffect } from "react";
-import LowInStockCard from "./Card";
 import { ProductItem, appState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopSelling } from "@/store/actions";
 import ReactLoading from "react-loading";
+import Card from "../Card";
 
 function LowInStock({}) {
   const dispatch: (func: any) => void = useDispatch();
@@ -54,7 +54,7 @@ function LowInStock({}) {
               lowStock.map((item: ProductItem) => {
                 return (
                   <SwiperSlide key={item.id}>
-                    <LowInStockCard data={item} />
+                    <Card data={item} lowStock={true} />
                   </SwiperSlide>
                 );
               })

@@ -28,6 +28,19 @@
         font-size: 1.7rem;
         text-transform: capitalize;
       }
+      .item__quantity {
+        text-align: end;
+        margin-top: 0.6rem;
+        span {
+          font-size: 1.4rem;
+          border: 1px solid rgb(253, 111, 111);
+          padding: 0.3rem;
+          text-transform: uppercase;
+          font-weight: 700;
+          letter-spacing: 0.2rem;
+          color: #535353;
+        }
+      }
     }
   }
 }
