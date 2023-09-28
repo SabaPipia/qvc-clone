@@ -7,17 +7,20 @@ import deleteIcon from "@/public/assets/icons8-x-50.png";
 
 import Image from "next/image";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ProductItem } from "@/types";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchedItem } from "@/store/actions";
 import { Price } from "..";
+import { usePathname } from "next/navigation";
 
 function CustomInput() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [isInputClear, setIsInputClear] = useState(true);
   const [searchValue, setSearchValue] = useState<string>("");
+
+  const pathname = usePathname();
 
   const dispatch: (func: any) => void = useDispatch();
   const searchedData = useSelector((state: any) => state.data);
@@ -36,6 +39,9 @@ function CustomInput() {
     setSearchValue("");
     setSearchVisible(false);
   };
+  useEffect(() => {
+    setSearchVisible(false);
+  }, [pathname]);
 
   return (
     <div className="input-wrapper">
@@ -66,9 +72,12 @@ function CustomInput() {
           className="clear-icon"
         />
       </div>
-      <div className="search-wrapper">
+      <Link
+        href={`/searchedProducts/${searchValue}`}
+        className="search-wrapper"
+      >
         <Image src={searchIcon} alt="search icon" className="search-logo" />
-      </div>
+      </Link>
       {searchVisible ? (
         <div className="search-drop-down">
           <div className="search-drop-down__heading">
@@ -115,7 +124,9 @@ function CustomInput() {
                       </Link>
                       {index >= 2 ? (
                         <div className="show-all-result">
-                          <Link href="#">Show All Results</Link>
+                          <Link href={`/searchedProducts/${searchValue}`}>
+                            Show All Results
+                          </Link>
                         </div>
                       ) : null}
                     </div>

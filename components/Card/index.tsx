@@ -19,8 +19,8 @@ function Card({ data, lowStock }: CardProps) {
             <div className="main-card-image">
               <Image
                 src={
-                  data.thumbnail.toString() ??
-                  data.images[data.images.length - 1].toString()
+                  data.thumbnail?.toString() ??
+                  data.images[data.images?.length - 1].toString()
                 }
                 width={1000}
                 height={1000}

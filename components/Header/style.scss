@@ -24,7 +24,7 @@ header {
     div {
       align-items: center;
     }
-    .header__left-side {
+    &__left-side {
       gap: 3rem;
       .dropdown-menu {
         position: absolute;

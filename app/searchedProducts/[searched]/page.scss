@@ -1,0 +1,10 @@
+.searched-product-page-wrapper {
+  .searched__page-heading {
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+  .searched__item-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
