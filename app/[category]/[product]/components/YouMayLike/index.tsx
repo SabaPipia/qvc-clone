@@ -3,10 +3,10 @@ import "./style.scss";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { CardProps } from "@/types";
+import { YouMayLikeInterface } from "@/types";
 import { Price } from "@/components";
 
-function YouMayLike({ data }: CardProps) {
+function YouMayLike({ data }: YouMayLikeInterface) {
   return (
     <div className="main-may-like-card">
       <Link

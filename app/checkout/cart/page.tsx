@@ -67,6 +67,7 @@ export default function Cart() {
                       <div className="product-information__content">
                         <div className="content__image-wrapper">
                           <Image
+                            priority
                             src={item.cartI.images[0]}
                             width={1000}
                             height={1000}
@@ -139,7 +140,6 @@ export default function Cart() {
           <div className="cart-empty">
             <div>
               <h3>Your cart is empty</h3>
-
               <Link href="/" className="empty-link">
                 Start Shopping
               </Link>

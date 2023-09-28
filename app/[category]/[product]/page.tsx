@@ -20,7 +20,6 @@ function Product() {
   const mayLikeItemsPathname = pathname;
   const mayLikeValidPathname = mayLikeItemsPathname.split("/")[1];
 
-  // ================================================
   const dispatch: (func: any) => void = useDispatch();
   const DATA = useSelector((state: appState) => state.data);
   let { singleProduct, itemCategory, loading } = DATA;

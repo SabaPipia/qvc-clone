@@ -15,6 +15,10 @@ export interface CardProps {
   };
 }
 
+export interface YouMayLikeInterface {
+  data: ProductItem;
+}
+
 export interface WishListCard {
   renderPattern: string;
   item: {

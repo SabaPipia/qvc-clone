@@ -36,6 +36,7 @@ function CustomInput() {
     setSearchValue("");
     setSearchVisible(false);
   };
+
   return (
     <div className="input-wrapper">
       <input
@@ -44,6 +45,10 @@ function CustomInput() {
         className="input"
         placeholder="What can we help you discover?"
         onChange={(e) => {
+          handleSearchInput(e.target.value);
+          setSearchValue(e.target.value);
+        }}
+        onFocus={(e) => {
           handleSearchInput(e.target.value);
           setSearchValue(e.target.value);
         }}
